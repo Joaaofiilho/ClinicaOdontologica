@@ -12,37 +12,114 @@ import beans.Paciente;
 
 
 public class PacienteDAO {
+    private static ArrayList<Paciente> pacientes = new ArrayList<>();
+    private final char fileSeparator = ';';
+
+    public void inserir(Paciente p) throws Exception{
+        pacientes.add(p);
+
+        gravarDados();
+    }
+
+    public void alterar(Paciente p) throws Exception{
+        Paciente aux = buscarPorCpf(p.getCpf());
+        aux.setNome(p.getNome());
+        aux.setNascimento(p.getNascimento());
+        aux.setTelefone(p.getTelefone());
+        aux.setEmail(p.getEmail());
+        aux.setEndereco(p.getEndereco());
+        aux.setSexo(p.getSexo());
+
+        gravarDados();
+    }
+
+    public void excluir(String cpf) throws Exception{
+        pacientes.remove(buscarPorCpf(cpf));
+
+        gravarDados();
+    }
+
+    public Paciente buscarPorCpf(String cpf) throws Exception{
+        for (Paciente p:
+             pacientes) {
+            if(p.getCpf().equals(cpf)) return p;
+        }
+        return null;
+    }
+
+    public ArrayList<Paciente> buscarPorNome(String nome) throws Exception{
+        ArrayList<Paciente> temp = new ArrayList<>();
+        for (Paciente p:
+             pacientes) {
+            if(p.getNome().contains(nome)) temp.add(p);
+        }
+        return temp;
+    }
+
+    public void gravarDados() throws Exception {
+        File f = new File("pacientes.txt");
+
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+
+        try {
+            //Classe que armazena caracteres
+            fw = new FileWriter(f);
+
+            //Classe que armazena strings
+            bw = new BufferedWriter(fw);
+
+            //Escreveu uma linha no texto
+            for(Paciente p : pacientes) {
+                bw.write(p.getNome()+fileSeparator+p.getCpf()+fileSeparator+p.getNascimento()+fileSeparator+
+                        p.getTelefone()+fileSeparator+p.getEmail()+fileSeparator+p.getEndereco()+fileSeparator+
+                        p.getSexo());
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            try {
+                if (bw != null)
+                    bw.close();
+                if (fw != null)
+                    fw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     static {
         File f = new File("pacientes.txt");
-
-        FileReader fr = null;
-        BufferedReader br = null;
-
-        try {
-
-            fr = new FileReader(f);
-            br = new BufferedReader(fr);
-
-            String linha;
-
-            while ((linha = br.readLine()) != null) {
-                String[] dados = linha.split(";");
-
-                Paciente p = new Paciente(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6].charAt(0));
-                //TODO arraydepacientes.add(p)
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
+        if(f.exists()) {
+            FileReader fr = null;
+            BufferedReader br = null;
             try {
-                if (br != null)
-                    br.close();
-                if (fr != null)
-                    fr.close();
+
+                fr = new FileReader(f);
+                br = new BufferedReader(fr);
+
+                String linha;
+
+                while ((linha = br.readLine()) != null) {
+                    String[] dados = linha.split(";");
+                    Paciente p = new Paciente(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6].charAt(0));
+                    pacientes.add(p);
+                }
+
             } catch (IOException e) {
                 e.printStackTrace();
+            } finally {
+                try {
+                    if (br != null)
+                        br.close();
+                    if (fr != null)
+                        fr.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
