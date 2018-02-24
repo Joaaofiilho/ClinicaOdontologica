@@ -1,0 +1,6 @@
+asda;asdasd;10.0;0
+aasdasd;asdasd;13.0;1
+asdasd;asdasd;14.0;2
+asdasd;asdasdasd;16.0;3
+asdasd;asdasd;19.0;4
+adsasd;asdasdasd;22.0;5
