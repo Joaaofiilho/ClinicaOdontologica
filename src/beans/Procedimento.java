@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.Objects;
+
 public class Procedimento {
 
     //Atributos
@@ -72,7 +74,21 @@ public class Procedimento {
         Procedimento.contadorID = contadorID;
     }
 
+    @Override
+    public String toString() {
+        return String.format("Procedimento: %s, Descrição: %s, Valor: %.2f, ID: %d\n", this.procedimento, this.descricao,
+                this.valor, this.id);
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        Procedimento aux = (Procedimento) o;
+        if (this.id == aux.getId()){
+            return true;
+        }else {
+            return false;
+        }
+    }
 
 }
 

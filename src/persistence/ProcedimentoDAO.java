@@ -2,6 +2,7 @@ package persistence;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 import beans.Procedimento;
 
@@ -36,6 +37,7 @@ public class ProcedimentoDAO {
 
                 }
 
+
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
@@ -53,7 +55,7 @@ public class ProcedimentoDAO {
 
 
     //Metodos
-    public void adicionarProcedimento(Procedimento procedimento){ //Adiciona um procedimento ao Arraylist e ao txt.
+    public void adicionarProcedimento(Procedimento procedimento) throws Exception { //Adiciona um procedimento ao Arraylist e ao txt.
 
         procedimentosArray.add(procedimento);
 
@@ -61,7 +63,7 @@ public class ProcedimentoDAO {
 
     }
 
-    private void gravarDados() { //Metodo responsavel por gravar no arquivo
+    private void gravarDados() throws Exception{ //Metodo responsavel por gravar no arquivo
 
         File file = new File("procedimento.txt");
 
@@ -80,8 +82,10 @@ public class ProcedimentoDAO {
                         procedimento.getValor() + ";" + procedimento.getId());
                 bw.newLine();
             }
+
         } catch (IOException e) {
             e.printStackTrace();
+            throw e;
         } finally {
             try {
                 if (bw != null)
@@ -95,32 +99,50 @@ public class ProcedimentoDAO {
     }
 
 
-    public void Alterar(Procedimento procedimento){ //Vai alterar uma informação de um procedimento
+    public void alterar(Procedimento procedimento) throws Exception{ //Vai alterar uma informação de um procedimento
 
-        //TESTAr
-
-        Procedimento aux = buscar(procedimento.getId());
-        aux.setDescricao(procedimento.getDescricao());
-        aux.setProcedimento(procedimento.getProcedimento());
-        aux.setValor(procedimento.getValor());
-
-
-        gravarDados();
-
+        try{
+            Procedimento aux = buscar(procedimento.getId());
+            aux.setDescricao(procedimento.getDescricao());
+            aux.setProcedimento(procedimento.getProcedimento());
+            aux.setValor(procedimento.getValor());
+            gravarDados();
+        }catch (NullPointerException e){
+            System.out.println("ID não cadastrado.");
+        }
 
     }
 
-    public Procedimento buscar(int id){ // TESTAr
+    public Procedimento buscar(int id) throws NullPointerException{
+
+
         for (Procedimento procedimento: procedimentosArray){
             if (procedimento.getId() == id){
                 return procedimento;
             }
         }
+
         return null;
+    }
+
+    public ArrayList<Procedimento> buscarProcedimento(String procedimento){
+        ArrayList<Procedimento> procedimentosBusca = new ArrayList<>();
+
+        for (Procedimento aux : procedimentosArray){
+            if (aux.getProcedimento().equals(procedimento)){
+                procedimentosBusca.add(aux);
+            }
+        }
+
+        return procedimentosBusca;
     }
 
     public int tamanho(){
         return procedimentosArray.size();
+    }
+
+    public void exibirTodosProcedimentos(){
+        System.out.println(procedimentosArray.toString());
     }
 
 
