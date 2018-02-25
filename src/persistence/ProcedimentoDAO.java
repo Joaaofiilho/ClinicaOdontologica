@@ -9,7 +9,6 @@ import beans.Procedimento;
 
 public class ProcedimentoDAO {
 
-
     //Static
     private static ArrayList<Procedimento> procedimentosArray = new ArrayList<>(); //Contem todas as informações do txt.
 
@@ -114,7 +113,6 @@ public class ProcedimentoDAO {
     }
 
     public Procedimento buscar(int id) throws NullPointerException{
-
 
         for (Procedimento procedimento: procedimentosArray){
             if (procedimento.getId() == id){
