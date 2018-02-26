@@ -49,7 +49,6 @@ public class PacienteDAO {
     }
 
     //Métodos
-    private final char fileSeparator = ';';
 
     public void inserir(Paciente p) throws Exception{
         pacientes.add(p);
@@ -75,7 +74,7 @@ public class PacienteDAO {
         gravarDados();
     }
 
-    public Paciente buscarPorCpf(String cpf) throws Exception{
+    public static Paciente buscarPorCpf(String cpf) throws Exception{
         for (Paciente p:
              pacientes) {
             if(p.getCpf().equals(cpf)) return p;
@@ -107,8 +106,8 @@ public class PacienteDAO {
 
             //Escreveu uma linha no texto
             for(Paciente p : pacientes) {
-                bw.write(p.getNome()+fileSeparator+p.getCpf()+fileSeparator+p.getNascimento()+fileSeparator+
-                        p.getTelefone()+fileSeparator+p.getEmail()+fileSeparator+p.getEndereco()+fileSeparator+
+                bw.write(p.getNome()+";"+p.getCpf()+";"+p.getNascimento()+";"+
+                        p.getTelefone()+";"+p.getEmail()+";"+p.getEndereco()+";"+
                         p.getSexo());
                 bw.newLine();
             }

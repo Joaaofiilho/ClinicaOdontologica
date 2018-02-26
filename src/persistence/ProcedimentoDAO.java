@@ -2,7 +2,6 @@ package persistence;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 
 import beans.Procedimento;
 
@@ -10,7 +9,7 @@ import beans.Procedimento;
 public class ProcedimentoDAO {
 
     //Static
-    private static ArrayList<Procedimento> procedimentosArray = new ArrayList<>(); //Contem todas as informações do txt.
+    private static ArrayList<Procedimento> procedimentos = new ArrayList<>(); //Contem todas as informações do txt.
 
     static { //Leitura do arquivo para armazenar no Arraylist
         File f = new File("procedimento.txt");
@@ -31,8 +30,8 @@ public class ProcedimentoDAO {
                     String[] dados = linha.split(";");
 
                     Procedimento p = new Procedimento(dados[0], dados[1], Double.parseDouble(dados[2]),
-                            Integer.parseInt(dados[3]));
-                    procedimentosArray.add(p);
+                            Integer.parseInt(dados[3]), Integer.parseInt(dados[4]));
+                    procedimentos.add(p);
 
                 }
 
@@ -56,7 +55,7 @@ public class ProcedimentoDAO {
     //Metodos
     public void adicionarProcedimento(Procedimento procedimento) throws Exception { //Adiciona um procedimento ao Arraylist e ao txt.
 
-        procedimentosArray.add(procedimento);
+        procedimentos.add(procedimento);
 
         gravarDados();
 
@@ -75,10 +74,10 @@ public class ProcedimentoDAO {
 
             bw = new BufferedWriter(fw);
 
-            for (Procedimento procedimento : procedimentosArray) {
+            for (Procedimento procedimento : procedimentos) {
 
-                bw.write(procedimento.getProcedimento() + ";" + procedimento.getDescricao() + ";" +
-                        procedimento.getValor() + ";" + procedimento.getId());
+                bw.write(procedimento.getTitulo() + ";" + procedimento.getDescricao() + ";" +
+                        procedimento.getValor() + ";" + procedimento.getDuracao() + ";" + procedimento.getId());
                 bw.newLine();
             }
 
@@ -101,10 +100,11 @@ public class ProcedimentoDAO {
     public void alterar(Procedimento procedimento) throws Exception{ //Vai alterar uma informação de um procedimento
 
         try{
-            Procedimento aux = buscar(procedimento.getId());
+            Procedimento aux = buscarPorID(procedimento.getId());
             aux.setDescricao(procedimento.getDescricao());
-            aux.setProcedimento(procedimento.getProcedimento());
+            aux.setTitulo(procedimento.getTitulo());
             aux.setValor(procedimento.getValor());
+            aux.setDuracao(procedimento.getDuracao());
             gravarDados();
         }catch (NullPointerException e){
             System.out.println("ID não cadastrado.");
@@ -112,9 +112,13 @@ public class ProcedimentoDAO {
 
     }
 
-    public Procedimento buscar(int id) throws NullPointerException{
+    public void excluir(int id) throws Exception{
+        procedimentos.remove(buscarPorID(id));
+        gravarDados();
+    }
 
-        for (Procedimento procedimento: procedimentosArray){
+    public Procedimento buscarPorID(int id) throws NullPointerException{
+        for (Procedimento procedimento: procedimentos){
             if (procedimento.getId() == id){
                 return procedimento;
             }
@@ -126,8 +130,8 @@ public class ProcedimentoDAO {
     public ArrayList<Procedimento> buscarProcedimento(String procedimento){
         ArrayList<Procedimento> procedimentosBusca = new ArrayList<>();
 
-        for (Procedimento aux : procedimentosArray){
-            if (aux.getProcedimento().equals(procedimento)){
+        for (Procedimento aux : procedimentos){
+            if (aux.getTitulo().equals(procedimento)){
                 procedimentosBusca.add(aux);
             }
         }
@@ -136,11 +140,11 @@ public class ProcedimentoDAO {
     }
 
     public int tamanho(){
-        return procedimentosArray.size();
+        return procedimentos.size();
     }
 
     public void exibirTodosProcedimentos(){
-        System.out.println(procedimentosArray.toString());
+        System.out.println(procedimentos.toString());
     }
 
 

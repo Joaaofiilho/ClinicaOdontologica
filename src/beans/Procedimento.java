@@ -1,32 +1,49 @@
 package beans;
 
-import java.util.Objects;
-
 public class Procedimento {
 
     //Atributos
-    private String procedimento;
+    private String titulo;
     private String descricao;
     private double valor;
+    private int duracao;
     private int id = 0;
     private static  int contadorID = 0;
 
 
     //Construtores
-    public Procedimento(String procedimento, String descricao, double valor, int id) {  //Usar para ler
-        this.procedimento = procedimento;
+
+    public Procedimento(String titulo, String descricao, double valor, int duracao, int id) { //Usar para ler
+        this.titulo = titulo;
         this.descricao = descricao;
         this.valor = valor;
+        this.duracao = duracao;
         this.id = id;
     }
 
-    public Procedimento(String procedimento, String descricao, double valor) {  //Usar na hora de criar para pode garantir o ID Exclusivo
-        this.procedimento = procedimento;
+    public Procedimento(String titulo, String descricao, double valor, int duracao) {  //Usar na hora de criar para pode garantir o ID Exclusivo
+        this.titulo = titulo;
         this.descricao = descricao;
         this.valor = valor;
+        this.duracao = duracao;
         this.id = contadorID;
         contadorID++;
     }
+
+    //    public Procedimento(String titulo, String descricao, double valor, int id) {
+//        this.titulo = titulo;
+//        this.descricao = descricao;
+//        this.valor = valor;
+//        this.id = id;
+//    }
+//
+//    public Procedimento(String titulo, String descricao, double valor) {
+//        this.titulo = titulo;
+//        this.descricao = descricao;
+//        this.valor = valor;
+//        this.id = contadorID;
+//        contadorID++;
+//    }
 
     public Procedimento(){
 
@@ -34,12 +51,22 @@ public class Procedimento {
 
 
     // Metodos Acessores
-    public String getProcedimento() {
-        return procedimento;
+
+
+    public int getDuracao() {
+        return duracao;
     }
 
-    public void setProcedimento(String procedimento) {
-        this.procedimento = procedimento;
+    public void setDuracao(int duracao) {
+        this.duracao = duracao;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getDescricao() {
@@ -76,7 +103,7 @@ public class Procedimento {
 
     @Override
     public String toString() {
-        return String.format("Procedimento: %s, Descrição: %s, Valor: %.2f, ID: %d\n", this.procedimento, this.descricao,
+        return String.format("Procedimento: %s, Descrição: %s, Valor: %.2f, ID: %d\n", this.titulo, this.descricao,
                 this.valor, this.id);
     }
 

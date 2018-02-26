@@ -53,7 +53,7 @@ public class TesteProcedimento {
 
 
         //Meotod busca ok!
-//        Procedimento procedimento = procedimentoDAO.buscar(1);
+//        Procedimento procedimento = procedimentoDAO.buscarPorID(1);
 //
 //        System.out.println(procedimento.toString());
 

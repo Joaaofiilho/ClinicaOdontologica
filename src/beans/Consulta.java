@@ -26,19 +26,16 @@ public class Consulta {
     public Consulta() {
     }
 
-
-    //Método para pegar informações do paciente
-    public String[] getInfoPaciente(){
-        String[] informacoesPac = new String[7];
-
-        informacoesPac[0] = this.paciente.getNome(); informacoesPac[1] = this.paciente.getCpf();
-        informacoesPac[2] = this.paciente.getNascimento(); informacoesPac[3] = this.paciente.getTelefone();
-        informacoesPac[4] = this.paciente.getEmail(); informacoesPac[5] = this.paciente.getEndereco();
-        informacoesPac[6] = (this.paciente.getSexo() + "");
-
-        return informacoesPac;
+    //Metodos especiais
+    public String getHorarioInicial(){
+        //TODO: Regex para pegar o horario inicial
+        return "";
     }
 
+    public String getHorarioFinal(){
+        //TODO: Regex para pegar o horario inicial
+        return "";
+    }
 
     //Getters e setters
     public int getDia() {

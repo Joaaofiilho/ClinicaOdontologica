@@ -28,12 +28,14 @@ public class ConsultaDAO {
 
                 while ((linha = br.readLine()) != null) {
                     String[] dados = linha.split(";");
-                    Consulta c = new Consulta();
-
-                    c = new Consulta(Integer.parseInt(dados[0]), Integer.parseInt(dados[1]), Integer.parseInt(dados[2]),
-                            c.getPaciente(), dados[4], dados[5], Float.parseFloat(dados[6]));
-
-                    consultas.add(c);
+                    try {
+                        Consulta c = new Consulta(Integer.parseInt(dados[0]), Integer.parseInt(dados[1]), Integer.parseInt(dados[2]),
+                                PacienteDAO.buscarPorCpf(dados[3]), dados[4], dados[5], Float.parseFloat(dados[6]));
+                        //int dia, int mes, int ano, Paciente paciente, String horarioCompleto, String descricao, float valor
+                        consultas.add(c);
+                    }catch (Exception e){
+                        System.out.println("Erro ao buscar o paciente!");
+                    }
                 }
 
             } catch (IOException e) {
@@ -68,13 +70,8 @@ public class ConsultaDAO {
 
             //Escreveu uma linha no texto
             for(Consulta c : consultas) {
-
-                //TODO | Não consigo escrever um objeto paciente num arquivo de texto. Tou usando o metodo que criei pra pegar a info
-                //TODO | do paciente e colocar num vetor... Porem não sei se fica eficiente/elegante.
                 bw.write(c.getDia()+fileSeparator+c.getMes()+fileSeparator+c.getAno()+fileSeparator+
-                        c.getInfoPaciente()[0]+fileSeparator+c.getInfoPaciente()[1]+fileSeparator+c.getInfoPaciente()[2]
-                        +fileSeparator+c.getInfoPaciente()[3]+fileSeparator+c.getInfoPaciente()[4]+fileSeparator+
-                        c.getInfoPaciente()[5]+fileSeparator+c.getInfoPaciente()[6]+fileSeparator+c.getHorarioCompleto()+
+                        c.getPaciente().getCpf()+fileSeparator+c.getHorarioCompleto()+
                         fileSeparator+c.getDescricao()+fileSeparator+ c.getValor());
                 bw.newLine();
             }
@@ -100,17 +97,32 @@ public class ConsultaDAO {
     }
 
     public void alterar(Consulta c) throws Exception{
-        //TODO | Necessita dos métodos de busca
-
+        Consulta aux = new Consulta();
+        aux.setDia(c.getDia());
+        aux.setMes(c.getMes());
+        aux.setAno(c.getAno());
+        aux.setPaciente(c.getPaciente());
+        aux.setHorarioCompleto(c.getHorarioCompleto());
+        aux.setDescricao(c.getDescricao());
+        aux.setValor(c.getValor());
         gravarDados();
     }
 
-    public void excluir(String cpf) throws Exception{
-        //TODO | Necessita dos métodos de busca
-
+    public void excluir(String horarioInicial) throws Exception{
+        for (Consulta c:
+             consultas) {
+            if(c.getHorarioInicial().equals(horarioInicial)) consultas.remove(c);
+        }
         gravarDados();
     }
 
-    //TODO | Métodos para buscar. Buscamos pelo que?
+    public ArrayList<Consulta> buscarPorCpf(String cpf) throws Exception{
+        ArrayList<Consulta> temp = new ArrayList<>();
+        for (Consulta c:
+             consultas) {
+            if(c.getPaciente().getCpf().equals(cpf)) temp.add(c);
+        }
+        return temp;
+    }
 
 }
