@@ -10,7 +10,7 @@ public class Consulta {
     private String horarioCompleto;
     private String descricao;
     private float valor;
-
+    //testeTesteTESTE
 
     //Construtores
     public Consulta(int dia, int mes, int ano, Paciente paciente, String horarioCompleto, String descricao, float valor) {
