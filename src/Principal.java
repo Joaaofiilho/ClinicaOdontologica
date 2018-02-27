@@ -7,6 +7,7 @@ public class Principal {
         PacienteDAO dao = new PacienteDAO();
 
         try {
+            //oi sumido rs
             dao.inserir(p);
             System.out.println(dao.buscarPorCpf(p.getCpf()).getNome());
         }catch (Exception e){
