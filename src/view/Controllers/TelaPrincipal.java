@@ -1,5 +1,12 @@
 package view.Controllers;
 
-public class TelaPrincipal {
+import javafx.scene.control.Label;
+import javafx.scene.shape.Rectangle;
 
+public class TelaPrincipal {
+    public Label lblDia;
+    public Rectangle recContainerDia;
+    TelaPrincipal(){
+
+    }
 }
