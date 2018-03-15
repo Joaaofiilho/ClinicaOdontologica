@@ -125,7 +125,7 @@
                         </RadioButton>
                         <RadioButton mnemonicParsing="false" text="Feminino">
                            <HBox.margin>
-                              <Insets left="58.0" top="28.0" />
+                              <Insets left="40.0" top="28.0" />
                            </HBox.margin>
                         </RadioButton>
                      </children>
@@ -246,7 +246,7 @@
                <children>
                   <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Cancelar">
                      <HBox.margin>
-                        <Insets left="470.0" top="10.0" />
+                        <Insets left="486.0" top="10.0" />
                      </HBox.margin>
                   </Button>
                   <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Salvar">
