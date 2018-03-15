@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Controllers.CadastroPaciente">
+   <children>
+      <GridPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </GridPane.margin>
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefWidth="45.0" text="Nome:">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField maxHeight="26.0" minHeight="25.0" prefWidth="305.6">
+                           <HBox.margin>
+                              <Insets left="-36.0" top="28.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                     <children>
+                        <Label maxHeight="0.0" maxWidth="25.0" minWidth="25.0" prefWidth="25.0" text="CPF:">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField maxHeight="25.0" maxWidth="130.0" minHeight="25.0" minWidth="100.0" prefHeight="25.0" prefWidth="100.0">
+                           <HBox.margin>
+                              <Insets left="-26.0" top="28.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Label maxWidth="160.0" minWidth="160.0" prefWidth="160.0" text="Data de Nascimento:">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <DatePicker maxWidth="185.0" minWidth="185.0" prefHeight="26.0" prefWidth="185.0">
+                           <HBox.margin>
+                              <Insets left="-160.0" top="28.0" />
+                           </HBox.margin>
+                        </DatePicker>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                     <children>
+                        <Label text="Telefone:">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField maxHeight="25.0" minHeight="25.0" prefHeight="25.0" prefWidth="120.0">
+                           <HBox.margin>
+                              <Insets left="-49.0" top="28.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Label text="E-Mail:">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField>
+                           <HBox.margin>
+                              <Insets left="-37.0" top="28.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Label text="Sexo:">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <RadioButton mnemonicParsing="false" text="Masculino">
+                           <HBox.margin>
+                              <Insets left="-30.0" top="28.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                        <RadioButton mnemonicParsing="false" text="Feminino">
+                           <HBox.margin>
+                              <Insets left="58.0" top="28.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
+            <GridPane GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </GridPane.margin>
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label minWidth="-Infinity" text="Logradouro:">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField maxHeight="25.0" maxWidth="184.0" minHeight="25.0" minWidth="184.0" prefHeight="25.0" prefWidth="184.0">
+                           <HBox.margin>
+                              <Insets left="-65.0" top="28.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                     <children>
+                        <Label minWidth="-Infinity" text="Número:">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField maxHeight="25.0" maxWidth="184.0" minHeight="25.0" minWidth="184.0" prefHeight="25.0" prefWidth="184.0">
+                           <HBox.margin>
+                              <Insets left="-48.0" top="28.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
+                     <children>
+                        <Label minWidth="-Infinity" text="Complemento:">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField maxHeight="25.0" maxWidth="184.0" minHeight="25.0" minWidth="184.0" prefHeight="25.0" prefWidth="184.0">
+                           <HBox.margin>
+                              <Insets left="-80.0" top="28.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                     <children>
+                        <Label minWidth="-Infinity" text="Bairro:">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField maxHeight="25.0" maxWidth="184.0" minHeight="25.0" minWidth="184.0" prefHeight="25.0" prefWidth="184.0">
+                           <HBox.margin>
+                              <Insets left="-35.0" top="28.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Label minWidth="-Infinity" text="Cidade:">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField maxHeight="25.0" maxWidth="184.0" minHeight="25.0" minWidth="184.0" prefHeight="25.0" prefWidth="184.0">
+                           <HBox.margin>
+                              <Insets left="-41.0" top="28.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <children>
+                        <Label minWidth="-Infinity" text="Estado:">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField maxHeight="25.0" maxWidth="184.0" minHeight="25.0" minWidth="184.0" prefHeight="25.0" prefWidth="184.0">
+                           <HBox.margin>
+                              <Insets left="-40.0" top="28.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
