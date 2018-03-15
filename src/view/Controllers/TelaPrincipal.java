@@ -6,7 +6,5 @@ import javafx.scene.shape.Rectangle;
 public class TelaPrincipal {
     public Label lblDia;
     public Rectangle recContainerDia;
-    TelaPrincipal(){
 
-    }
 }
