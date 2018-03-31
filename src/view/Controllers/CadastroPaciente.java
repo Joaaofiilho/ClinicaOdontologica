@@ -11,17 +11,33 @@ public class CadastroPaciente {
     public TextField txtfieldTelefone;
     public TextField txtfieldEmail;
     public TextField txtfieldCPF;
+    public TextField txtFieldLogradouro;
+    public TextField txtFieldNumero;
+    public TextField txtFieldComplemento;
+    public TextField txtFieldBairro;
+    public TextField txtFieldCidade;
+    public TextField txtFieldEstado;
+
     public DatePicker dateNascimento;
     public RadioButton rdBtnMasculino;
     public RadioButton rdBtnFeminino;
 
-    public TextField txtFieldLogradouro;
+    public Button btnCancelar;
+    public Button btnSalvar;
 
     public void rdBtnMasculinoOnAction(ActionEvent event){
 
     }
 
     public void rdBtnFemininoOnAction(ActionEvent event){
+
+    }
+
+    public void btnCancelarOnAction(ActionEvent event){
+
+    }
+
+    public void btnSalvarOnAction(ActionEvent event){
 
     }
 }

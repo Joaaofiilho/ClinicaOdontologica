@@ -177,7 +177,7 @@
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField maxHeight="25.0" maxWidth="184.0" minHeight="25.0" minWidth="184.0" prefHeight="25.0" prefWidth="184.0">
+                        <TextField fx:id="txtFieldNumero" maxHeight="25.0" maxWidth="184.0" minHeight="25.0" minWidth="184.0" prefHeight="25.0" prefWidth="184.0">
                            <HBox.margin>
                               <Insets left="-48.0" top="28.0" />
                            </HBox.margin>
@@ -191,7 +191,7 @@
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField maxHeight="25.0" maxWidth="184.0" minHeight="25.0" minWidth="184.0" prefHeight="25.0" prefWidth="184.0">
+                        <TextField fx:id="txtFieldComplemento" maxHeight="25.0" maxWidth="184.0" minHeight="25.0" minWidth="184.0" prefHeight="25.0" prefWidth="184.0">
                            <HBox.margin>
                               <Insets left="-80.0" top="28.0" />
                            </HBox.margin>
@@ -205,7 +205,7 @@
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField maxHeight="25.0" maxWidth="184.0" minHeight="25.0" minWidth="184.0" prefHeight="25.0" prefWidth="184.0">
+                        <TextField fx:id="txtFieldBairro" maxHeight="25.0" maxWidth="184.0" minHeight="25.0" minWidth="184.0" prefHeight="25.0" prefWidth="184.0">
                            <HBox.margin>
                               <Insets left="-35.0" top="28.0" />
                            </HBox.margin>
@@ -219,7 +219,7 @@
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField maxHeight="25.0" maxWidth="184.0" minHeight="25.0" minWidth="184.0" prefHeight="25.0" prefWidth="184.0">
+                        <TextField fx:id="txtFieldCidade" maxHeight="25.0" maxWidth="184.0" minHeight="25.0" minWidth="184.0" prefHeight="25.0" prefWidth="184.0">
                            <HBox.margin>
                               <Insets left="-41.0" top="28.0" />
                            </HBox.margin>
@@ -233,7 +233,7 @@
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField maxHeight="25.0" maxWidth="184.0" minHeight="25.0" minWidth="184.0" prefHeight="25.0" prefWidth="184.0">
+                        <TextField fx:id="txtFieldEstado" maxHeight="25.0" maxWidth="184.0" minHeight="25.0" minWidth="184.0" prefHeight="25.0" prefWidth="184.0">
                            <HBox.margin>
                               <Insets left="-40.0" top="28.0" />
                            </HBox.margin>
@@ -244,12 +244,12 @@
             </GridPane>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Cancelar">
+                  <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#btnCancelarOnAction" prefHeight="25.0" prefWidth="70.0" text="Cancelar">
                      <HBox.margin>
                         <Insets left="486.0" top="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Salvar">
+                  <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#btnSalvarOnAction" prefHeight="25.0" prefWidth="70.0" text="Salvar">
                      <HBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
