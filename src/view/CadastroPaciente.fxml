@@ -56,7 +56,7 @@
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField maxHeight="26.0" minHeight="25.0" prefWidth="295.0">
+                        <TextField fx:id="txtfieldNome" maxHeight="26.0" minHeight="25.0" prefWidth="295.0">
                            <HBox.margin>
                               <Insets left="-50.0" top="28.0" />
                            </HBox.margin>
