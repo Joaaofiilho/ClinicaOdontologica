@@ -70,7 +70,7 @@
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField maxHeight="25.0" maxWidth="130.0" minHeight="25.0" minWidth="100.0" prefHeight="25.0" prefWidth="100.0">
+                        <TextField fx:id="txtfieldCPF" maxHeight="25.0" maxWidth="130.0" minHeight="25.0" minWidth="100.0" prefHeight="25.0" prefWidth="100.0">
                            <HBox.margin>
                               <Insets left="-26.0" top="28.0" />
                            </HBox.margin>
@@ -80,7 +80,7 @@
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <DatePicker maxWidth="185.0" minWidth="185.0" prefHeight="26.0" prefWidth="185.0">
+                        <DatePicker fx:id="dateNascimento" maxWidth="185.0" minWidth="185.0" prefHeight="26.0" prefWidth="185.0">
                            <HBox.margin>
                               <Insets left="-160.0" top="28.0" />
                            </HBox.margin>
@@ -94,7 +94,7 @@
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField maxHeight="25.0" maxWidth="100.0" minHeight="25.0" minWidth="100.0" prefHeight="25.0" prefWidth="100.0">
+                        <TextField fx:id="txtfieldTelefone" maxHeight="25.0" maxWidth="100.0" minHeight="25.0" minWidth="100.0" prefHeight="25.0" prefWidth="100.0">
                            <HBox.margin>
                               <Insets left="-57.0" top="28.0" />
                            </HBox.margin>
@@ -104,7 +104,7 @@
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField maxWidth="140.0" minWidth="140.0" prefWidth="140.0">
+                        <TextField fx:id="txtfieldEmail" maxWidth="140.0" minWidth="140.0" prefWidth="140.0">
                            <HBox.margin>
                               <Insets left="-50.0" top="28.0" />
                            </HBox.margin>
@@ -118,12 +118,12 @@
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <RadioButton mnemonicParsing="false" text="Masculino">
+                        <RadioButton fx:id="rdBtnMasculino" mnemonicParsing="false" onAction="#rdBtnMasculinoOnAction" text="Masculino">
                            <HBox.margin>
                               <Insets left="-30.0" top="28.0" />
                            </HBox.margin>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Feminino">
+                        <RadioButton fx:id="rdBtnFeminino" mnemonicParsing="false" onAction="#rdBtnFemininoOnAction" text="Feminino">
                            <HBox.margin>
                               <Insets left="40.0" top="28.0" />
                            </HBox.margin>
