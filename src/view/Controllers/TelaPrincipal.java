@@ -26,7 +26,7 @@ public class TelaPrincipal {
     public Button btnRemover;
 
     public void initialize(){
-        tglPaciente.setSelected(true);
-        lstViewLista = new ListView<Paciente>();
+        tglConsulta.setSelected(true);
+        lstViewLista = new ListView<Consulta>();
     }
 }
