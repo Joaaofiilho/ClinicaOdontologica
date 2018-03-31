@@ -14,6 +14,8 @@ public class Principal extends Application {
         primaryStage.show();
     }
 
+    //Teste teste
+
     public static void main(String[] args) {
         launch(args);
     }
