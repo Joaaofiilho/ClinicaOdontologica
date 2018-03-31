@@ -50,33 +50,33 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button fx:id="btnEsquerda" contentDisplay="CENTER" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="&lt;" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+            <Button fx:id="btnEsquerda" contentDisplay="CENTER" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#btnEsquerdaOnAction" prefHeight="30.0" prefWidth="30.0" text="&lt;" GridPane.halignment="LEFT" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets left="10.0" top="52.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="btnDireita" contentDisplay="CENTER" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="&gt;" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+            <Button fx:id="btnDireita" contentDisplay="CENTER" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#btnDireitaOnAction" prefHeight="30.0" prefWidth="30.0" text="&gt;" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets right="10.0" top="52.0" />
                </GridPane.margin>
             </Button>
-            <ToggleButton fx:id="tglPaciente" maxWidth="80.0" minWidth="80.0" mnemonicParsing="false" prefWidth="80.0" text="Pacientes" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+            <ToggleButton fx:id="tglPaciente" maxWidth="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#tglPacienteOnAction" prefWidth="80.0" text="Pacientes" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets top="160.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton fx:id="tglConsulta" maxWidth="80.0" minWidth="80.0" mnemonicParsing="false" prefWidth="80.0" text="Consultas" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+            <ToggleButton fx:id="tglConsulta" maxWidth="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#tglConsultaOnAction" prefWidth="80.0" text="Consultas" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets top="220.0" />
                </GridPane.margin>
             </ToggleButton>
-            <Button fx:id="btnRemover" maxWidth="80.0" minWidth="80.0" mnemonicParsing="false" prefWidth="80.0" text="Remover" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button fx:id="btnRemover" maxWidth="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#btnRemoverOnAction" prefWidth="80.0" text="Remover" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="btnModificar" maxWidth="80.0" minWidth="80.0" mnemonicParsing="false" prefWidth="80.0" text="Modificar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <Button fx:id="btnAdicionar" maxWidth="80.0" minWidth="80.0" mnemonicParsing="false" prefWidth="80.0" text="Adicionar" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="btnModificar" maxWidth="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#btnModificarOnAction" prefWidth="80.0" text="Modificar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button fx:id="btnAdicionar" maxWidth="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#btnAdicionarOnAction" prefWidth="80.0" text="Adicionar" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
