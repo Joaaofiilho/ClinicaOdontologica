@@ -1,5 +1,7 @@
 package beans;
 
+import javafx.beans.property.IntegerProperty;
+
 public class Consulta {
 
     //Atributos
@@ -86,4 +88,16 @@ public class Consulta {
         this.valor = valor;
     }
 
+    public String getData(){
+        String dia = "", mes = "", ano;
+        if(this.dia < 10)
+            dia += "0";
+        if(this.mes < 10)
+            mes += "0";
+        dia += Integer.toString(this.dia);
+        mes += Integer.toString(this.mes);
+        ano = Integer.toString(this.ano);
+
+        return dia + "/" + mes + ano.substring(2, 4);
+    }
 }
