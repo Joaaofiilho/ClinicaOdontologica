@@ -4,6 +4,7 @@ import beans.Agenda;
 import beans.Paciente;
 import beans.Consulta;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,7 +23,7 @@ public class TelaPrincipal {
     public ToggleButton tglConsulta;
 
     //Lista lateral
-    public ListView lstViewLista;
+    public ListView<String> lstViewLista;
     public Button btnAdicionar;
     public Button btnModificar;
     public Button btnRemover;
@@ -30,7 +31,7 @@ public class TelaPrincipal {
     //Agenda agenda = new Agenda();
     public void initialize(){
         tglConsulta.setSelected(true);
-        lstViewLista = new ListView<Consulta>();
+        lstViewLista = new ListView<>();
         lblDia.setText(Agenda.getData());
     }
 
@@ -55,22 +56,22 @@ public class TelaPrincipal {
     //Controle lista lateral
     public void tglPacienteOnAction(ActionEvent event){
         tglConsulta.setSelected(false);
-        lstViewLista = new ListView<Paciente>();
         lstViewLista.setItems(Agenda.getPacientes());
     }
 
     public void tglConsultaOnAction(ActionEvent event){
         tglPaciente.setSelected(false);
-        lstViewLista = new ListView<Consulta>();
         lstViewLista.setItems(Agenda.getConsultas());
     }
 
     //Lista lateral
     public void btnAdicionarOnAction(ActionEvent event){
         if(tglPaciente.isSelected()){
+            //Apenas um teste para ver se a listView ta funcionando (NAO ESTA SENDO ATUALIZADA)
             Paciente p = new Paciente("Nome", "CPF", "Nascimento", "Telefone",
                     "E-mail", "endereco", 'M');
             Agenda.adicionarPaciente(p);
+            //lstViewLista.setItems(Agenda.getPacientes());
         }else{
 
         }
