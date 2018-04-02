@@ -25,6 +25,11 @@ public class Paciente {
     public Paciente(){
     }
 
+    @Override
+    public String toString(){
+        return this.nome.toUpperCase() + " (" + this.sexo + ")";
+    }
+
     //Getters e setters
     public String getNome() {
         return nome;

@@ -27,6 +27,11 @@ public class Consulta {
     public Consulta() {
     }
 
+    @Override
+    public String toString(){
+        return "[" + getHorarioInicial() + "] " + paciente.getNome().toUpperCase();
+    }
+
     //Metodos especiais
     public String getHorarioInicial(){
         //TODO: Regex para pegar o horario inicial
