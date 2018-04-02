@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="733903a4-56cd-4d8e-aa72-20a7be708704" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beans/Agenda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beans/Agenda.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Controllers/TelaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Controllers/TelaPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/output/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,11 +48,11 @@
           <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
-      <file leaf-file-name="Agenda.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Agenda.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beans/Agenda.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
+            <state relative-caret-position="136">
+              <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#502#503#0" expanded="true" />
@@ -73,15 +72,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Paciente.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/beans/Paciente.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-264">
-              <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Procedimento.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beans/Procedimento.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -91,11 +81,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CadastroPaciente.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Paciente.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/beans/Paciente.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CadastroPaciente.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
+            <state relative-caret-position="245">
+              <caret line="56" column="36" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -138,9 +137,9 @@
         <option value="$PROJECT_DIR$/src/view/CadastroProcedimento.fxml" />
         <option value="$PROJECT_DIR$/src/view/CadastroConsulta.fxml" />
         <option value="$PROJECT_DIR$/src/beans/Consulta.java" />
-        <option value="$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java" />
         <option value="$PROJECT_DIR$/src/view/Controllers/TelaPrincipal.java" />
         <option value="$PROJECT_DIR$/src/beans/Agenda.java" />
+        <option value="$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java" />
       </list>
     </option>
   </component>
@@ -368,7 +367,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522693849043</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Classe agenda transformada em static">
+      <created>1522694091308</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1522694091308</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -386,12 +392,12 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32649255" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32649255" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3289183" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1757085" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1757085" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -425,7 +431,8 @@
     <MESSAGE value="Toggle buttons trocando ao apertar outro na Tela Principal" />
     <MESSAGE value="Classe agenda implementada e botoes de mudar o dia funcionando" />
     <MESSAGE value="Classe agenda agora armazena os pacientes e as consultas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Classe agenda agora armazena os pacientes e as consultas" />
+    <MESSAGE value="Classe agenda transformada em static" />
+    <option name="LAST_COMMIT_MESSAGE" value="Classe agenda transformada em static" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroProcedimento.java">
@@ -736,23 +743,6 @@
       <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beans/Paciente.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-264">
-          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/beans/Consulta.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="454">
@@ -772,8 +762,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/beans/Agenda.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
+        <state relative-caret-position="136">
+          <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#502#503#0" expanded="true" />
@@ -788,6 +778,23 @@
             <element signature="e#1468#1469#0" expanded="true" />
             <element signature="e#1528#1529#0" expanded="true" />
             <element signature="e#1560#1561#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beans/Paciente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="56" column="36" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

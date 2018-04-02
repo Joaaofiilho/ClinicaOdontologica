@@ -1,5 +1,7 @@
 package view.Controllers;
 
+import beans.Agenda;
+import beans.Paciente;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -40,5 +42,18 @@ public class CadastroPaciente {
     public void btnSalvarOnAction(ActionEvent event){
         //TODO validar os dados inseridos
 
+        //Montar endereco
+        String endereco = txtFieldLogradouro.getText() + ", " + txtFieldNumero.getText() + " - " +
+                txtFieldBairro.getText().toUpperCase() + ", " + txtFieldCidade.getText() + "-" + txtFieldEstado.getText();
+
+        //Montar sexo
+        char sexo;
+        if(rdBtnMasculino.isSelected()) sexo = 'M';
+        else sexo = 'F';
+
+        Paciente p = new Paciente(txtfieldNome.getText(), txtfieldCPF.getText(), dateNascimento.toString(), txtfieldTelefone.getText(),
+                txtfieldEmail.getText(), endereco, sexo);
+
+        Agenda.adicionarPaciente(p);
     }
 }
