@@ -49,20 +49,34 @@ public class TelaPrincipal {
 
     //Controle lista lateral
     public void tglPacienteOnAction(ActionEvent event){
-
+        tglConsulta.setSelected(false);
+        lstViewLista = new ListView<Paciente>();
+        //TODO criar uma observable list dos pacientes
+        //lstViewLista.setItems();
     }
 
     public void tglConsultaOnAction(ActionEvent event){
-
+        tglPaciente.setSelected(false);
+        lstViewLista = new ListView<Consulta>();
+        //TODO criar uma observable list das consultas do dia
+        //lstViewLista.setItems();
     }
 
     //Lista lateral
     public void btnAdicionarOnAction(ActionEvent event){
+        if(tglPaciente.isSelected()){
 
+        }else{
+
+        }
     }
 
     public void btnModificarOnAction(ActionEvent event){
+        if(tglPaciente.isSelected()){
 
+        }else{
+
+        }
     }
 
     public void btnRemoverOnAction(ActionEvent event){
