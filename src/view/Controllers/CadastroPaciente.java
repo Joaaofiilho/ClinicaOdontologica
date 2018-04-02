@@ -38,6 +38,7 @@ public class CadastroPaciente {
     }
 
     public void btnSalvarOnAction(ActionEvent event){
+        //TODO validar os dados inseridos
 
     }
 }
