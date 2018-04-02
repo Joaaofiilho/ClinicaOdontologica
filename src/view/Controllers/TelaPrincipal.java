@@ -27,11 +27,11 @@ public class TelaPrincipal {
     public Button btnModificar;
     public Button btnRemover;
 
-    Agenda agenda = new Agenda();
+    //Agenda agenda = new Agenda();
     public void initialize(){
         tglConsulta.setSelected(true);
         lstViewLista = new ListView<Consulta>();
-        lblDia.setText(agenda.getData());
+        lblDia.setText(Agenda.getData());
     }
 
     //TODO | Boolean/String/Int (com switch case, falando serio, no caso str/int) para controlar o botao de adicionar, a lista e outras manipulacoes (consulta/paciente)
@@ -43,13 +43,13 @@ public class TelaPrincipal {
 
     //Controle do dia
     public void btnDireitaOnAction(ActionEvent event){
-        agenda.acrescentarDia();
-        lblDia.setText(agenda.getData());
+        Agenda.acrescentarDia();
+        lblDia.setText(Agenda.getData());
     }
 
     public void btnEsquerdaOnAction(ActionEvent event){
-        agenda.decrescerDia();
-        lblDia.setText(agenda.getData());
+        Agenda.decrescerDia();
+        lblDia.setText(Agenda.getData());
     }
 
     //Controle lista lateral

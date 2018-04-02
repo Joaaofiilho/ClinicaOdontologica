@@ -7,23 +7,19 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Agenda {
-    Calendar calendario;
-    ObservableList<Paciente> pacientes = FXCollections.observableArrayList();
-    ObservableList<Consulta> consultas = FXCollections.observableArrayList();
+    static Calendar calendario;
+    static ObservableList<Paciente> pacientes = FXCollections.observableArrayList();
+    static ObservableList<Consulta> consultas = FXCollections.observableArrayList();
 
-    public Agenda(){
-        calendario = new GregorianCalendar();
-    }
-
-    public void acrescentarDia(){
+    public static void acrescentarDia(){
         calendario.add(Calendar.DAY_OF_MONTH, 1);
     }
 
-    public void decrescerDia(){
+    public static void decrescerDia(){
         calendario.add(Calendar.DAY_OF_MONTH, -1);
     }
 
-    public String getData(){
+    public static String getData(){
         String dia = "", mes = "", ano;
         if(calendario.get(Calendar.DAY_OF_MONTH) < 10)
             dia += "0";
@@ -35,19 +31,23 @@ public class Agenda {
         return dia + "/" + mes + "/" + ano.substring(2, 4);
     }
 
-    public void adicionarPaciente(Paciente paciente){
+    public static void adicionarPaciente(Paciente paciente){
         pacientes.add(paciente);
     }
 
-    public void adicionarConsulta(Consulta consulta){
+    public static void adicionarConsulta(Consulta consulta){
         consultas.add(consulta);
     }
     //Getters e setters
-    public ObservableList<Paciente> getPacientes(){
+    public static ObservableList<Paciente> getPacientes(){
         return pacientes;
     }
 
-    public ObservableList<Consulta> getConsultas(){
+    public static ObservableList<Consulta> getConsultas(){
         return consultas;
+    }
+
+    static {
+        calendario = new GregorianCalendar();
     }
 }
