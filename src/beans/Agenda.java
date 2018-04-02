@@ -3,6 +3,7 @@ package beans;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -10,6 +11,7 @@ public class Agenda {
     static Calendar calendario;
     static ObservableList<Paciente> pacientes = FXCollections.observableArrayList();
     static ObservableList<Consulta> consultas = FXCollections.observableArrayList();
+    static ArrayList<Procedimento> procedimentos = new ArrayList<>();
 
     public static void acrescentarDia(){
         calendario.add(Calendar.DAY_OF_MONTH, 1);
@@ -38,6 +40,11 @@ public class Agenda {
     public static void adicionarConsulta(Consulta consulta){
         consultas.add(consulta);
     }
+
+    public static void adicionarProcedimento(Procedimento procedimento){
+        procedimentos.add(procedimento);
+    }
+
     //Getters e setters
     public static ObservableList<Paciente> getPacientes(){
         return pacientes;

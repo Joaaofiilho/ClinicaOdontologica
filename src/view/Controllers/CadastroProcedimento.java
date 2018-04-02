@@ -1,5 +1,7 @@
 package view.Controllers;
 
+import beans.Agenda;
+import beans.Procedimento;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -17,10 +19,14 @@ public class CadastroProcedimento {
 
     //Metodos
     public void btnCancelarOnAction (ActionEvent event){
-
+        //TODO fechar a janela
     }
 
     public void btnConfirmarOnAction (ActionEvent event){
-
+        //TODO validar os dados inseridos
+        double valor = Double.parseDouble(txtFieldValor.getText());
+        int duracao = Integer.parseInt(txtFieldDuracao.getText());
+        Procedimento p = new Procedimento(txtFieldTitulo.getText(), txtFieldDescricao.getText(), valor, duracao);
+        Agenda.adicionarProcedimento(p);
     }
 }
