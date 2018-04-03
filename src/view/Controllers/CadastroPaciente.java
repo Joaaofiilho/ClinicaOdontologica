@@ -66,7 +66,12 @@ public class CadastroPaciente {
     }
 
     private boolean checarRegex(String nome, String regex, boolean combinar, TextField elemento){
-        if(nome.matches(regex) || nome.matches("")){
+        if(nome.equals("")){
+            elemento.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                    BorderWidths.DEFAULT)));
+            return false;
+        }
+        if(nome.matches(regex)){
             if(combinar) {
                 elemento.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
                         BorderWidths.DEFAULT)));
@@ -109,62 +114,30 @@ public class CadastroPaciente {
         if(!checarRegex(nome, "^\\d+$", false, txtfieldNome)) valido = false;
         if(!checarRegex(telefone, "^\\d{11}$", true, txtfieldTelefone)) valido = false;
         if(!checarRegex(email, "^(\\D{1}\\w*)@(\\D+\\.\\D{2,3})$", true, txtfieldEmail)) valido = false;
-        valido = checarRegex(nome, "^\\d+$", false, txtfieldNome);
-        valido = checarRegex(nome, "^\\d+$", false, txtfieldNome);
-        valido = checarRegex(nome, "^\\d+$", false, txtfieldNome);
-        valido = checarRegex(nome, "^\\d+$", false, txtfieldNome);
-        valido = checarRegex(nome, "^\\d+$", false, txtfieldNome);
-
-
-//        if(!email.matches()){
-//            valido = false;
-//            txtfieldNome.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
-//                    BorderWidths.DEFAULT)));
-//        }else txtfieldNome.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
-//                BorderWidths.DEFAULT)));
-
-        if(!cpf.matches("^\\d{11}$")){
-            valido = false;
-            txtfieldNome.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+        if(!checarRegex(cpf, "^\\d{11}$", true, txtfieldCPF)) valido = false;
+        if(!checarRegex(txtFieldLogradouro.getText(), "^\\d+$", false, txtFieldLogradouro)) valido = false;
+        if(!checarRegex(txtFieldNumero.getText(), "^\\d+$", true, txtFieldNumero)) valido = false;
+        if(!checarRegex(txtFieldBairro.getText(), "^\\d+$", false, txtFieldBairro)) valido = false;
+        if(!checarRegex(txtFieldCidade.getText(), "^\\d+$", false, txtFieldCidade)) valido = false;
+        if(!checarRegex(txtFieldEstado.getText(), "^\\d+$", false, txtFieldEstado)) valido = false;
+        if(dateNascimento.getValue() == null){
+            dateNascimento.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
                     BorderWidths.DEFAULT)));
-        }else txtfieldNome.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
-                BorderWidths.DEFAULT)));
-
-        if(txtFieldLogradouro.getText().matches("^\\d+$")){
             valido = false;
-            txtfieldNome.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
-                    BorderWidths.DEFAULT)));
-        }else txtfieldNome.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+        }else dateNascimento.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
                 BorderWidths.DEFAULT)));
-
-        if(!txtFieldNumero.getText().matches("^\\d+$")){
+        if(!rdBtnMasculino.isSelected() && !rdBtnFeminino.isSelected()){
+            rdBtnFeminino.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                    BorderWidths.DEFAULT)));
+            rdBtnMasculino.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                    BorderWidths.DEFAULT)));
             valido = false;
-            txtfieldNome.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+        }else{
+            rdBtnFeminino.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
                     BorderWidths.DEFAULT)));
-        }else txtfieldNome.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
-                BorderWidths.DEFAULT)));
-
-        if(!txtFieldBairro.getText().matches("^\\d+$")){
-            valido = false;
-            txtfieldNome.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+            rdBtnMasculino.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
                     BorderWidths.DEFAULT)));
-        }else txtfieldNome.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
-                BorderWidths.DEFAULT)));
-
-        if(txtFieldCidade.getText().matches("^\\d+$")){
-            valido = false;
-            txtfieldNome.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
-                    BorderWidths.DEFAULT)));
-        }else txtfieldNome.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
-                BorderWidths.DEFAULT)));
-
-        if(txtFieldEstado.getText().matches("^\\d+$")){
-            valido = false;
-            txtfieldNome.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
-                    BorderWidths.DEFAULT)));
-        }else txtfieldNome.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
-                BorderWidths.DEFAULT)));
-
+        }
         if(valido){
             Paciente p = new Paciente(nome, cpf, dataNasc, telefone, email, endereco, sexo);
             Agenda.adicionarPaciente(p);
