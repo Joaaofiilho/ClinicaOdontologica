@@ -5,6 +5,7 @@ import beans.Paciente;
 import beans.Consulta;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,10 +29,8 @@ public class TelaPrincipal {
     public Button btnModificar;
     public Button btnRemover;
 
-    //Agenda agenda = new Agenda();
     public void initialize(){
         tglConsulta.setSelected(true);
-        lstViewLista = new ListView<>();
         lblDia.setText(Agenda.getData());
     }
 
@@ -71,7 +70,6 @@ public class TelaPrincipal {
             Paciente p = new Paciente("Nome", "CPF", "Nascimento", "Telefone",
                     "E-mail", "endereco", 'M');
             Agenda.adicionarPaciente(p);
-            //lstViewLista.setItems(Agenda.getPacientes());
         }else{
 
         }
