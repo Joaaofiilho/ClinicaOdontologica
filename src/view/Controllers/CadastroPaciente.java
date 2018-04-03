@@ -44,10 +44,19 @@ public class CadastroPaciente {
 
     public void rdBtnMasculinoOnAction(ActionEvent event){
         sexo = "M";
+
+        if (rdBtnFeminino.isSelected()){
+            rdBtnFeminino.setSelected(false);
+        }
     }
 
     public void rdBtnFemininoOnAction(ActionEvent event){
         sexo = "F";
+
+        if(rdBtnMasculino.isSelected()){
+            rdBtnMasculino.setSelected(false);
+        }
+
     }
 
     public void btnCancelarOnAction(ActionEvent event){
