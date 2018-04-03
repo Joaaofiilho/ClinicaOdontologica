@@ -51,14 +51,8 @@ public class CadastroPaciente {
     }
 
     public void btnCancelarOnAction(ActionEvent event){
-
+        mainApp.exibirTelaPrincipal();
     }
-
-
-//    public void setMainApp(app.MainApp principal) {
-//        mainApp = principal;
-//    }
-
 
     public void btnSalvarOnAction(ActionEvent event){
         //TODO validar os dados inseridos
@@ -76,5 +70,7 @@ public class CadastroPaciente {
                 txtfieldEmail.getText(), endereco, sexo);
 
         Agenda.adicionarPaciente(p);
+
+        mainApp.exibirTelaPrincipal();
     }
 }

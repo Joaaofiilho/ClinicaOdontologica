@@ -27,6 +27,8 @@ public class CadastroProcedimento {
     //Metodos
     public void btnCancelarOnAction (ActionEvent event){
         //TODO fechar a janela
+
+        mainApp.exibirTelaPrincipal();
     }
 
     public void btnConfirmarOnAction (ActionEvent event){
@@ -35,5 +37,7 @@ public class CadastroProcedimento {
         int duracao = Integer.parseInt(txtFieldDuracao.getText());
         Procedimento p = new Procedimento(txtFieldTitulo.getText(), txtFieldDescricao.getText(), valor, duracao);
         Agenda.adicionarProcedimento(p);
+
+        mainApp.exibirTelaPrincipal();
     }
 }

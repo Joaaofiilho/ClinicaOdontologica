@@ -20,7 +20,7 @@ public class CadastroConsulta {
     public ComboBox<String> cbPacientes;
 
     //Botoes
-    public Button btnVoltar;
+    public Button btnCancelar;
     public Button btnSalvar;
 
     private MainApp mainApp;
@@ -29,11 +29,11 @@ public class CadastroConsulta {
         this.mainApp = mainApp;
     }
 
-    public void btnVoltarOnAction(ActionEvent e){
-
+    public void btnCancelarOnAction(ActionEvent e){
+        mainApp.exibirTelaPrincipal();
     }
 
     public void btnSalvarOnAction(ActionEvent e){
-
+        mainApp.exibirTelaPrincipal();
     }
 }
