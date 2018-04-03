@@ -1,14 +1,19 @@
 package view.Controllers;
 
+import app.MainApp;
 import beans.Agenda;
 import beans.Paciente;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-import java.security.Principal;
+import java.io.IOException;
 
 public class CadastroPaciente {
     public TextField txtfieldNome;
@@ -29,7 +34,13 @@ public class CadastroPaciente {
     public Button btnCancelar;
     public Button btnSalvar;
 
-    public String sexo;
+    private String sexo;
+
+    private MainApp mainApp;
+
+    public void setMainApp(MainApp mainApp){
+        this.mainApp = mainApp;
+    }
 
     public void rdBtnMasculinoOnAction(ActionEvent event){
         sexo = "M";
@@ -43,11 +54,10 @@ public class CadastroPaciente {
 
     }
 
-    private Principal principal;
 
-    public void setPrincipal(Principal principal) {
-        this.principal = principal;
-    }
+//    public void setMainApp(app.MainApp principal) {
+//        mainApp = principal;
+//    }
 
 
     public void btnSalvarOnAction(ActionEvent event){

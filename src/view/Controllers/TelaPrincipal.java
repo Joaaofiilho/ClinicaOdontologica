@@ -2,17 +2,24 @@ package view.Controllers;
 
 import beans.Agenda;
 import beans.Paciente;
+import app.MainApp;
 import beans.Consulta;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.security.Principal;
 
 public class TelaPrincipal {
@@ -31,10 +38,15 @@ public class TelaPrincipal {
     public Button btnModificar;
     public Button btnRemover;
 
-    private Principal principal;
+    private MainApp mainApp;
+    private Stage dialogStage;
 
-    public void setPrincipal(Principal principal){
-        this.principal = principal;
+    public void setMainApp(MainApp mainApp){
+        this.mainApp = mainApp;
+    }
+
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
     }
 
     //Agenda agenda = new Agenda();
@@ -80,17 +92,7 @@ public class TelaPrincipal {
     //Lista lateral
     public void btnAdicionarOnAction(ActionEvent event){
         if(tglPaciente.isSelected()){
-            //Apenas um teste para ver se a listView ta funcionando (NAO ESTA SENDO ATUALIZADA)
-            Paciente p = new Paciente("Nome", "CPF", "Nascimento", "Telefone",
-                    "E-mail", "endereco", 'M');
-            Agenda.adicionarPaciente(p);
-            //lstViewLista.setItems(Agenda.getPacientes());
-
-//            principal.
-//            //Apenas um teste para ver se a listView ta funcionando (NAO ESTA SENDO ATUALIZADA)
-//            Paciente p = new Paciente("Nome", "CPF", "Nascimento", "Telefone",
-//                    "E-mail", "endereco", 'M');
-//            Agenda.adicionarPaciente(p);
+            mainApp.exibirCadastroPaciente();
         }else{
 
         }
@@ -104,7 +106,7 @@ public class TelaPrincipal {
         }
     }
 
-    public void btnRemoverOnAction(ActionEvent event){
+    public void btnRemoverOnAction(ActionEvent event) {
         //Remove tanto da lista quanto do txt
     }
 }
