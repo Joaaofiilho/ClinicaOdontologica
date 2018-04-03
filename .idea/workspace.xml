@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="733903a4-56cd-4d8e-aa72-20a7be708704" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/Controllers/RootLayout.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/RootLayout.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/ClinicaOdontoligca/Principal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/ClinicaOdontoligca/beans/Agenda.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/ClinicaOdontoligca/beans/Agenda.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/ClinicaOdontoligca/view/Controllers/CadastroPaciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/ClinicaOdontoligca/view/Controllers/CadastroPaciente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/ClinicaOdontoligca/view/Controllers/TelaPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/ClinicaOdontoligca/view/Controllers/TelaPrincipal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/MainApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/beans/Agenda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beans/Agenda.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/beans/Consulta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beans/Consulta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/beans/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beans/Paciente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beans/Procedimento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beans/Procedimento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/persistence/ConsultaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/ConsultaDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/persistence/PacienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/PacienteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Controllers/TelaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Controllers/TelaPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TelaPrincipal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/TelaPrincipal.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/output/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TelaPrincipal.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TelaPrincipal.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/view/Controllers/TelaPrincipal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="94" column="45" selection-start-line="94" selection-start-column="45" selection-end-line="94" selection-end-column="45" />
+            <state relative-caret-position="272">
+              <caret line="108" column="41" lean-forward="true" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1218#1219#0" expanded="true" />
@@ -44,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainApp.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainApp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/MainApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="67" column="40" selection-start-line="67" selection-start-column="40" selection-end-line="67" selection-end-column="40" />
+            <state relative-caret-position="136">
+              <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1165#1166#0" expanded="true" />
@@ -429,7 +419,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522762045354</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Organizado como as telas se comportam e a interação para abrí-las">
+      <created>1522785498482</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1522785498482</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -437,7 +434,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -519,7 +515,8 @@
     <MESSAGE value="ObservableLists da classe Agenda mudadas de Consulta/Paciente para apenas String." />
     <MESSAGE value="Pequeno Update" />
     <MESSAGE value="CadastroConsulta organizado" />
-    <option name="LAST_COMMIT_MESSAGE" value="CadastroConsulta organizado" />
+    <MESSAGE value="Organizado como as telas se comportam e a interação para abrí-las" />
+    <option name="LAST_COMMIT_MESSAGE" value="Organizado como as telas se comportam e a interação para abrí-las" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -870,26 +867,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/Controllers/TelaPrincipal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="94" column="45" selection-start-line="94" selection-start-column="45" selection-end-line="94" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1218#1219#0" expanded="true" />
-            <element signature="e#1264#1265#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/MainApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="67" column="40" selection-start-line="67" selection-start-column="40" selection-end-line="67" selection-end-column="40" />
+        <state relative-caret-position="136">
+          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1165#1166#0" expanded="true" />
             <element signature="e#1193#1194#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/Controllers/TelaPrincipal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="108" column="41" lean-forward="true" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1218#1219#0" expanded="true" />
+            <element signature="e#1264#1265#0" expanded="true" />
           </folding>
         </state>
       </provider>
