@@ -76,15 +76,15 @@ public class CadastroConsulta {
             consulta.setHorarioCompleto(txtfieldHorario.getText());
             consulta.setDescricao(txtfieldDescricao.getText());
             consulta.setValor(Float.parseFloat(txtfieldValor.getText()));
-
-            //Fazer o paciente escolhendo da lista
-
-
+            //consulta.setPaciente();
+            //TODO Fazer o paciente escolhendo da lista
 
 
 
 
 
+
+//            dao.inserir(consulta);
             mainApp.exibirTelaPrincipal();
         } catch (Exception e1) {
             e1.printStackTrace();
