@@ -27,12 +27,14 @@ public class CadastroPaciente {
     public Button btnCancelar;
     public Button btnSalvar;
 
-    public void rdBtnMasculinoOnAction(ActionEvent event){
+    public String sexo;
 
+    public void rdBtnMasculinoOnAction(ActionEvent event){
+        sexo = "M";
     }
 
     public void rdBtnFemininoOnAction(ActionEvent event){
-
+        sexo = "F";
     }
 
     public void btnCancelarOnAction(ActionEvent event){

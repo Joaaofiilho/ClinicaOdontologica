@@ -86,6 +86,6 @@ public class TelaPrincipal {
     }
 
     public void btnRemoverOnAction(ActionEvent event){
-
+        //Remove tanto da lista quanto do txt
     }
 }
