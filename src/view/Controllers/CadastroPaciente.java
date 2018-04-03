@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -54,23 +56,110 @@ public class CadastroPaciente {
         mainApp.exibirTelaPrincipal();
     }
 
+    private boolean checarRegex(String nome, String regex, boolean combinar, TextField elemento){
+        if(nome.matches(regex) || nome.matches("")){
+            if(combinar) {
+                elemento.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                        BorderWidths.DEFAULT)));
+                return true;
+            }else{
+                elemento.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                        BorderWidths.DEFAULT)));
+                return false;
+            }
+        }else{
+            if(combinar) {
+                elemento.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                        BorderWidths.DEFAULT)));
+                return false;
+            }else{
+                elemento.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                        BorderWidths.DEFAULT)));
+                return true;
+            }
+        }
+    }
+
     public void btnSalvarOnAction(ActionEvent event){
         //TODO validar os dados inseridos
 
-        //Montar endereco
-        String endereco = txtFieldLogradouro.getText() + ", " + txtFieldNumero.getText() + " - " +
-                txtFieldBairro.getText().toUpperCase() + ", " + txtFieldCidade.getText() + "-" + txtFieldEstado.getText();
-
+        //Dados
+        String nome = txtfieldNome.getText(), telefone = txtfieldTelefone.getText(),
+        email = txtfieldEmail.getText(), cpf = txtfieldCPF.getText(),
+        dataNasc = dateNascimento.toString();
         //Montar sexo
         char sexo;
         if(rdBtnMasculino.isSelected()) sexo = 'M';
         else sexo = 'F';
+        //Montar endereco
+        String endereco = txtFieldLogradouro.getText() + ", " + txtFieldNumero.getText() + " - " +
+                txtFieldBairro.getText().toUpperCase() + ", " + txtFieldCidade.getText() + "-" + txtFieldEstado.getText();
 
-        Paciente p = new Paciente(txtfieldNome.getText(), txtfieldCPF.getText(), dateNascimento.toString(), txtfieldTelefone.getText(),
-                txtfieldEmail.getText(), endereco, sexo);
+        //Validacao
+        boolean valido = true;
+        if(!checarRegex(nome, "^\\d+$", false, txtfieldNome)) valido = false;
+        if(!checarRegex(telefone, "^\\d{11}$", true, txtfieldTelefone)) valido = false;
+        if(!checarRegex(email, "^(\\D{1}\\w*)@(\\D+\\.\\D{2,3})$", true, txtfieldEmail)) valido = false;
+        valido = checarRegex(nome, "^\\d+$", false, txtfieldNome);
+        valido = checarRegex(nome, "^\\d+$", false, txtfieldNome);
+        valido = checarRegex(nome, "^\\d+$", false, txtfieldNome);
+        valido = checarRegex(nome, "^\\d+$", false, txtfieldNome);
+        valido = checarRegex(nome, "^\\d+$", false, txtfieldNome);
 
-        Agenda.adicionarPaciente(p);
 
-        mainApp.exibirTelaPrincipal();
+        if(!email.matches()){
+            valido = false;
+            txtfieldNome.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                    BorderWidths.DEFAULT)));
+        }else txtfieldNome.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                BorderWidths.DEFAULT)));
+
+        if(!cpf.matches("^\\d{11}$")){
+            valido = false;
+            txtfieldNome.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                    BorderWidths.DEFAULT)));
+        }else txtfieldNome.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                BorderWidths.DEFAULT)));
+
+        if(txtFieldLogradouro.getText().matches("^\\d+$")){
+            valido = false;
+            txtfieldNome.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                    BorderWidths.DEFAULT)));
+        }else txtfieldNome.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                BorderWidths.DEFAULT)));
+
+        if(!txtFieldNumero.getText().matches("^\\d+$")){
+            valido = false;
+            txtfieldNome.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                    BorderWidths.DEFAULT)));
+        }else txtfieldNome.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                BorderWidths.DEFAULT)));
+
+        if(!txtFieldBairro.getText().matches("^\\d+$")){
+            valido = false;
+            txtfieldNome.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                    BorderWidths.DEFAULT)));
+        }else txtfieldNome.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                BorderWidths.DEFAULT)));
+
+        if(txtFieldCidade.getText().matches("^\\d+$")){
+            valido = false;
+            txtfieldNome.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                    BorderWidths.DEFAULT)));
+        }else txtfieldNome.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                BorderWidths.DEFAULT)));
+
+        if(txtFieldEstado.getText().matches("^\\d+$")){
+            valido = false;
+            txtfieldNome.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                    BorderWidths.DEFAULT)));
+        }else txtfieldNome.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                BorderWidths.DEFAULT)));
+
+        if(valido){
+            Paciente p = new Paciente(nome, cpf, dataNasc, telefone, email, endereco, sexo);
+            Agenda.adicionarPaciente(p);
+            mainApp.exibirTelaPrincipal();
+        }
     }
 }
