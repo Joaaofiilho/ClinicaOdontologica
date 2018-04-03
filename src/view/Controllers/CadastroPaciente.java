@@ -116,12 +116,12 @@ public class CadastroPaciente {
         valido = checarRegex(nome, "^\\d+$", false, txtfieldNome);
 
 
-        if(!email.matches()){
-            valido = false;
-            txtfieldNome.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
-                    BorderWidths.DEFAULT)));
-        }else txtfieldNome.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
-                BorderWidths.DEFAULT)));
+//        if(!email.matches()){
+//            valido = false;
+//            txtfieldNome.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+//                    BorderWidths.DEFAULT)));
+//        }else txtfieldNome.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+//                BorderWidths.DEFAULT)));
 
         if(!cpf.matches("^\\d{11}$")){
             valido = false;

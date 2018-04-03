@@ -68,9 +68,14 @@ public class ConsultaDAO {
             fw = new FileWriter(f);
             bw = new BufferedWriter(fw);
 
+
             //Escreveu uma linha no texto
             for(Consulta c : consultas) {
-                bw.write(c.getDia()+fileSeparator+c.getMes()+fileSeparator+c.getAno()+fileSeparator+
+                String dia = Integer.toString(c.getDia());
+                String mes = Integer.toString(c.getMes());
+                String ano = Integer.toString(c.getAno());
+
+                bw.write(dia +fileSeparator+ mes +fileSeparator+ ano +fileSeparator+
                         c.getPaciente().getCpf()+fileSeparator+c.getHorarioCompleto()+
                         fileSeparator+c.getDescricao()+fileSeparator+ c.getValor());
                 bw.newLine();
