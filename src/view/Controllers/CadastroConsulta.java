@@ -1,5 +1,6 @@
 package view.Controllers;
 
+import app.MainApp;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -19,14 +20,20 @@ public class CadastroConsulta {
     public ComboBox<String> cbPacientes;
 
     //Botoes
-    public Button btnVoltar;
+    public Button btnCancelar;
     public Button btnSalvar;
 
-    public void btnVoltarOnAction(ActionEvent e){
+    private MainApp mainApp;
 
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
+
+    public void btnCancelarOnAction(ActionEvent e){
+        mainApp.exibirTelaPrincipal();
     }
 
     public void btnSalvarOnAction(ActionEvent e){
-
+        mainApp.exibirTelaPrincipal();
     }
 }

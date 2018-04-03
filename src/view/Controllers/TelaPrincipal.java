@@ -94,15 +94,15 @@ public class TelaPrincipal {
         if(tglPaciente.isSelected()){
             mainApp.exibirCadastroPaciente();
         }else{
-
+            mainApp.exibirCadastroConsulta();
         }
     }
 
     public void btnModificarOnAction(ActionEvent event){
         if(tglPaciente.isSelected()){
-
+            mainApp.exibirCadastroPaciente();
         }else{
-
+            mainApp.exibirCadastroConsulta();
         }
     }
 
