@@ -48,7 +48,6 @@ public class Agenda {
     public static void adicionarProcedimento(Procedimento procedimento){
         procedimentos.add(procedimento);
     }
-
     //Getters e setters
     public static ObservableList<String> getPacientes(){
         return obsPacientes;

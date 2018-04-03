@@ -24,11 +24,6 @@
           <RowConstraints maxHeight="80.0" minHeight="80.0" prefHeight="80.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ListView fx:id="lstViewLista" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </GridPane.margin>
-            </ListView>
             <Label text="Hora atual" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets top="10.0" />
@@ -81,6 +76,11 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Button>
+            <ListView fx:id="lstViewLista" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </ListView>
          </children>
       </GridPane>
    </children>
