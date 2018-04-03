@@ -10,9 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import view.Controllers.CadastroPaciente;
-import view.Controllers.RootLayout;
-import view.Controllers.TelaPrincipal;
+import view.Controllers.*;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -56,21 +54,7 @@ public class MainApp extends Application {
         launch(args);
     }
 
-    public void exibirCadastroPaciente() {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/CadastroPaciente.fxml"));
-            AnchorPane telaCadastroPacientePane = (AnchorPane) loader.load();
-
-            rootLayout.setCenter(telaCadastroPacientePane);
-
-            CadastroPaciente controller = loader.getController();
-            controller.setMainApp(this);
-        }catch (IOException e){
-            System.out.printf("TRETA");
-        }
-    }
-
+    //Exibir telas
     public void exibirTelaPrincipal(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -83,7 +67,52 @@ public class MainApp extends Application {
             controller.setMainApp(this);
 
         }catch (IOException e){
-            System.out.printf("TRETA");
+            System.out.print("TRETA");
+        }
+    }
+
+    public void exibirCadastroPaciente() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/CadastroPaciente.fxml"));
+            AnchorPane telaCadastroPacientePane = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(telaCadastroPacientePane);
+
+            CadastroPaciente controller = loader.getController();
+            controller.setMainApp(this);
+        }catch (IOException e){
+            System.out.print("TRETA");
+        }
+    }
+
+    public void exibirCadastroConsulta(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/CadastroConsulta.fxml"));
+            AnchorPane telaPrincipalPane = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(telaPrincipalPane);
+
+            CadastroConsulta controller = loader.getController();
+            controller.setMainApp(this);
+        }catch (IOException e){
+            System.out.print("TRETA");
+        }
+    }
+
+    public void exibirCadastroProcedimento(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/CadastroProcedimento.fxml"));
+            AnchorPane telaPrincipalPane = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(telaPrincipalPane);
+
+            CadastroProcedimento controller = loader.getController();
+            controller.setMainApp(this);
+        }catch (IOException e){
+            System.out.print("TRETA");
         }
     }
 }

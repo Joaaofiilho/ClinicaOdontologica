@@ -1,5 +1,6 @@
 package view.Controllers;
 
+import app.MainApp;
 import beans.Agenda;
 import beans.Procedimento;
 import javafx.event.ActionEvent;
@@ -16,6 +17,12 @@ public class CadastroProcedimento {
     //Botoes
     public Button btnCancelar;
     public Button btnConfirmar;
+
+    private MainApp mainApp;
+
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
 
     //Metodos
     public void btnCancelarOnAction (ActionEvent event){

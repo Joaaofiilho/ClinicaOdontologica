@@ -1,5 +1,6 @@
 package view.Controllers;
 
+import app.MainApp;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -21,6 +22,12 @@ public class CadastroConsulta {
     //Botoes
     public Button btnVoltar;
     public Button btnSalvar;
+
+    private MainApp mainApp;
+
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
 
     public void btnVoltarOnAction(ActionEvent e){
 
