@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="733903a4-56cd-4d8e-aa72-20a7be708704" name="Default" comment="">
+    <list default="true" id="733903a4-56cd-4d8e-aa72-20a7be708704" name="Default" comment="Criada todas as classes necessarias para chamar as telas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/production/ClinicaOdontoligca/view/Controllers/CadastroPaciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/ClinicaOdontoligca/view/Controllers/CadastroPaciente.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/beans/Agenda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beans/Agenda.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/beans/Consulta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beans/Consulta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/beans/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beans/Paciente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/persistence/ConsultaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/ConsultaDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/persistence/PacienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/PacienteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/TelaPrincipal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/TelaPrincipal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/CadastroConsulta.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CadastroConsulta.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/Controllers/CadastroConsulta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Controllers/CadastroConsulta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/Controllers/CadastroProcedimento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Controllers/CadastroProcedimento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/Controllers/TelaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Controllers/TelaPrincipal.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/output/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,8 +28,8 @@
       <file leaf-file-name="TelaPrincipal.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/view/Controllers/TelaPrincipal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="108" column="41" lean-forward="true" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="41" />
+            <state relative-caret-position="261">
+              <caret line="104" column="45" selection-start-line="104" selection-start-column="45" selection-end-line="104" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1218#1219#0" expanded="true" />
@@ -37,8 +42,8 @@
       <file leaf-file-name="MainApp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/MainApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
+            <state relative-caret-position="369">
+              <caret line="112" column="40" lean-forward="true" selection-start-line="112" selection-start-column="40" selection-end-line="112" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1165#1166#0" expanded="true" />
@@ -48,11 +53,42 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="CadastroProcedimento.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroProcedimento.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+              <folding>
+                <element signature="e#560#561#0" expanded="true" />
+                <element signature="e#598#599#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CadastroConsulta.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroConsulta.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="403">
+              <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#655#656#0" expanded="true" />
+                <element signature="e#693#694#0" expanded="true" />
+                <element signature="e#744#745#0" expanded="true" />
+                <element signature="e#766#767#0" expanded="true" />
+                <element signature="e#840#841#0" expanded="true" />
+                <element signature="e#862#863#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="RootLayout.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/RootLayout.fxml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="252" selection-start-line="5" selection-start-column="252" selection-end-line="5" selection-end-column="252" />
+              <caret line="5" column="236" selection-start-line="5" selection-start-column="236" selection-end-line="5" selection-end-column="236" />
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -72,18 +108,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Agenda.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/beans/Agenda.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Procedimento.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beans/Procedimento.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -96,22 +120,15 @@
       <file leaf-file-name="CadastroPaciente.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="34" column="28" lean-forward="true" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+            <state relative-caret-position="187">
+              <caret line="53" column="38" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1115#1116#0" expanded="true" />
                 <element signature="e#1152#1153#0" expanded="true" />
+                <element signature="e#1373#1374#0" expanded="true" />
+                <element signature="e#1418#1419#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Consulta.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/beans/Consulta.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="8" lean-forward="true" selection-start-column="8" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -127,7 +144,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -137,9 +153,7 @@
         <option value="$PROJECT_DIR$/src/view/CadastroPaciente.fxml" />
         <option value="$PROJECT_DIR$/src/view/CadastroProcedimento.fxml" />
         <option value="$PROJECT_DIR$/src/view/CadastroConsulta.fxml" />
-        <option value="$PROJECT_DIR$/src/view/Controllers/CadastroProcedimento.java" />
         <option value="$PROJECT_DIR$/src/beans/Paciente.java" />
-        <option value="$PROJECT_DIR$/src/view/Controllers/CadastroConsulta.java" />
         <option value="$PROJECT_DIR$/src/Principal.java" />
         <option value="$PROJECT_DIR$/src/app/beans/Procedimento.java" />
         <option value="$PROJECT_DIR$/src/app/beans/Agenda.java" />
@@ -149,11 +163,13 @@
         <option value="$PROJECT_DIR$/src/beans/Agenda.java" />
         <option value="$PROJECT_DIR$/src/beans/Procedimento.java" />
         <option value="$PROJECT_DIR$/src/MainApp.java" />
-        <option value="$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java" />
         <option value="$PROJECT_DIR$/src/view/RootLayout.fxml" />
         <option value="$PROJECT_DIR$/src/view/Controllers/RootLayout.java" />
-        <option value="$PROJECT_DIR$/src/view/Controllers/TelaPrincipal.java" />
         <option value="$PROJECT_DIR$/src/app/MainApp.java" />
+        <option value="$PROJECT_DIR$/src/view/Controllers/CadastroConsulta.java" />
+        <option value="$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java" />
+        <option value="$PROJECT_DIR$/src/view/Controllers/CadastroProcedimento.java" />
+        <option value="$PROJECT_DIR$/src/view/Controllers/TelaPrincipal.java" />
       </list>
     </option>
   </component>
@@ -193,6 +209,12 @@
               <item name="ClinicaOdontologica" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="beans" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClinicaOdontologica" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClinicaOdontologica" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="persistence" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ClinicaOdontologica" type="b2602c69:ProjectViewProjectNode" />
@@ -426,7 +448,21 @@
       <option name="project" value="LOCAL" />
       <updated>1522785498482</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Redimensionamento da Tela Principal">
+      <created>1522786071989</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1522786071989</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Criada todas as classes necessarias para chamar as telas">
+      <created>1522787043469</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1522787043469</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -434,6 +470,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -441,9 +478,9 @@
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.3283582" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3283582" />
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3283582" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
@@ -516,7 +553,9 @@
     <MESSAGE value="Pequeno Update" />
     <MESSAGE value="CadastroConsulta organizado" />
     <MESSAGE value="Organizado como as telas se comportam e a interação para abrí-las" />
-    <option name="LAST_COMMIT_MESSAGE" value="Organizado como as telas se comportam e a interação para abrí-las" />
+    <MESSAGE value="Redimensionamento da Tela Principal" />
+    <MESSAGE value="Criada todas as classes necessarias para chamar as telas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Criada todas as classes necessarias para chamar as telas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -524,13 +563,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroProcedimento.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/MainApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -742,13 +774,6 @@
     <entry file="file://$PROJECT_DIR$/src/Teste/TesteProcedimento.java" />
     <entry file="file://$PROJECT_DIR$/bin/production/ClinicaOdontoligca/Principal.class" />
     <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.base/jdk/internal/reflect/Reflection.java" />
-    <entry file="file://$PROJECT_DIR$/src/persistence/PacienteDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="76" column="27" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/scene/control/ToggleButton.java" />
     <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.base/java/util/GregorianCalendar.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -764,30 +789,6 @@
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroProcedimento.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroConsulta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="37" lean-forward="true" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/persistence/ConsultaDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/CadastroPaciente.fxml">
       <provider selected="true" editor-type-id="text-editor">
@@ -811,13 +812,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beans/Procedimento.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="8" selection-start-column="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/beans/Agenda.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -838,7 +832,7 @@
     <entry file="file://$PROJECT_DIR$/src/view/RootLayout.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="252" selection-start-line="5" selection-start-column="252" selection-end-line="5" selection-end-column="252" />
+          <caret line="5" column="236" selection-start-line="5" selection-start-column="236" selection-end-line="5" selection-end-column="236" />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -855,22 +849,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java">
+    <entry file="file://$PROJECT_DIR$/src/beans/Procedimento.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="34" column="28" lean-forward="true" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1115#1116#0" expanded="true" />
-            <element signature="e#1152#1153#0" expanded="true" />
-          </folding>
+        <state>
+          <caret column="8" selection-start-column="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/persistence/ConsultaDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/persistence/PacienteDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="76" column="27" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/persistence/ProcedimentoDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/MainApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
+        <state relative-caret-position="369">
+          <caret line="112" column="40" lean-forward="true" selection-start-line="112" selection-start-column="40" selection-end-line="112" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1165#1166#0" expanded="true" />
@@ -879,10 +889,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroConsulta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#655#656#0" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#744#745#0" expanded="true" />
+            <element signature="e#766#767#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
+            <element signature="e#862#863#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="53" column="38" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1115#1116#0" expanded="true" />
+            <element signature="e#1152#1153#0" expanded="true" />
+            <element signature="e#1373#1374#0" expanded="true" />
+            <element signature="e#1418#1419#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroProcedimento.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="e#560#561#0" expanded="true" />
+            <element signature="e#598#599#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/Controllers/TelaPrincipal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="108" column="41" lean-forward="true" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="41" />
+        <state relative-caret-position="261">
+          <caret line="104" column="45" selection-start-line="104" selection-start-column="45" selection-end-line="104" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1218#1219#0" expanded="true" />
