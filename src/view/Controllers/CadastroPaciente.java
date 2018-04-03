@@ -8,6 +8,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
+import java.security.Principal;
+
 public class CadastroPaciente {
     public TextField txtfieldNome;
     public TextField txtfieldTelefone;
@@ -40,6 +42,13 @@ public class CadastroPaciente {
     public void btnCancelarOnAction(ActionEvent event){
 
     }
+
+    private Principal principal;
+
+    public void setPrincipal(Principal principal) {
+        this.principal = principal;
+    }
+
 
     public void btnSalvarOnAction(ActionEvent event){
         //TODO validar os dados inseridos

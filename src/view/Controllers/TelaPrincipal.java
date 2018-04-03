@@ -12,6 +12,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.shape.Rectangle;
 
+import java.security.Principal;
+
 public class TelaPrincipal {
     //Controle do dia
     public Label lblDia;
@@ -27,6 +29,12 @@ public class TelaPrincipal {
     public Button btnAdicionar;
     public Button btnModificar;
     public Button btnRemover;
+
+    private Principal principal;
+
+    public void setPrincipal(Principal principal){
+        this.principal = principal;
+    }
 
     //Agenda agenda = new Agenda();
     public void initialize(){
@@ -57,6 +65,7 @@ public class TelaPrincipal {
     public void tglPacienteOnAction(ActionEvent event){
         tglConsulta.setSelected(false);
         lstViewLista.setItems(Agenda.getPacientes());
+
     }
 
     public void tglConsultaOnAction(ActionEvent event){
@@ -72,6 +81,8 @@ public class TelaPrincipal {
                     "E-mail", "endereco", 'M');
             Agenda.adicionarPaciente(p);
             //lstViewLista.setItems(Agenda.getPacientes());
+
+//            principal.
         }else{
 
         }
