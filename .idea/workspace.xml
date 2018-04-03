@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="733903a4-56cd-4d8e-aa72-20a7be708704" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/ClinicaOdontoligca/view/CadastroPaciente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/ClinicaOdontoligca/view/CadastroPaciente.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/production/ClinicaOdontoligca/view/Controllers/CadastroPaciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/ClinicaOdontoligca/view/Controllers/CadastroPaciente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/production/ClinicaOdontoligca/view/Controllers/TelaPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/production/ClinicaOdontoligca/view/Controllers/TelaPrincipal.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/beans/Agenda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beans/Agenda.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/beans/Consulta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beans/Consulta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/beans/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beans/Paciente.java" afterDir="false" />
@@ -118,8 +116,8 @@
       <file leaf-file-name="CadastroPaciente.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="101" column="104" selection-start-line="101" selection-start-column="104" selection-end-line="101" selection-end-column="104" />
+            <state relative-caret-position="168">
+              <caret line="128" column="76" selection-start-line="128" selection-start-column="76" selection-end-line="128" selection-end-column="76" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1115#1116#0" expanded="true" />
@@ -475,7 +473,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522787727788</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Validação dos dados da tela CadastroPaciente">
+      <created>1522792029965</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1522792029965</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -494,11 +499,11 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.3283582" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3283582" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.5018657" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5018657" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.34907252" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.34898785" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3283582" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -570,7 +575,8 @@
     <MESSAGE value="Criada todas as classes necessarias para chamar as telas" />
     <MESSAGE value="As telas estão sendo chamadas nos seus devidos métodos" />
     <MESSAGE value="Tela do CadastroPaciente redimensionada para 600x400" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tela do CadastroPaciente redimensionada para 600x400" />
+    <MESSAGE value="Validação dos dados da tela CadastroPaciente" />
+    <option name="LAST_COMMIT_MESSAGE" value="Validação dos dados da tela CadastroPaciente" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -945,8 +951,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="101" column="104" selection-start-line="101" selection-start-column="104" selection-end-line="101" selection-end-column="104" />
+        <state relative-caret-position="168">
+          <caret line="128" column="76" selection-start-line="128" selection-start-column="76" selection-end-line="128" selection-end-column="76" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1115#1116#0" expanded="true" />
