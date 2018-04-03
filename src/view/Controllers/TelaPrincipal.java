@@ -56,20 +56,24 @@ public class TelaPrincipal {
     public void tglPacienteOnAction(ActionEvent event){
         tglConsulta.setSelected(false);
         lstViewLista.setItems(Agenda.getPacientes());
+        tglPaciente.setDisable(true);
+        tglConsulta.setDisable(false);
     }
 
     public void tglConsultaOnAction(ActionEvent event){
         tglPaciente.setSelected(false);
         lstViewLista.setItems(Agenda.getConsultas());
+        tglPaciente.setDisable(false);
+        tglConsulta.setDisable(true);
     }
 
     //Lista lateral
     public void btnAdicionarOnAction(ActionEvent event){
         if(tglPaciente.isSelected()){
-            //Apenas um teste para ver se a listView ta funcionando (NAO ESTA SENDO ATUALIZADA)
-            Paciente p = new Paciente("Nome", "CPF", "Nascimento", "Telefone",
-                    "E-mail", "endereco", 'M');
-            Agenda.adicionarPaciente(p);
+//            //Apenas um teste para ver se a listView ta funcionando (NAO ESTA SENDO ATUALIZADA)
+//            Paciente p = new Paciente("Nome", "CPF", "Nascimento", "Telefone",
+//                    "E-mail", "endereco", 'M');
+//            Agenda.adicionarPaciente(p);
         }else{
 
         }
