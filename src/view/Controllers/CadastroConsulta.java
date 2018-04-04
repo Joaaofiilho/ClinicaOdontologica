@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import persistence.ConsultaDAO;
 import persistence.PacienteDAO;
 import persistence.ProcedimentoDAO;
@@ -49,10 +51,56 @@ public class CadastroConsulta {
         mainApp.exibirTelaPrincipal();
     }
 
+    private boolean checarRegex(String nome, String regex, boolean combinar, TextField elemento){
+        if(nome.equals("")){
+            elemento.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                    BorderWidths.DEFAULT)));
+            return false;
+        }
+        if(nome.matches(regex)){
+            if(combinar) {
+                elemento.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                        BorderWidths.DEFAULT)));
+                return true;
+            }else{
+                elemento.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                        BorderWidths.DEFAULT)));
+                return false;
+            }
+        }else{
+            if(combinar) {
+                elemento.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                        BorderWidths.DEFAULT)));
+                return false;
+            }else{
+                elemento.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                        BorderWidths.DEFAULT)));
+                return true;
+            }
+        }
+    }
+
     public void btnSalvarOnAction(ActionEvent e) {
         try {
+            boolean valido = true;
 
-
+            if (dateData.getValue() == null) {
+                dateData.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                        BorderWidths.DEFAULT)));
+                valido = false;
+            } else
+                dateData.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                        BorderWidths.DEFAULT)));
+            if (cbPacientes.getSelectionModel().isEmpty()){
+                cbPacientes.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                        BorderWidths.DEFAULT)));
+                valido = false;
+            }else cbPacientes.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
+                BorderWidths.DEFAULT)));
+            String valor = txtfieldValor.getText();
+            if(!checarRegex(valor, "^\\d+(\\.\\d{1,})?$", true, txtfieldValor)) valido = false;
+            String horarioCompleto = txtfieldHorario.getText();
+            if(!checarRegex(horarioCompleto, "^[0-2]\\d:[0-5]\\d-[0-2]\\d:[0-5]\\d$", true, txtfieldHorario)) valido = false;
 
             String data[] = new String[0];
 
@@ -62,13 +110,14 @@ public class CadastroConsulta {
             if (date != null) {
                 data = (formatter.format(date)).split("-");
             }
+            if(valido) {
+                Consulta consulta = new Consulta(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]),
+                        PacienteDAO.buscarPorIndex(cbPacientes.getSelectionModel().getSelectedIndex()), txtfieldHorario.getText(),
+                        txtfieldDescricao.getText(), Float.parseFloat(txtfieldValor.getText()));
 
-            Consulta consulta = new Consulta(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]),
-                    PacienteDAO.buscarPorIndex(cbPacientes.getSelectionModel().getSelectedIndex()),txtfieldHorario.getText(),
-                    txtfieldDescricao.getText(), Float.parseFloat(txtfieldValor.getText()));
-
-            Agenda.adicionarConsulta(consulta);
-            mainApp.exibirTelaPrincipal();
+                Agenda.adicionarConsulta(consulta);
+                mainApp.exibirTelaPrincipal();
+            }
         } catch (Exception e1) {
             e1.printStackTrace();
         }
