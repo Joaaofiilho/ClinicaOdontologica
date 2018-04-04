@@ -24,7 +24,7 @@
           <RowConstraints vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Hora atual" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+            <Label fx:id="lblHorario" text="Hora atual" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets top="10.0" />
                </GridPane.margin>

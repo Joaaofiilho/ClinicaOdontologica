@@ -9,6 +9,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import persistence.ConsultaDAO;
+import persistence.PacienteDAO;
+import persistence.ProcedimentoDAO;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -34,32 +36,23 @@ public class CadastroConsulta {
 
     private MainApp mainApp;
 
-    private ConsultaDAO ConDAO = new ConsultaDAO();
-
+    public void initialize(){
+        cbPacientes.setItems(Agenda.getPacientes());
+    }
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
+
+
 
     public void btnCancelarOnAction(ActionEvent e){
         mainApp.exibirTelaPrincipal();
     }
 
     public void btnSalvarOnAction(ActionEvent e) {
-
-        /*
-        private int dia;
-        private int mes;
-        private int ano;
-        private Paciente paciente;
-        private String horarioCompleto;
-        private String descricao;
-        private float valor;
-
-
-        */
-
         try {
-            Consulta consulta = new Consulta();
+
+
 
             String data[] = new String[0];
 
@@ -68,24 +61,13 @@ public class CadastroConsulta {
             LocalDate date = dateData.getValue();
             if (date != null) {
                 data = (formatter.format(date)).split("-");
-                System.out.println(data);
-            } else {
-
-
             }
-            consulta.setDia(Integer.parseInt(data[0]));
-            consulta.setMes(Integer.parseInt(data[1]));
-            consulta.setAno(Integer.parseInt(data[2]));
-            consulta.setHorarioCompleto(txtfieldHorario.getText());
-            consulta.setDescricao(txtfieldDescricao.getText());
-            consulta.setValor(Float.parseFloat(txtfieldValor.getText()));
+
+            Consulta consulta = new Consulta(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]),
+                    PacienteDAO.buscarPorIndex(cbPacientes.getSelectionModel().getSelectedIndex()),txtfieldHorario.getText(),
+                    txtfieldDescricao.getText(), Float.parseFloat(txtfieldValor.getText()));
 
             Agenda.adicionarConsulta(consulta);
-
-            //consulta.setPaciente();
-            //TODO Fazer o paciente escolhendo da lista
-
-//            dao.inserir(consulta);
             mainApp.exibirTelaPrincipal();
         } catch (Exception e1) {
             e1.printStackTrace();

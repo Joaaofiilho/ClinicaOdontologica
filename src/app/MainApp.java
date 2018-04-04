@@ -1,5 +1,6 @@
 package app;
 
+import beans.Agenda;
 import beans.Paciente;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -25,6 +26,7 @@ public class MainApp extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Clínica Odontológica");
 
+        Agenda.init();
         initRoot();
     }
 

@@ -1,33 +1,28 @@
 package view.Controllers;
 
 import beans.Agenda;
-import beans.Paciente;
 import app.MainApp;
-import beans.Consulta;
 
+import beans.Consulta;
+import beans.Paciente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.shape.Rectangle;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import persistence.ConsultaDAO;
 import persistence.PacienteDAO;
-import persistence.ProcedimentoDAO;
 
-import java.io.IOException;
-import java.security.Principal;
+import java.util.Calendar;
+import java.util.Date;
 
 public class TelaPrincipal {
     //Controle do dia
     public Label lblDia;
+    public Label lblHorario;
     public Button btnEsquerda;
     public Button btnDireita;
 
@@ -54,8 +49,22 @@ public class TelaPrincipal {
 
     //Agenda agenda = new Agenda();
     public void initialize(){
-        tglConsulta.setSelected(true);
         lblDia.setText(Agenda.getData());
+        tglConsulta.fire();
+//        new Thread() {
+//
+//            @Override
+//            public void run() {
+//                while (true){
+//                    Date date = Calendar.getInstance().getTime();
+//                    String hora = Integer.toString(date.getHours()), minutos = Integer.toString(date.getMinutes()),
+//                    segundos = Integer.toString(date.getSeconds());
+//                    String horaAtual = hora + ":" + minutos + ":" + segundos;
+//                    lblHorario.setText(horaAtual);
+//
+//                }
+//            }
+//        }.start();
     }
 
     //TODO | Boolean/String/Int (com switch case, falando serio, no caso str/int) para controlar o botao de adicionar, a lista e outras manipulacoes (consulta/paciente)
@@ -69,11 +78,31 @@ public class TelaPrincipal {
     public void btnDireitaOnAction(ActionEvent event){
         Agenda.acrescentarDia();
         lblDia.setText(Agenda.getData());
+
+        ObservableList<String> consultaData = FXCollections.observableArrayList();
+        try {
+            for (Consulta c : ConsultaDAO.buscarPorData(lblDia.getText())) {
+                consultaData.add(c.toString());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        lstViewLista.setItems(consultaData);
     }
 
     public void btnEsquerdaOnAction(ActionEvent event){
         Agenda.decrescerDia();
         lblDia.setText(Agenda.getData());
+
+        ObservableList<String> consultaData = FXCollections.observableArrayList();
+        try {
+            for (Consulta c : ConsultaDAO.buscarPorData(lblDia.getText())) {
+                consultaData.add(c.toString());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        lstViewLista.setItems(consultaData);
     }
 
     //Controle lista lateral
@@ -83,13 +112,31 @@ public class TelaPrincipal {
         tglPaciente.setDisable(true);
         tglConsulta.setDisable(false);
 
+        btnDireita.setDisable(true);
+        btnEsquerda.setDisable(true);
+        lblDia.setText("");
     }
 
     public void tglConsultaOnAction(ActionEvent event){
         tglPaciente.setSelected(false);
-        lstViewLista.setItems(Agenda.getConsultas());
+        lblDia.setText(Agenda.getData());
+
+        ObservableList<String> consultaData = FXCollections.observableArrayList();
+        try {
+            for (Consulta c : ConsultaDAO.buscarPorData(lblDia.getText())) {
+                consultaData.add(c.toString());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        lstViewLista.setItems(consultaData);
+
         tglPaciente.setDisable(false);
         tglConsulta.setDisable(true);
+
+        btnDireita.setDisable(false);
+        btnEsquerda.setDisable(false);
+
     }
 
     //Lista lateral
@@ -110,6 +157,49 @@ public class TelaPrincipal {
     }
 
     public void btnRemoverOnAction(ActionEvent event) {
-        //Remove tanto da lista quanto do txt
+        if(tglPaciente.isSelected()){
+            try {
+                PacienteDAO.excluir(lstViewLista.getSelectionModel().getSelectedIndex());
+                ObservableList<String> pacientes = FXCollections.observableArrayList();
+                try {
+                    for (Paciente p : PacienteDAO.getPacientes()) {
+                        pacientes.add(p.toString());
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                lstViewLista.setItems(pacientes);
+            }catch (Exception e){
+
+            }
+        }else{
+            try {
+                String id = lstViewLista.getSelectionModel().getSelectedItem().split("-")[2].trim();
+                ConsultaDAO.excluir(Integer.parseInt(id));
+                Agenda.getPacientes().clear();
+                Agenda.init();
+
+                ObservableList<String> consultas = FXCollections.observableArrayList();
+                try {
+                    for (Consulta c : ConsultaDAO.buscarPorData(lblDia.getText())) {
+                        consultas.add(c.toString());
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                lstViewLista.setItems(consultas);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
+
+
+
+
+
     }
 }

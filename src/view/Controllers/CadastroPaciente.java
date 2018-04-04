@@ -17,6 +17,8 @@ import javafx.stage.Stage;
 import persistence.PacienteDAO;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class CadastroPaciente {
     public TextField txtfieldNome;
@@ -103,7 +105,14 @@ public class CadastroPaciente {
         //Dados
         String nome = txtfieldNome.getText(), telefone = txtfieldTelefone.getText(),
         email = txtfieldEmail.getText(), cpf = txtfieldCPF.getText(),
-        dataNasc = dateNascimento.toString();
+        dataNasc;
+        //Montar data
+        String data = "";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate date = dateNascimento.getValue();
+        if (date != null) {
+            data = (formatter.format(date));
+        }
         //Montar sexo
         char sexo;
         if(rdBtnMasculino.isSelected()) sexo = 'M';
@@ -136,13 +145,11 @@ public class CadastroPaciente {
                     BorderWidths.DEFAULT)));
             valido = false;
         }else{
-            rdBtnFeminino.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
-                    BorderWidths.DEFAULT)));
-            rdBtnMasculino.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
-                    BorderWidths.DEFAULT)));
+            rdBtnFeminino.setBorder(null);
+            rdBtnMasculino.setBorder(null);
         }
         if(valido){
-            Paciente p = new Paciente(nome, cpf, dataNasc, telefone, email, endereco, sexo);
+            Paciente p = new Paciente(nome, cpf, data, telefone, email, endereco, sexo);
             Agenda.adicionarPaciente(p);
             mainApp.exibirTelaPrincipal();
         }

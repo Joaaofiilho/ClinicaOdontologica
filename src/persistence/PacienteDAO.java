@@ -10,6 +10,97 @@ public class PacienteDAO {
     //Static
     private static ArrayList<Paciente> pacientes = new ArrayList<>();
 
+    //Métodos
+
+    public static void inserir(Paciente p) throws Exception{
+        pacientes.add(p);
+
+        gravarDados();
+    }
+
+    public static void alterar(Paciente p) throws Exception{
+        Paciente aux = buscarPorCpf(p.getCpf());
+        aux.setNome(p.getNome());
+        aux.setNascimento(p.getNascimento());
+        aux.setTelefone(p.getTelefone());
+        aux.setEmail(p.getEmail());
+        aux.setEndereco(p.getEndereco());
+        aux.setSexo(p.getSexo());
+
+        gravarDados();
+    }
+
+    public static void excluir(int index) throws Exception{
+        pacientes.remove(index);
+        gravarDados();
+    }
+
+    public static Paciente buscarPorCpf(String cpf) throws Exception{
+        for (Paciente p:
+             pacientes) {
+            if(p.getCpf().equals(cpf)) return p;
+        }
+        return null;
+    }
+
+    public static Paciente buscarPorIndex(int index) throws Exception{
+        return pacientes.get(index);
+    }
+
+    public ArrayList<Paciente> buscarPorNome(String nome) throws Exception{
+        ArrayList<Paciente> temp = new ArrayList<>();
+        for (Paciente p:
+             pacientes) {
+            if(p.getNome().contains(nome)) temp.add(p);
+        }
+        return temp;
+    }
+
+    private static void gravarDados() throws Exception {
+
+        File f = new File("pacientes.txt");
+
+        PrintWriter w = new PrintWriter(f);
+        w.print("");
+        w.close();
+
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+
+        try {
+            //Classe que armazena caracteres
+            fw = new FileWriter(f);
+
+            //Classe que armazena strings
+            bw = new BufferedWriter(fw);
+
+            //Escreveu uma linha no texto
+            for(Paciente p : pacientes) {
+
+                bw.write(p.getNome()+";"+p.getCpf()+";"+p.getNascimento()+";"+
+                        p.getTelefone()+";"+p.getEmail()+";"+p.getEndereco()+";"+
+                        p.getSexo());
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            try {
+                if (bw != null)
+                    bw.close();
+                if (fw != null)
+                    fw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static ArrayList<Paciente> getPacientes(){
+        return pacientes;
+    }
+
     static {
         pacientes.clear();
 
@@ -44,89 +135,4 @@ public class PacienteDAO {
             }
         }
     }
-
-    //Métodos
-
-    public void inserir(Paciente p) throws Exception{
-        pacientes.add(p);
-
-        gravarDados();
-    }
-
-    public void alterar(Paciente p) throws Exception{
-        Paciente aux = buscarPorCpf(p.getCpf());
-        aux.setNome(p.getNome());
-        aux.setNascimento(p.getNascimento());
-        aux.setTelefone(p.getTelefone());
-        aux.setEmail(p.getEmail());
-        aux.setEndereco(p.getEndereco());
-        aux.setSexo(p.getSexo());
-
-        gravarDados();
-    }
-
-    public void excluir(String cpf) throws Exception{
-        pacientes.remove(buscarPorCpf(cpf));
-
-        gravarDados();
-    }
-
-    public static Paciente buscarPorCpf(String cpf) throws Exception{
-        for (Paciente p:
-             pacientes) {
-            if(p.getCpf().equals(cpf)) return p;
-        }
-        return null;
-    }
-
-    public ArrayList<Paciente> buscarPorNome(String nome) throws Exception{
-        ArrayList<Paciente> temp = new ArrayList<>();
-        for (Paciente p:
-             pacientes) {
-            if(p.getNome().contains(nome)) temp.add(p);
-        }
-        return temp;
-    }
-
-    public void gravarDados() throws Exception {
-
-        File f = new File("pacientes.txt");
-
-        PrintWriter w = new PrintWriter(f);
-        w.print("");
-        w.close();
-
-        FileWriter fw = null;
-        BufferedWriter bw = null;
-
-        try {
-            //Classe que armazena caracteres
-            fw = new FileWriter(f);
-
-            //Classe que armazena strings
-            bw = new BufferedWriter(fw);
-
-            //Escreveu uma linha no texto
-            for(Paciente p : pacientes) {
-                bw.write(p.getNome()+";"+p.getCpf()+";"+p.getNascimento()+";"+
-                        p.getTelefone()+";"+p.getEmail()+";"+p.getEndereco()+";"+
-                        p.getSexo());
-                bw.newLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw e;
-        } finally {
-            try {
-                if (bw != null)
-                    bw.close();
-                if (fw != null)
-                    fw.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-
 }

@@ -12,6 +12,8 @@ public class Consulta {
     private String horarioCompleto;
     private String descricao;
     private float valor;
+    private int id;
+    private static  int contadorID = 0;
 
     //Construtores
     public Consulta(int dia, int mes, int ano, Paciente paciente, String horarioCompleto, String descricao, float valor) {
@@ -22,6 +24,18 @@ public class Consulta {
         this.horarioCompleto = horarioCompleto;
         this.descricao = descricao;
         this.valor = valor;
+        this.id = contadorID++;
+    }
+
+    public Consulta(int dia, int mes, int ano, Paciente paciente, String horarioCompleto, String descricao, float valor, int id) {
+        this.dia = dia;
+        this.mes = mes;
+        this.ano = ano;
+        this.paciente = paciente;
+        this.horarioCompleto = horarioCompleto;
+        this.descricao = descricao;
+        this.valor = valor;
+        this.id = id;
     }
 
     public Consulta() {
@@ -29,18 +43,16 @@ public class Consulta {
 
     @Override
     public String toString(){
-        return "[" + getHorarioInicial() + "] " + paciente.getNome().toUpperCase();
+        return  getHorarioInicial() + " - " + paciente.getNome().toUpperCase() + " - " + getId();
     }
 
     //Metodos especiais
     public String getHorarioInicial(){
-        //TODO: Regex para pegar o horario inicial
-        return "";
+        return horarioCompleto.split("-")[0];
     }
 
     public String getHorarioFinal(){
-        //TODO: Regex para pegar o horario inicial
-        return "";
+        return horarioCompleto.split("-")[1];
     }
 
     //Getters e setters
@@ -91,6 +103,23 @@ public class Consulta {
     }
     public void setValor(float valor) {
         this.valor = valor;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+    public static void setContadorID(int contadorID) {
+        Consulta.contadorID = contadorID;
+    }
+
+    public static int getContadorID() {
+        return contadorID;
     }
 
     public String getData(){
