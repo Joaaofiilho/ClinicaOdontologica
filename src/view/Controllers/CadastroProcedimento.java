@@ -6,6 +6,7 @@ import beans.Procedimento;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import persistence.ProcedimentoDAO;
 
 public class CadastroProcedimento {
     //Textfields
@@ -20,6 +21,8 @@ public class CadastroProcedimento {
 
     private MainApp mainApp;
 
+    private ProcedimentoDAO ProDAO = new ProcedimentoDAO();
+
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
@@ -31,7 +34,7 @@ public class CadastroProcedimento {
         mainApp.exibirTelaPrincipal();
     }
 
-    public void btnConfirmarOnAction (ActionEvent event){
+    public void btnConfirmarOnAction (ActionEvent event) throws Exception{
         //TODO validar os dados inseridos
         double valor = Double.parseDouble(txtFieldValor.getText());
         int duracao = Integer.parseInt(txtFieldDuracao.getText());

@@ -1,6 +1,7 @@
 package view.Controllers;
 
 import app.MainApp;
+import beans.Agenda;
 import beans.Consulta;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
@@ -33,6 +34,8 @@ public class CadastroConsulta {
 
     private MainApp mainApp;
 
+    private ConsultaDAO ConDAO = new ConsultaDAO();
+
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
@@ -41,7 +44,7 @@ public class CadastroConsulta {
         mainApp.exibirTelaPrincipal();
     }
 
-    public void btnSalvarOnAction(ActionEvent e){
+    public void btnSalvarOnAction(ActionEvent e) {
 
         /*
         private int dia;
@@ -76,13 +79,11 @@ public class CadastroConsulta {
             consulta.setHorarioCompleto(txtfieldHorario.getText());
             consulta.setDescricao(txtfieldDescricao.getText());
             consulta.setValor(Float.parseFloat(txtfieldValor.getText()));
+
+            Agenda.adicionarConsulta(consulta);
+
             //consulta.setPaciente();
             //TODO Fazer o paciente escolhendo da lista
-
-
-
-
-
 
 //            dao.inserir(consulta);
             mainApp.exibirTelaPrincipal();

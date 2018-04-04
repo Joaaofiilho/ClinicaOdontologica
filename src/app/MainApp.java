@@ -67,7 +67,7 @@ public class MainApp extends Application {
             controller.setMainApp(this);
 
         }catch (IOException e){
-            System.out.print("TRETA");
+            System.out.print("um");
         }
     }
 
@@ -82,7 +82,7 @@ public class MainApp extends Application {
             CadastroPaciente controller = loader.getController();
             controller.setMainApp(this);
         }catch (IOException e){
-            System.out.print("TRETA");
+            System.out.print("2");
         }
     }
 
@@ -97,7 +97,7 @@ public class MainApp extends Application {
             CadastroConsulta controller = loader.getController();
             controller.setMainApp(this);
         }catch (IOException e){
-            System.out.print("TRETA");
+            System.out.print("3");
         }
     }
 
@@ -112,7 +112,7 @@ public class MainApp extends Application {
             CadastroProcedimento controller = loader.getController();
             controller.setMainApp(this);
         }catch (IOException e){
-            System.out.print("TRETA");
+            System.out.print("4");
         }
     }
 }

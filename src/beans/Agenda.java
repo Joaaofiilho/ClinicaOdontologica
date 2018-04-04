@@ -2,17 +2,22 @@ package beans;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import persistence.ConsultaDAO;
+import persistence.PacienteDAO;
+import persistence.ProcedimentoDAO;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Agenda {
     private static Calendar calendario;
-    private static ArrayList<Paciente> pacientes = new ArrayList<>();
     private static ObservableList<String> obsPacientes = FXCollections.observableArrayList();
-    private static ArrayList<Consulta> consultas = new ArrayList<>();
     private static ObservableList<String> obsConsultas = FXCollections.observableArrayList();
-    private static ArrayList<Procedimento> procedimentos = new ArrayList<>();
+
+    private static ConsultaDAO ConDAO = new ConsultaDAO();
+    private static PacienteDAO PacDAO = new PacienteDAO();
+    private static ProcedimentoDAO ProDAO = new ProcedimentoDAO();
 
     public static void acrescentarDia(){
         calendario.add(Calendar.DAY_OF_MONTH, 1);
@@ -34,18 +39,18 @@ public class Agenda {
         return dia + "/" + mes + "/" + ano.substring(2, 4);
     }
 
-    public static void adicionarPaciente(Paciente paciente){
-        pacientes.add(paciente);
+    public static void adicionarPaciente(Paciente paciente) throws Exception{
+        PacDAO.inserir(paciente);
         obsPacientes.add(paciente.toString());
     }
 
-    public static void adicionarConsulta(Consulta consulta){
-        consultas.add(consulta);
+    public static void adicionarConsulta(Consulta consulta) throws Exception{
+        ConDAO.inserir(consulta);
         obsConsultas.add(consulta.toString());
     }
 
-    public static void adicionarProcedimento(Procedimento procedimento){
-        procedimentos.add(procedimento);
+    public static void adicionarProcedimento(Procedimento procedimento) throws Exception {
+        //ProDAO.inserir(procedimento);
     }
     //Getters e setters
     public static ObservableList<String> getPacientes(){

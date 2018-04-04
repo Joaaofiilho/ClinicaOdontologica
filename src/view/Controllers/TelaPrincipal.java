@@ -18,6 +18,9 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import persistence.ConsultaDAO;
+import persistence.PacienteDAO;
+import persistence.ProcedimentoDAO;
 
 import java.io.IOException;
 import java.security.Principal;

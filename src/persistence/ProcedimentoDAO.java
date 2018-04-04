@@ -12,6 +12,8 @@ public class ProcedimentoDAO {
     private static ArrayList<Procedimento> procedimentos = new ArrayList<>(); //Contem todas as informações do txt.
 
     static { //Leitura do arquivo para armazenar no Arraylist
+        procedimentos.clear();
+
         File f = new File("procedimento.txt");
 
         if(f.exists()) {
@@ -64,6 +66,10 @@ public class ProcedimentoDAO {
     private void gravarDados() throws Exception{ //Metodo responsavel por gravar no arquivo
 
         File file = new File("procedimento.txt");
+
+        PrintWriter w = new PrintWriter(file);
+        w.print("");
+        w.close();
 
         FileWriter fw = null;
         BufferedWriter bw = null;

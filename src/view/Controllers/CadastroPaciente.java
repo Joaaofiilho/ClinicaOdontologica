@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import persistence.PacienteDAO;
 
 import java.io.IOException;
 
@@ -39,6 +40,8 @@ public class CadastroPaciente {
     private String sexo;
 
     private MainApp mainApp;
+
+    private PacienteDAO PacDAO = new PacienteDAO();
 
     public void setMainApp(MainApp mainApp){
         this.mainApp = mainApp;
@@ -94,7 +97,7 @@ public class CadastroPaciente {
         }
     }
 
-    public void btnSalvarOnAction(ActionEvent event){
+    public void btnSalvarOnAction(ActionEvent event) throws Exception{
         //TODO validar os dados inseridos
 
         //Dados

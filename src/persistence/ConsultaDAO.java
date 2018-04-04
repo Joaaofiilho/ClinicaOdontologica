@@ -1,11 +1,6 @@
 package persistence;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 import beans.Consulta;
@@ -15,6 +10,8 @@ public class ConsultaDAO {
     private static ArrayList<Consulta> consultas = new ArrayList<>();
 
     static {
+        consultas.clear();
+
         File f = new File("consultas.txt");
         if(f.exists()) {
             FileReader fr = null;
@@ -58,7 +55,12 @@ public class ConsultaDAO {
     private final char fileSeparator = ';';
 
     public void gravarDados() throws Exception {
+
         File f = new File("consultas.txt");
+
+        PrintWriter w = new PrintWriter(f);
+        w.print("");
+        w.close();
 
         FileWriter fw = null;
         BufferedWriter bw = null;
