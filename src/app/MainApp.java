@@ -2,6 +2,7 @@ package app;
 
 import beans.Agenda;
 import beans.Paciente;
+import beans.Consulta;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -88,6 +89,22 @@ public class MainApp extends Application {
         }
     }
 
+    public void exibirCadastroPaciente(Paciente paciente) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/CadastroPaciente.fxml"));
+            AnchorPane telaCadastroPacientePane = (AnchorPane) loader.load();
+
+            CadastroPaciente controller = loader.getController();
+            controller.preencher(paciente);
+
+            rootLayout.setCenter(telaCadastroPacientePane);
+            controller.setMainApp(this);
+        }catch (IOException e){
+            System.out.print("2");
+        }
+    }
+
     public void exibirCadastroConsulta(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -97,6 +114,22 @@ public class MainApp extends Application {
             rootLayout.setCenter(telaPrincipalPane);
 
             CadastroConsulta controller = loader.getController();
+            controller.setMainApp(this);
+        }catch (IOException e){
+            System.out.print("3");
+        }
+    }
+
+    public void exibirCadastroConsulta(Consulta consulta){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/CadastroConsulta.fxml"));
+            AnchorPane telaPrincipalPane = (AnchorPane) loader.load();
+
+            CadastroConsulta controller = loader.getController();
+            controller.preencher(consulta);
+
+            rootLayout.setCenter(telaPrincipalPane);
             controller.setMainApp(this);
         }catch (IOException e){
             System.out.print("3");

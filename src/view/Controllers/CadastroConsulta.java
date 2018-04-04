@@ -4,10 +4,7 @@ import app.MainApp;
 import beans.Agenda;
 import beans.Consulta;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import persistence.ConsultaDAO;
@@ -78,6 +75,12 @@ public class CadastroConsulta {
                 return true;
             }
         }
+    }
+
+    public void preencher(Consulta consulta){
+        txtfieldValor.setText(Float.toString(consulta.getValor()));
+        txtfieldHorario.setText(consulta.getHorarioCompleto());
+        txtfieldDescricao.setText(consulta.getDescricao());
     }
 
     public void btnSalvarOnAction(ActionEvent e) {

@@ -99,6 +99,15 @@ public class CadastroPaciente {
         }
     }
 
+    public void preencher(Paciente paciente){
+        txtfieldNome.setText(paciente.getNome());
+        txtfieldTelefone.setText(paciente.getTelefone());
+        txtfieldEmail.setText(paciente.getEmail());
+        txtfieldCPF.setText(paciente.getCpf());
+        if(paciente.getSexo() == 'M') rdBtnMasculino.setSelected(true);
+        else rdBtnFeminino.setSelected(true);
+    }
+
     public void btnSalvarOnAction(ActionEvent event) throws Exception{
         //TODO validar os dados inseridos
 

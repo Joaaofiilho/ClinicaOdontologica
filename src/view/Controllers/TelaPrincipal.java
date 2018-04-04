@@ -8,6 +8,7 @@ import beans.Paciente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -16,6 +17,7 @@ import javafx.stage.Stage;
 import persistence.ConsultaDAO;
 import persistence.PacienteDAO;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -149,11 +151,17 @@ public class TelaPrincipal {
     }
 
     public void btnModificarOnAction(ActionEvent event){
-        if(tglPaciente.isSelected()){
-            mainApp.exibirCadastroPaciente();
-        }else{
-            mainApp.exibirCadastroConsulta();
-        }
+            if (tglPaciente.isSelected()) {
+                try {
+                    mainApp.exibirCadastroPaciente(PacienteDAO.buscarPorIndex(lstViewLista.getSelectionModel().getSelectedIndex()));
+                } catch (Exception e) {
+
+                }
+            } else {
+                String id = lstViewLista.getSelectionModel().getSelectedItem().split("-")[2].trim();
+                mainApp.exibirCadastroConsulta(ConsultaDAO.buscarPorId(Integer.parseInt(id)));
+            }
+
     }
 
     public void btnRemoverOnAction(ActionEvent event) {
