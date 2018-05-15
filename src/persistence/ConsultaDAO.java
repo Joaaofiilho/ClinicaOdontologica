@@ -50,7 +50,7 @@ public class ConsultaDAO {
     public static void alterar(Consulta c) throws Exception{
         Connection con = null;
         PreparedStatement stmt = null;
-        ArrayList<Consulta> consultas = new ArrayList<Consulta>();
+
         try {
             con = Conexao.getConnection();
 
@@ -82,7 +82,7 @@ public class ConsultaDAO {
     public static void excluir(int id) throws Exception{
         Connection con = null;
         PreparedStatement stmt = null;
-        ArrayList<Consulta> consultas = new ArrayList<Consulta>();
+
         try {
             con = Conexao.getConnection();
 

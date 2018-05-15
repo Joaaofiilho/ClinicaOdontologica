@@ -19,6 +19,21 @@ public class Paciente {
     //Construtores
 
 
+    public Paciente(String nome, String cpf, String nascimento, String telefone, String email, String logradouro_end, int numero_end, String complemento_end, String bairro_end, String cidade_end, String estado_end, char sexo) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.nascimento = nascimento;
+        this.telefone = telefone;
+        this.email = email;
+        this.logradouro_end = logradouro_end;
+        this.numero_end = numero_end;
+        this.complemento_end = complemento_end;
+        this.bairro_end = bairro_end;
+        this.cidade_end = cidade_end;
+        this.estado_end = estado_end;
+        this.sexo = sexo;
+    }
+
     @Override
     public String toString(){
         return this.nome.toUpperCase() + " (" + this.sexo + ")";
