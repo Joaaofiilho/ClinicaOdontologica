@@ -23,15 +23,13 @@ public class ConsultaDAO {
         try {
             con = Conexao.getConnection();
 
-            stmt = con.prepareStatement("insert into consulta values (null,?,?,?,?,?,?,?)");
+            stmt = con.prepareStatement("insert into consulta values (null,?,?,?,?,?)");
 
-            stmt.setInt(1, c.getDia());
-            stmt.setInt(2, c.getMes());
-            stmt.setInt(3, c.getAno());
-            stmt.setString(4, c.getPaciente().getCpf());
-            stmt.setString(5, c.getHorarioCompleto());
-            stmt.setString(6, c.getDescricao());
-            stmt.setDouble(7, c.getValor());
+            stmt.setString(1, c.getPaciente().getCpf());
+            stmt.setString(2, c.getHorarioCompleto());
+            stmt.setString(3, c.getDescricao());
+            stmt.setDouble(4, c.getValor());
+            stmt.setTimestamp(5, new java.sql.Timestamp(c.getData().getTime()));
         } catch (SQLException e1) {
             e1.printStackTrace();
         } finally {
