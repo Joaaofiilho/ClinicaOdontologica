@@ -8,32 +8,24 @@ public class Consulta {
 
     //Atributos
     private Date data;
-    private int dia;
-    private int mes;
-    private int ano;
     private Paciente paciente;
     private String horarioCompleto;
     private String descricao;
-    private float valor;
+    private double valor;
     private int id;
-    private static  int contadorID = 0;
-
     //Construtores
-    public Consulta(int dia, int mes, int ano, Paciente paciente, String horarioCompleto, String descricao, float valor) {
-        this.dia = dia;
-        this.mes = mes;
-        this.ano = ano;
+
+
+    public Consulta(Date data, Paciente paciente, String horarioCompleto, String descricao, double valor) {
+        this.data = data;
         this.paciente = paciente;
         this.horarioCompleto = horarioCompleto;
         this.descricao = descricao;
         this.valor = valor;
-        this.id = contadorID++;
     }
 
-    public Consulta(int dia, int mes, int ano, Paciente paciente, String horarioCompleto, String descricao, float valor, int id) {
-        this.dia = dia;
-        this.mes = mes;
-        this.ano = ano;
+    public Consulta(Date data, Paciente paciente, String horarioCompleto, String descricao, double valor, int id) {
+        this.data = data;
         this.paciente = paciente;
         this.horarioCompleto = horarioCompleto;
         this.descricao = descricao;
@@ -69,27 +61,6 @@ public class Consulta {
         return data;
     }
 
-    public int getDia() {
-        return dia;
-    }
-    public void setDia(int dia) {
-        this.dia = dia;
-    }
-
-    public int getMes() {
-        return mes;
-    }
-    public void setMes(int mes) {
-        this.mes = mes;
-    }
-
-    public int getAno() {
-        return ano;
-    }
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
-
     public Paciente getPaciente() {
         return paciente;
     }
@@ -111,7 +82,7 @@ public class Consulta {
         this.descricao = descricao;
     }
 
-    public float getValor() {
+    public double getValor() {
         return valor;
     }
     public void setValor(float valor) {
@@ -124,15 +95,6 @@ public class Consulta {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-
-    public static void setContadorID(int contadorID) {
-        Consulta.contadorID = contadorID;
-    }
-
-    public static int getContadorID() {
-        return contadorID;
     }
 
 //    public String getData(){
