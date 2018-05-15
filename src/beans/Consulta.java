@@ -2,9 +2,12 @@ package beans;
 
 import javafx.beans.property.IntegerProperty;
 
+import java.util.Date;
+
 public class Consulta {
 
     //Atributos
+    private Date data;
     private int dia;
     private int mes;
     private int ano;
@@ -56,6 +59,16 @@ public class Consulta {
     }
 
     //Getters e setters
+
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
     public int getDia() {
         return dia;
     }
@@ -122,16 +135,16 @@ public class Consulta {
         return contadorID;
     }
 
-    public String getData(){
-        String dia = "", mes = "", ano;
-        if(this.dia < 10)
-            dia += "0";
-        if(this.mes < 10)
-            mes += "0";
-        dia += Integer.toString(this.dia);
-        mes += Integer.toString(this.mes);
-        ano = Integer.toString(this.ano);
-
-        return dia + "/" + mes + ano.substring(2, 4);
-    }
+//    public String getData(){
+//        String dia = "", mes = "", ano;
+//        if(this.dia < 10)
+//            dia += "0";
+//        if(this.mes < 10)
+//            mes += "0";
+//        dia += Integer.toString(this.dia);
+//        mes += Integer.toString(this.mes);
+//        ano = Integer.toString(this.ano);
+//
+//        return dia + "/" + mes + ano.substring(2, 4);
+//    }
 }
