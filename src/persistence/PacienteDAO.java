@@ -1,138 +1,72 @@
 package persistence;
 
 import java.io.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import beans.Paciente;
 
 
 public class PacienteDAO {
-    //Static
-    private static ArrayList<Paciente> pacientes = new ArrayList<>();
-
     //Métodos
 
     public static void inserir(Paciente p) throws Exception{
-        pacientes.add(p);
+        Connection con = null;
+        PreparedStatement stmt = null;
 
-        gravarDados();
+        try {
+            con = Conexao.getConnection();
+            stmt = con.prepareStatement("insert into paciente values (?,?,?,?,?,?,?,?,?,?,?,?)");
+            stmt.setString(1, p.getCpf());
+            stmt.setString(2, p.getNome());
+            stmt.setString(3, p.getTelefone());
+            stmt.setString(4, p.getNascimento());
+            stmt.setString(5, p.getEmail());
+            stmt.setString(6, Character.toString(p.getSexo()));
+            stmt.setString(7, p.getLogradouro_end());
+            stmt.setInt(8, p.getNumero_end());
+            stmt.setString(9, p.getComplemento_end());
+            stmt.setString(10, p.getBairro_end());
+            stmt.setString(11, p.getCidade_end());
+            stmt.setString(12, p.getEstado_end());
+
+            stmt.executeUpdate();
+        } catch (SQLException var15) {
+            var15.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException var14) {
+                var14.printStackTrace();
+            }
+        }
     }
 
     public static void alterar(Paciente p) throws Exception{
-        Paciente aux = buscarPorCpf(p.getCpf());
-        aux.setNome(p.getNome());
-        aux.setNascimento(p.getNascimento());
-        aux.setTelefone(p.getTelefone());
-        aux.setEmail(p.getEmail());
-        aux.setEndereco(p.getEndereco());
-        aux.setSexo(p.getSexo());
 
-        gravarDados();
     }
 
     public static void excluir(int index) throws Exception{
-        pacientes.remove(index);
-        gravarDados();
+
     }
 
     public static Paciente buscarPorCpf(String cpf) throws Exception{
-        for (Paciente p:
-             pacientes) {
-            if(p.getCpf().equals(cpf)) return p;
-        }
-        return null;
-    }
 
-    public static Paciente buscarPorIndex(int index) throws Exception{
-        return pacientes.get(index);
     }
 
     public ArrayList<Paciente> buscarPorNome(String nome) throws Exception{
-        ArrayList<Paciente> temp = new ArrayList<>();
-        for (Paciente p:
-             pacientes) {
-            if(p.getNome().contains(nome)) temp.add(p);
-        }
-        return temp;
+
     }
 
     private static void gravarDados() throws Exception {
 
-        File f = new File("pacientes.txt");
-
-        PrintWriter w = new PrintWriter(f);
-        w.print("");
-        w.close();
-
-        FileWriter fw = null;
-        BufferedWriter bw = null;
-
-        try {
-            //Classe que armazena caracteres
-            fw = new FileWriter(f);
-
-            //Classe que armazena strings
-            bw = new BufferedWriter(fw);
-
-            //Escreveu uma linha no texto
-            for(Paciente p : pacientes) {
-
-                bw.write(p.getNome()+";"+p.getCpf()+";"+p.getNascimento()+";"+
-                        p.getTelefone()+";"+p.getEmail()+";"+p.getEndereco()+";"+
-                        p.getSexo());
-                bw.newLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw e;
-        } finally {
-            try {
-                if (bw != null)
-                    bw.close();
-                if (fw != null)
-                    fw.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
-    public static ArrayList<Paciente> getPacientes(){
-        return pacientes;
-    }
-
-    static {
-        pacientes.clear();
-
-        File f = new File("pacientes.txt");
-        if(f.exists()) {
-            FileReader fr = null;
-            BufferedReader br = null;
-            try {
-
-                fr = new FileReader(f);
-                br = new BufferedReader(fr);
-
-                String linha;
-
-                while ((linha = br.readLine()) != null) {
-                    String[] dados = linha.split(";");
-                    Paciente p = new Paciente(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6].charAt(0));
-                    pacientes.add(p);
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    if (br != null)
-                        br.close();
-                    if (fr != null)
-                        fr.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
 }
