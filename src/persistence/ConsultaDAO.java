@@ -1,171 +1,220 @@
 package persistence;
 
 import java.io.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import beans.Agenda;
 import beans.Consulta;
+import beans.Paciente;
 
 public class ConsultaDAO {
     //Static
-    private static ArrayList<Consulta> consultas = new ArrayList<>();
 
     //Métodos
-
-    private static final char fileSeparator = ';';
-
-    private static void gravarDados() throws Exception {
-
-        File f = new File("consultas.txt");
-
-        PrintWriter w = new PrintWriter(f);
-        w.print("");
-        w.close();
-
-        FileWriter fw = null;
-        BufferedWriter bw = null;
-
+    public static void inserir(Consulta c) throws Exception{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ArrayList<Consulta> consultas = new ArrayList<Consulta>();
         try {
+            con = Conexao.getConnection();
 
-            fw = new FileWriter(f);
-            bw = new BufferedWriter(fw);
+            stmt = con.prepareStatement("insert into consulta values (null,?,?,?,?,?)");
 
+            stmt.setString(1, c.getPaciente().getCpf());
+            stmt.setString(2, c.getHorarioCompleto());
+            stmt.setString(3, c.getDescricao());
+            stmt.setDouble(4, c.getValor());
+            stmt.setTimestamp(5, new java.sql.Timestamp(c.getData().getTime()));
 
-            //Escreveu uma linha no texto
-            for(Consulta c : consultas) {
-                String dia = Integer.toString(c.getDia());
-                String mes = Integer.toString(c.getMes());
-                String ano = Integer.toString(c.getAno());
-
-                bw.write(dia +fileSeparator+ mes +fileSeparator+ ano +fileSeparator+
-                        c.getPaciente().getCpf()+fileSeparator+c.getHorarioCompleto()+
-                        fileSeparator+c.getDescricao()+fileSeparator+ c.getValor());
-                bw.newLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw e;
+            stmt.executeUpdate();
+        } catch (SQLException e1) {
+            e1.printStackTrace();
         } finally {
             try {
-                if (bw != null)
-                    bw.close();
-                if (fw != null)
-                    fw.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+                //fechar statement e connection
+                if (stmt != null)
+                    stmt.close();
+                if (con != null)
+                    con.close();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
             }
         }
-    }
-
-    public static void inserir(Consulta c) throws Exception{
-        consultas.add(c);
-
-        gravarDados();
     }
 
     public static void alterar(Consulta c) throws Exception{
-        Consulta aux = new Consulta();
-        aux.setDia(c.getDia());
-        aux.setMes(c.getMes());
-        aux.setAno(c.getAno());
-        aux.setPaciente(c.getPaciente());
-        aux.setHorarioCompleto(c.getHorarioCompleto());
-        aux.setDescricao(c.getDescricao());
-        aux.setValor(c.getValor());
-        gravarDados();
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ArrayList<Consulta> consultas = new ArrayList<Consulta>();
+        try {
+            con = Conexao.getConnection();
+
+            stmt = con.prepareStatement("update consulta set (cpf_paciente,horario_completo,descricao,valor,data) values (?,?,?,?,?) where id=?");
+
+            stmt.setString(1, c.getPaciente().getCpf());
+            stmt.setString(2, c.getHorarioCompleto());
+            stmt.setString(3, c.getDescricao());
+            stmt.setDouble(4, c.getValor());
+            stmt.setTimestamp(5, new java.sql.Timestamp(c.getData().getTime()));
+            stmt.setInt(6, c.getId());
+
+            stmt.executeUpdate();
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        } finally {
+            try {
+                //fechar statement e connection
+                if (stmt != null)
+                    stmt.close();
+                if (con != null)
+                    con.close();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }
     }
 
     public static void excluir(int id) throws Exception{
-        for(int i = 0; i < consultas.size(); i++)
-            if(consultas.get(i).getId() == id)
-                consultas.remove(id);
-        gravarDados();
-    }
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ArrayList<Consulta> consultas = new ArrayList<Consulta>();
+        try {
+            con = Conexao.getConnection();
 
-    public static ArrayList<Consulta> buscarPorCpf(String cpf) throws Exception{
-        ArrayList<Consulta> temp = new ArrayList<>();
-        for (Consulta c:
-             consultas) {
-            if(c.getPaciente().getCpf().equals(cpf)) temp.add(c);
-        }
-        return temp;
-    }
+            stmt = con.prepareStatement("delete from consulta where id=?");
+            stmt.setInt(1, id);
 
-    public static ArrayList<Consulta> buscarPorData(String data) throws Exception{
-        ArrayList<Consulta> temp = new ArrayList<>();
-        String diaMesAno[] = data.split("-");
-
-//        int dia = Integer.parseInt(diaMesAno[0]);
-//        int mes = Integer.parseInt(diaMesAno[1]);
-//        int ano = Integer.parseInt(diaMesAno[2]);
-
-
-
-        for (Consulta c: consultas) {
-            if(String.valueOf(c.getAno()).substring(2,4).equals(diaMesAno[2]) &&
-                    Integer.parseInt(diaMesAno[1]) ==  c.getMes() &&
-                        Integer.parseInt(diaMesAno[0]) == c.getDia()){
-
-                temp.add(c);
+            stmt.executeUpdate();
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        } finally {
+            try {
+                //fechar statement e connection
+                if (stmt != null)
+                    stmt.close();
+                if (con != null)
+                    con.close();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
             }
         }
-        return temp;
     }
 
-    public static Consulta buscarPorId(int id){
-        for(Consulta consulta : consultas){
-            if(consulta.getId() == id)
-                return consulta;
+    public static ArrayList<Consulta> buscarConsultasPaciente(String cpf) throws Exception{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ArrayList<Consulta> consultas = new ArrayList<Consulta>();
+        try {
+            con = Conexao.getConnection();
+
+            stmt = con.prepareStatement("select * from consulta where cpf_paciente=?");
+            stmt.setString(1, cpf);
+
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                int id = rs.getInt("id");
+                String cpf_paciente = rs.getString("cpf_paciente");
+                String horario_completo = rs.getString("horario_completo");
+                String descricao = rs.getString("descricao");
+                double valor = rs.getDouble("valor");
+                Date data = new Date(rs.getTimestamp("data").getTime());
+                
+                Consulta c = new Consulta(data, PacienteDAO.buscarPorCpf(cpf_paciente), horario_completo,
+                        descricao,valor, id);
+                consultas.add(c);
+            }
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+                if (con != null)
+                    con.close();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
         }
-        return null;
-    }
-
-
-    public static ArrayList<Consulta> getConsultas(){
         return consultas;
     }
 
-    static {
-        consultas.clear();
+    public static ArrayList<Consulta> buscarPorData(Date data) throws Exception{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ArrayList<Consulta> consultas = new ArrayList<Consulta>();
+        try {
+            con = Conexao.getConnection();
 
-        File f = new File("consultas.txt");
-        if(f.exists()) {
-            FileReader fr = null;
-            BufferedReader br = null;
+            stmt = con.prepareStatement("select * from consulta where data=?");
+            stmt.setTimestamp(1, new java.sql.Timestamp(data.getTime()));
+
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                int id = rs.getInt("id");
+                String cpf_paciente = rs.getString("cpf_paciente");
+                String horario_completo = rs.getString("horario_completo");
+                String descricao = rs.getString("descricao");
+                double valor = rs.getDouble("valor");
+                Date dataConsulta = new Date(rs.getTimestamp("data").getTime());
+
+                Consulta c = new Consulta(dataConsulta, PacienteDAO.buscarPorCpf(cpf_paciente), horario_completo,
+                        descricao,valor, id);
+                consultas.add(c);
+            }
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        } finally {
             try {
-
-                fr = new FileReader(f);
-                br = new BufferedReader(fr);
-
-                String linha;
-
-                while ((linha = br.readLine()) != null) {
-                    String[] dados = linha.split(";");
-                    try {
-                        Consulta c = new Consulta(Integer.parseInt(dados[0]), Integer.parseInt(dados[1]), Integer.parseInt(dados[2]),
-                                PacienteDAO.buscarPorCpf(dados[3]), dados[4], dados[5], Float.parseFloat(dados[6]), Consulta.getContadorID());
-                        //int dia, int mes, int ano, Paciente paciente, String horarioCompleto, String descricao, float valor
-                        consultas.add(c);
-                        Consulta.setContadorID(Consulta.getContadorID() + 1);
-                    }catch (Exception e){
-                        System.out.println("Erro ao buscar o paciente!");
-                    }
-                }
-
-//                Consulta.setContadorID(consultas.get(consultas.size() - 1).getId() + 1);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    if (br != null)
-                        br.close();
-                    if (fr != null)
-                        fr.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                if (stmt != null)
+                    stmt.close();
+                if (con != null)
+                    con.close();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
             }
         }
+        return consultas;
+    }
+
+    public static Consulta buscarPorId(int id){
+        Connection con = null;
+        PreparedStatement stmt = null;
+        Consulta consulta = null;
+        try {
+            con = Conexao.getConnection();
+
+            stmt = con.prepareStatement("select * from consulta where id=?");
+            stmt.setInt(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                int idConsulta = rs.getInt("id");
+                String cpf_paciente = rs.getString("cpf_paciente");
+                String horario_completo = rs.getString("horario_completo");
+                String descricao = rs.getString("descricao");
+                double valor = rs.getDouble("valor");
+                Date dataConsulta = new Date(rs.getTimestamp("data").getTime());
+
+                consulta = new Consulta(dataConsulta, PacienteDAO.buscarPorCpf(cpf_paciente), horario_completo,
+                        descricao,valor, idConsulta);
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+                if (con != null)
+                    con.close();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }
+        return consulta;
     }
 }
