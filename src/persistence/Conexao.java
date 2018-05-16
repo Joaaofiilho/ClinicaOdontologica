@@ -6,6 +6,8 @@ import java.sql.SQLException;
 
 public class Conexao {
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection("jdbc:mysql://localhost/clinicaodontologica?useTimezone=true&serverTimezone=UTC-3","root","12345678");
+        //
+        //serverTimezone=UTC-3
+        return DriverManager.getConnection("jdbc:mysql://localhost/clinicaodontologica?useTimezone=true&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC","root","12345678");
     }
 }
