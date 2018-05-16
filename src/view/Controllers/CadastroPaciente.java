@@ -119,16 +119,9 @@ public class CadastroPaciente {
         String data = "";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate date = dateNascimento.getValue();
-        if (date != null) {
+        if (date != null)
             data = (formatter.format(date));
-        }
-        //Montar sexo
-        char sexo;
-        if(rdBtnMasculino.isSelected()) sexo = 'M';
-        else sexo = 'F';
-        //Montar endereco
-        String endereco = txtFieldLogradouro.getText() + ", " + txtFieldNumero.getText() + " - " +
-                txtFieldBairro.getText().toUpperCase() + ", " + txtFieldCidade.getText() + "-" + txtFieldEstado.getText();
+        char sexo = rdBtnMasculino.isSelected() ? 'M' : 'F';
 
         //Validacao
         boolean valido = true;
@@ -158,7 +151,8 @@ public class CadastroPaciente {
             rdBtnMasculino.setBorder(null);
         }
         if(valido){
-            Paciente p = new Paciente(nome, cpf, data, telefone, email, endereco, sexo);
+            Paciente p = new Paciente(nome, cpf, data, telefone, email, txtFieldLogradouro.getText(), Integer.parseInt(txtFieldNumero.getText()), txtFieldComplemento.getText(),
+                    txtFieldBairro.getText(),txtFieldCidade.getText(),txtFieldEstado.getText(), sexo);
             Agenda.adicionarPaciente(p);
             mainApp.exibirTelaPrincipal();
         }
