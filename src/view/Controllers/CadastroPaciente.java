@@ -109,8 +109,6 @@ public class CadastroPaciente {
     }
 
     public void btnSalvarOnAction(ActionEvent event) throws Exception{
-        //TODO validar os dados inseridos
-
         //Dados
         String nome = txtfieldNome.getText(), telefone = txtfieldTelefone.getText(),
         email = txtfieldEmail.getText(), cpf = txtfieldCPF.getText(),

@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2531fac8-d34d-4f3f-80f1-f69b21102aa3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beans/Agenda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beans/Agenda.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persistence/ConsultaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/ConsultaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persistence/PacienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/PacienteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persistence/ProcedimentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/ProcedimentoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/Controllers/CadastroConsulta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Controllers/CadastroConsulta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -50,17 +48,44 @@
       <file leaf-file-name="Consulta.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beans/Consulta.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="17">
               <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Agenda.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CadastroPaciente.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="261">
+              <caret line="134" column="7" lean-forward="true" selection-start-line="134" selection-start-column="7" selection-end-line="134" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Paciente.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/beans/Paciente.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CadastroConsulta.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroConsulta.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="193">
+              <caret line="30" column="26" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Agenda.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beans/Agenda.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="69" column="60" selection-start-line="69" selection-start-column="60" selection-end-line="69" selection-end-column="60" />
+            <state relative-caret-position="496">
+              <caret line="44" column="46" lean-forward="true" selection-start-line="44" selection-start-column="46" selection-end-line="44" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -87,6 +112,8 @@
         <option value="$PROJECT_DIR$/src/persistence/PacienteDAO.java" />
         <option value="$PROJECT_DIR$/src/persistence/ConsultaDAO.java" />
         <option value="$PROJECT_DIR$/src/beans/Agenda.java" />
+        <option value="$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java" />
+        <option value="$PROJECT_DIR$/src/view/Controllers/CadastroConsulta.java" />
       </list>
     </option>
   </component>
@@ -147,6 +174,13 @@
               <item name="ClinicaOdontologica" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClinicaOdontologica" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClinicaOdontologica" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -246,7 +280,7 @@
       <option name="presentableId" value="Default" />
       <updated>1526404367944</updated>
       <workItem from="1526404374269" duration="969000" />
-      <workItem from="1526487271584" duration="3496000" />
+      <workItem from="1526487271584" duration="4583000" />
     </task>
     <task id="LOCAL-00001" summary="Criada a classe de Conexao">
       <created>1526404867331</created>
@@ -297,11 +331,25 @@
       <option name="project" value="LOCAL" />
       <updated>1526490192458</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Método init() da classe Agenda concertado ao adicionar os metodos buscarTudo() nos DAOs.">
+      <created>1526490821514</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1526490821514</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Metodo de salvar paciente (CadastroPaciente) concertado">
+      <created>1526491116849</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1526491116849</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4465000" />
+    <option name="totallyTimeSpent" value="5552000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
@@ -309,6 +357,7 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32750398" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -334,7 +383,6 @@
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32838285" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +399,9 @@
     <MESSAGE value="Nome da tabela &quot;item da consulta&quot; do BD modificada" />
     <MESSAGE value="Criada e implementada a classe Item_da_consultaDAO" />
     <MESSAGE value="Classe de buscar consultas de um paciente movida de ConsultaDAO para PacienteDAO" />
-    <option name="LAST_COMMIT_MESSAGE" value="Classe de buscar consultas de um paciente movida de ConsultaDAO para PacienteDAO" />
+    <MESSAGE value="Método init() da classe Agenda concertado ao adicionar os metodos buscarTudo() nos DAOs." />
+    <MESSAGE value="Metodo de salvar paciente (CadastroPaciente) concertado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Metodo de salvar paciente (CadastroPaciente) concertado" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/persistence/ConsultaDAO.java">
@@ -411,13 +461,6 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroConsulta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1683">
-          <caret line="117" column="36" selection-start-line="117" selection-start-column="36" selection-end-line="117" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/persistence/Conexao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -468,13 +511,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beans/Paciente.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/persistence/ConsultaDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -499,17 +535,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beans/Consulta.java">
+    <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroPaciente.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="261">
+          <caret line="134" column="7" lean-forward="true" selection-start-line="134" selection-start-column="7" selection-end-line="134" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/beans/Agenda.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="69" column="60" selection-start-line="69" selection-start-column="60" selection-end-line="69" selection-end-column="60" />
+        <state relative-caret-position="496">
+          <caret line="44" column="46" lean-forward="true" selection-start-line="44" selection-start-column="46" selection-end-line="44" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beans/Paciente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beans/Consulta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/Controllers/CadastroConsulta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="30" column="26" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="26" />
         </state>
       </provider>
     </entry>

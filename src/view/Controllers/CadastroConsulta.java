@@ -13,6 +13,7 @@ import persistence.ProcedimentoDAO;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class CadastroConsulta {
 
@@ -105,18 +106,13 @@ public class CadastroConsulta {
             String horarioCompleto = txtfieldHorario.getText();
             if(!checarRegex(horarioCompleto, "^[0-2]\\d:[0-5]\\d-[0-2]\\d:[0-5]\\d$", true, txtfieldHorario)) valido = false;
 
-            String data[] = new String[0];
 
             //Pegando a informação do datePicker
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            LocalDate date = dateData.getValue();
-            if (date != null) {
-                data = (formatter.format(date)).split("-");
-            }
+            java.sql.Date date = java.sql.Date.valueOf(dateData.getValue());
+            java.util.Date novaData = new Date(date.getTime());
             if(valido) {
-                Consulta consulta = new Consulta(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]),
-                        PacienteDAO.buscarPorIndex(cbPacientes.getSelectionModel().getSelectedIndex()), txtfieldHorario.getText(),
-                        txtfieldDescricao.getText(), Float.parseFloat(txtfieldValor.getText()));
+                Consulta consulta = new Consulta(novaData, PacienteDAO.buscarPorIndex(cbPacientes.getSelectionModel().getSelectedIndex()),
+                        txtfieldHorario.getText(), txtfieldDescricao.getText(), Float.parseFloat(txtfieldValor.getText()));
 
                 Agenda.adicionarConsulta(consulta);
                 mainApp.exibirTelaPrincipal();
