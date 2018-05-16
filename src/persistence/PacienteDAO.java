@@ -116,12 +116,14 @@ public class PacienteDAO {
     public static Paciente buscarPorCpf(String cpf) throws Exception{
         Connection con = null;
         PreparedStatement stmt = null;
-        ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
+        Paciente p = null;
         try {
             con = Conexao.getConnection();
 
             stmt = con.prepareStatement("select * from paciente where cpf=?");
             stmt.setString(1, cpf);
+
+
 
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
@@ -131,16 +133,16 @@ public class PacienteDAO {
                 String telefone = rs.getString("telefone");
                 String email = rs.getString("email");
                 String logradouro_end = rs.getString("logradouro_end");
-                String numero_end = rs.getString("numero_end");
+                int numero_end = rs.getInt("numero_end");
                 String complemento_end = rs.getString("complemento_end");
                 String bairro_end = rs.getString("bairro_end");
                 String cidade_end = rs.getString("cidade_end");
-                //char sexo = rs.getChar????("sexo");
-
-
-                Paciente p = new Paciente(nome, cpff, nascimento, telefone, email, logradouro_end, numero_end, complemento_end, bairro_end, cidade_end, estado_end, sexo);
-                pacientes.add(p);
+                String estado_end = rs.getString("estado_end");
+                String sexo = rs.getString("sexo");
+                char sexo2 = sexo.charAt(0);
+                p = new Paciente(nome, cpff, nascimento, telefone, email, logradouro_end, numero_end, complemento_end, bairro_end, cidade_end, estado_end, sexo2);
             }
+
         } catch (SQLException e1) {
             e1.printStackTrace();
         } finally {
@@ -153,7 +155,7 @@ public class PacienteDAO {
                 e1.printStackTrace();
             }
         }
-        return pacientes;
+        return p;
     }
 
 }

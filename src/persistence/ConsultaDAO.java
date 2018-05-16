@@ -19,7 +19,7 @@ public class ConsultaDAO {
     public static void inserir(Consulta c) throws Exception{
         Connection con = null;
         PreparedStatement stmt = null;
-        ArrayList<Consulta> consultas = new ArrayList<Consulta>();
+
         try {
             con = Conexao.getConnection();
 
