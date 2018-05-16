@@ -79,70 +79,6 @@ public class ConsultaDAO {
         }
     }
 
-    public static void excluir(int id) throws Exception{
-        Connection con = null;
-        PreparedStatement stmt = null;
-
-        try {
-            con = Conexao.getConnection();
-
-            stmt = con.prepareStatement("delete from consulta where id=?");
-            stmt.setInt(1, id);
-
-            stmt.executeUpdate();
-        } catch (SQLException e1) {
-            e1.printStackTrace();
-        } finally {
-            try {
-                //fechar statement e connection
-                if (stmt != null)
-                    stmt.close();
-                if (con != null)
-                    con.close();
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            }
-        }
-    }
-
-    public static ArrayList<Consulta> buscarConsultasPaciente(String cpf) throws Exception{
-        Connection con = null;
-        PreparedStatement stmt = null;
-        ArrayList<Consulta> consultas = new ArrayList<Consulta>();
-        try {
-            con = Conexao.getConnection();
-
-            stmt = con.prepareStatement("select * from consulta where cpf_paciente=?");
-            stmt.setString(1, cpf);
-
-            ResultSet rs = stmt.executeQuery();
-            while(rs.next()){
-                int id = rs.getInt("id");
-                String cpf_paciente = rs.getString("cpf_paciente");
-                String horario_completo = rs.getString("horario_completo");
-                String descricao = rs.getString("descricao");
-                double valor = rs.getDouble("valor");
-                Date data = new Date(rs.getTimestamp("data").getTime());
-                
-                Consulta c = new Consulta(data, PacienteDAO.buscarPorCpf(cpf_paciente), horario_completo,
-                        descricao,valor, id);
-                consultas.add(c);
-            }
-        } catch (SQLException e1) {
-            e1.printStackTrace();
-        } finally {
-            try {
-                if (stmt != null)
-                    stmt.close();
-                if (con != null)
-                    con.close();
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            }
-        }
-        return consultas;
-    }
-
     public static ArrayList<Consulta> buscarPorData(Date data) throws Exception{
         Connection con = null;
         PreparedStatement stmt = null;
@@ -216,5 +152,31 @@ public class ConsultaDAO {
             }
         }
         return consulta;
+    }
+
+    public static void excluir(int id) throws Exception{
+        Connection con = null;
+        PreparedStatement stmt = null;
+
+        try {
+            con = Conexao.getConnection();
+
+            stmt = con.prepareStatement("delete from consulta where id=?");
+            stmt.setInt(1, id);
+
+            stmt.executeUpdate();
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        } finally {
+            try {
+                //fechar statement e connection
+                if (stmt != null)
+                    stmt.close();
+                if (con != null)
+                    con.close();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }
     }
 }
