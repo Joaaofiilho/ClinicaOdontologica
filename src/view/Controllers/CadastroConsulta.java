@@ -3,6 +3,7 @@ package view.Controllers;
 import app.MainApp;
 import beans.Agenda;
 import beans.Consulta;
+import beans.Paciente;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -28,7 +29,7 @@ public class CadastroConsulta {
     public DatePicker dateData;
 
     //Combobox
-    public ComboBox<String> cbPacientes;
+    public ComboBox<Paciente> cbPacientes;
 
     //Botoes
     public Button btnCancelar;
@@ -79,7 +80,7 @@ public class CadastroConsulta {
     }
 
     public void preencher(Consulta consulta){
-        txtfieldValor.setText(Float.toString(consulta.getValor()));
+        txtfieldValor.setText(Double.toString(consulta.getValor()));
         txtfieldHorario.setText(consulta.getHorarioCompleto());
         txtfieldDescricao.setText(consulta.getDescricao());
     }
