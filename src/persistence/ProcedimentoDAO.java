@@ -55,6 +55,7 @@ public class ProcedimentoDAO {
             stmt.setString(2, p.getDescricao());
             stmt.setDouble(3, p.getValor());
             stmt.setInt(4, p.getDuracao());
+            stmt.setInt(5, p.getId());
 
             stmt.executeUpdate();
         } catch (SQLException e1) {
@@ -110,9 +111,13 @@ public class ProcedimentoDAO {
 
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
-                //TODO!
+                int idProc = rs.getInt("id");
+                String titulo = rs.getString("titulo");
+                String descricao = rs.getString("descricao");
+                double valor = rs.getDouble("valor");
+                int duracao = rs.getInt("duracao");
 
-                //proc = new procedimento blah blah
+                proc = new Procedimento(titulo, descricao, valor, duracao, idProc);
             }
         }catch (Exception e) {
             e.printStackTrace();
