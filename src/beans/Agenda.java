@@ -26,11 +26,13 @@ public class Agenda {
         calendario.add(Calendar.DAY_OF_MONTH, -1);
     }
 
-    public static String getData(){
-        //Date converter
-        Date data = calendario.getTime();
+    public static String transformarData(Date data){
         LocalDateTime datetime = LocalDateTime.parse(data.toString(), DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss zzz yyyy"));
         return datetime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+    }
+
+    public static Date getData(){
+        return calendario.getTime();
     }
 
     public static void adicionarPaciente(Paciente paciente) throws Exception{

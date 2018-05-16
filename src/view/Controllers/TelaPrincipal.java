@@ -33,7 +33,8 @@ public class TelaPrincipal {
     public ToggleButton tglConsulta;
 
     //Lista lateral
-    public ListView<String> lstViewLista;
+    public ListView<Consulta> lstViewConsulta;
+    public ListView<Paciente> lstViewPaciente;
     public Button btnAdicionar;
     public Button btnModificar;
     public Button btnRemover;
@@ -49,9 +50,8 @@ public class TelaPrincipal {
         this.dialogStage = dialogStage;
     }
 
-    //Agenda agenda = new Agenda();
     public void initialize(){
-        lblDia.setText(Agenda.getData());
+        lblDia.setText(Agenda.transformarData(Agenda.getData()));
         tglConsulta.fire();
 //        new Thread() {
 //
@@ -79,38 +79,42 @@ public class TelaPrincipal {
     //Controle do dia
     public void btnDireitaOnAction(ActionEvent event){
         Agenda.acrescentarDia();
-        lblDia.setText(Agenda.getData());
+        lblDia.setText(Agenda.transformarData(Agenda.getData()));
 
-        ObservableList<String> consultaData = FXCollections.observableArrayList();
+        ObservableList<Consulta> consultaData = FXCollections.observableArrayList();
         try {
-            for (Consulta c : ConsultaDAO.buscarPorData(lblDia.getText())) {
-                consultaData.add(c.toString());
-            }
+            consultaData.addAll(ConsultaDAO.buscarPorData(Agenda.getData()));
         } catch (Exception e) {
+            System.err.println("Erro: Impossível encontrar as consultas.");
             e.printStackTrace();
         }
-        lstViewLista.setItems(consultaData);
+        lstViewConsulta.setItems(consultaData);
     }
 
     public void btnEsquerdaOnAction(ActionEvent event){
         Agenda.decrescerDia();
-        lblDia.setText(Agenda.getData());
+        lblDia.setText(Agenda.transformarData(Agenda.getData()));
 
-        ObservableList<String> consultaData = FXCollections.observableArrayList();
+        ObservableList<Consulta> consultaData = FXCollections.observableArrayList();
         try {
-            for (Consulta c : ConsultaDAO.buscarPorData(lblDia.getText())) {
-                consultaData.add(c.toString());
-            }
+            consultaData.addAll(ConsultaDAO.buscarPorData(Agenda.getData()));
         } catch (Exception e) {
+            System.err.println("Erro: Impossível encontrar as consultas.");
             e.printStackTrace();
         }
-        lstViewLista.setItems(consultaData);
+        lstViewConsulta.setItems(consultaData);
     }
 
     //Controle lista lateral
     public void tglPacienteOnAction(ActionEvent event){
         tglConsulta.setSelected(false);
-        lstViewLista.setItems(Agenda.getPacientes());
+        lstViewPaciente.setItems(Agenda.getPacientes());
+
+        lstViewConsulta.setVisible(false);
+        lstViewConsulta.setManaged(false);
+        lstViewPaciente.setVisible(true);
+        lstViewPaciente.setManaged(true);
+
         tglPaciente.setDisable(true);
         tglConsulta.setDisable(false);
 
@@ -121,45 +125,45 @@ public class TelaPrincipal {
 
     public void tglConsultaOnAction(ActionEvent event){
         tglPaciente.setSelected(false);
-        lblDia.setText(Agenda.getData());
+        lblDia.setText(Agenda.transformarData(Agenda.getData()));
 
-        ObservableList<String> consultaData = FXCollections.observableArrayList();
+        ObservableList<Consulta> consultaData = FXCollections.observableArrayList();
         try {
-            for (Consulta c : ConsultaDAO.buscarPorData(lblDia.getText())) {
-                consultaData.add(c.toString());
-            }
+            consultaData.addAll(ConsultaDAO.buscarPorData(Agenda.getData()));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        lstViewLista.setItems(consultaData);
+        lstViewConsulta.setItems(consultaData);
+
+        lstViewConsulta.setVisible(true);
+        lstViewConsulta.setManaged(true);
+        lstViewPaciente.setVisible(false);
+        lstViewPaciente.setManaged(false);
 
         tglPaciente.setDisable(false);
         tglConsulta.setDisable(true);
 
         btnDireita.setDisable(false);
         btnEsquerda.setDisable(false);
-
     }
 
     //Lista lateral
     public void btnAdicionarOnAction(ActionEvent event){
-        if(tglPaciente.isSelected()){
+        if(tglPaciente.isSelected())
             mainApp.exibirCadastroPaciente();
-        }else{
+        else
             mainApp.exibirCadastroConsulta();
-        }
     }
 
     public void btnModificarOnAction(ActionEvent event){
             if (tglPaciente.isSelected()) {
                 try {
-                    mainApp.exibirCadastroPaciente(PacienteDAO.buscarPorIndex(lstViewLista.getSelectionModel().getSelectedIndex()));
+                    mainApp.exibirCadastroPaciente(lstViewPaciente.getSelectionModel().getSelectedItem());
                 } catch (Exception e) {
-
+                    System.err.println("Erro: Impossível exibir cadastro do paciente!");
                 }
             } else {
-                String id = lstViewLista.getSelectionModel().getSelectedItem().split("-")[2].trim();
-                mainApp.exibirCadastroConsulta(ConsultaDAO.buscarPorId(Integer.parseInt(id)));
+                mainApp.exibirCadastroConsulta(ConsultaDAO.buscarPorId(lstViewConsulta.getSelectionModel().getSelectedItem().getId()));
             }
 
     }
@@ -167,40 +171,33 @@ public class TelaPrincipal {
     public void btnRemoverOnAction(ActionEvent event) {
         if(tglPaciente.isSelected()){
             try {
-                PacienteDAO.excluir(lstViewLista.getSelectionModel().getSelectedIndex());
-                ObservableList<String> pacientes = FXCollections.observableArrayList();
+                PacienteDAO.excluir(lstViewPaciente.getSelectionModel().getSelectedItem().getCpf());
+                ObservableList<Paciente> pacientes = FXCollections.observableArrayList();
                 try {
-                    for (Paciente p : PacienteDAO.getPacientes()) {
-                        pacientes.add(p.toString());
-                    }
+                    pacientes.addAll(Agenda.getPacientes());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                lstViewLista.setItems(pacientes);
+                lstViewPaciente.setItems(pacientes);
             }catch (Exception e){
 
             }
         }else{
             try {
-                String id = lstViewLista.getSelectionModel().getSelectedItem().split("-")[2].trim();
-                ConsultaDAO.excluir(Integer.parseInt(id));
-                Agenda.getPacientes().clear();
-                Agenda.init();
+                ConsultaDAO.excluir(lstViewConsulta.getSelectionModel().getSelectedItem().getId());
+                //Agenda.getPacientes().clear();
+                //Agenda.init();
 
-                ObservableList<String> consultas = FXCollections.observableArrayList();
+                ObservableList<Consulta> consultas = FXCollections.observableArrayList();
                 try {
-                    for (Consulta c : ConsultaDAO.buscarPorData(lblDia.getText())) {
-                        consultas.add(c.toString());
-                    }
+                    consultas.addAll(ConsultaDAO.buscarPorData(Agenda.getData()));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                lstViewLista.setItems(consultas);
-
+                lstViewConsulta.setItems(consultas);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
 
 

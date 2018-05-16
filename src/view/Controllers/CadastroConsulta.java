@@ -112,7 +112,7 @@ public class CadastroConsulta {
             java.sql.Date date = java.sql.Date.valueOf(dateData.getValue());
             java.util.Date novaData = new Date(date.getTime());
             if(valido) {
-                Consulta consulta = new Consulta(novaData, PacienteDAO.buscarPorIndex(cbPacientes.getSelectionModel().getSelectedIndex()),
+                Consulta consulta = new Consulta(novaData,cbPacientes.getSelectionModel().getSelectedItem(),
                         txtfieldHorario.getText(), txtfieldDescricao.getText(), Float.parseFloat(txtfieldValor.getText()));
 
                 Agenda.adicionarConsulta(consulta);
