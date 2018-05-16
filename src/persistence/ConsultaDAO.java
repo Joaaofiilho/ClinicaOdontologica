@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import beans.Agenda;
 import beans.Consulta;
@@ -77,6 +78,42 @@ public class ConsultaDAO {
                 e1.printStackTrace();
             }
         }
+    }
+
+    public static List<Consulta> buscarTudo() throws Exception{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ArrayList<Consulta> consultas = new ArrayList<Consulta>();
+        try {
+            con = Conexao.getConnection();
+
+            stmt = con.prepareStatement("select * from consulta");
+
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                int id = rs.getInt("id");
+                String cpf_paciente = rs.getString("cpf_paciente");
+                String horario_completo = rs.getString("horario_completo");
+                String descricao = rs.getString("descricao");
+                double valor = rs.getDouble("valor");
+                Date dataConsulta = new Date(rs.getTimestamp("data").getTime());
+
+                consultas.add(new Consulta(dataConsulta, PacienteDAO.buscarPorCpf(cpf_paciente), horario_completo,
+                        descricao,valor, id));
+            }
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+                if (con != null)
+                    con.close();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }
+        return consultas;
     }
 
     public static ArrayList<Consulta> buscarPorData(Date data) throws Exception{

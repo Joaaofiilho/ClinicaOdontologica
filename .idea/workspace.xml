@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2531fac8-d34d-4f3f-80f1-f69b21102aa3" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/persistence/Item_da_consultaDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/beans/Agenda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beans/Agenda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/ConsultaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/ConsultaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/PacienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/PacienteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/ProcedimentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/ProcedimentoDAO.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,23 +17,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ProcedimentoDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/persistence/ProcedimentoDAO.java">
+      <file leaf-file-name="ConsultaDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/persistence/ConsultaDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="112" column="29" lean-forward="true" selection-start-line="112" selection-start-column="29" selection-end-line="112" selection-end-column="29" />
+            <state relative-caret-position="105">
+              <caret line="82" column="62" selection-start-line="82" selection-start-column="62" selection-end-line="82" selection-end-column="62" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Item_da_consultaDAO.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/persistence/Item_da_consultaDAO.java">
+      <file leaf-file-name="PacienteDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/persistence/PacienteDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="118" column="33" lean-forward="true" selection-start-line="118" selection-start-column="33" selection-end-line="118" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="173">
+              <caret line="118" column="62" selection-start-line="118" selection-start-column="62" selection-end-line="118" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProcedimentoDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/persistence/ProcedimentoDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="102" column="66" selection-start-line="102" selection-start-column="66" selection-end-line="102" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Consulta.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/beans/Consulta.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Agenda.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/beans/Agenda.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="69" column="60" selection-start-line="69" selection-start-column="60" selection-end-line="69" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -52,8 +82,11 @@
       <list>
         <option value="$PROJECT_DIR$/src/persistence/Conexao.java" />
         <option value="$PROJECT_DIR$/src/beans/Procedimento.java" />
-        <option value="$PROJECT_DIR$/src/persistence/ProcedimentoDAO.java" />
         <option value="$PROJECT_DIR$/src/persistence/Item_da_consultaDAO.java" />
+        <option value="$PROJECT_DIR$/src/persistence/ProcedimentoDAO.java" />
+        <option value="$PROJECT_DIR$/src/persistence/PacienteDAO.java" />
+        <option value="$PROJECT_DIR$/src/persistence/ConsultaDAO.java" />
+        <option value="$PROJECT_DIR$/src/beans/Agenda.java" />
       </list>
     </option>
   </component>
@@ -213,7 +246,7 @@
       <option name="presentableId" value="Default" />
       <updated>1526404367944</updated>
       <workItem from="1526404374269" duration="969000" />
-      <workItem from="1526487271584" duration="2684000" />
+      <workItem from="1526487271584" duration="3496000" />
     </task>
     <task id="LOCAL-00001" summary="Criada a classe de Conexao">
       <created>1526404867331</created>
@@ -250,11 +283,25 @@
       <option name="project" value="LOCAL" />
       <updated>1526488120019</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Criada e implementada a classe Item_da_consultaDAO">
+      <created>1526489991693</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1526489991693</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Classe de buscar consultas de um paciente movida de ConsultaDAO para PacienteDAO">
+      <created>1526490192458</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1526490192458</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3653000" />
+    <option name="totallyTimeSpent" value="4465000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
@@ -302,7 +349,9 @@
     <MESSAGE value="Projeto configurado corretamente (Versão do Java)" />
     <MESSAGE value="Método Alterar de ProcedimentoDAO arrumado." />
     <MESSAGE value="Nome da tabela &quot;item da consulta&quot; do BD modificada" />
-    <option name="LAST_COMMIT_MESSAGE" value="Nome da tabela &quot;item da consulta&quot; do BD modificada" />
+    <MESSAGE value="Criada e implementada a classe Item_da_consultaDAO" />
+    <MESSAGE value="Classe de buscar consultas de um paciente movida de ConsultaDAO para PacienteDAO" />
+    <option name="LAST_COMMIT_MESSAGE" value="Classe de buscar consultas de um paciente movida de ConsultaDAO para PacienteDAO" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/persistence/ConsultaDAO.java">
@@ -402,17 +451,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beans/Agenda.java">
+    <entry file="file://$PROJECT_DIR$/src/beans/Procedimento.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="187">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/persistence/Item_da_consultaDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="74" column="21" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/beans/Paciente.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="493">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/persistence/ConsultaDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="82" column="62" selection-start-line="82" selection-start-column="62" selection-end-line="82" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/persistence/PacienteDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="118" column="62" selection-start-line="118" selection-start-column="62" selection-end-line="118" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/persistence/ProcedimentoDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="102" column="66" selection-start-line="102" selection-start-column="66" selection-end-line="102" selection-end-column="66" />
         </state>
       </provider>
     </entry>
@@ -423,44 +506,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/persistence/ConsultaDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/beans/Agenda.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="31" column="33" lean-forward="true" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/persistence/PacienteDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="116" column="8" selection-start-line="116" selection-start-column="8" selection-end-line="157" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/beans/Procedimento.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/persistence/ProcedimentoDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="112" column="29" lean-forward="true" selection-start-line="112" selection-start-column="29" selection-end-line="112" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/persistence/Item_da_consultaDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="118" column="33" lean-forward="true" selection-start-line="118" selection-start-column="33" selection-end-line="118" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="408">
+          <caret line="69" column="60" selection-start-line="69" selection-start-column="60" selection-end-line="69" selection-end-column="60" />
         </state>
       </provider>
     </entry>

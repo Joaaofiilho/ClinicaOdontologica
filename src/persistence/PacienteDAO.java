@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import beans.Consulta;
 import beans.Paciente;
@@ -113,6 +114,47 @@ public class PacienteDAO {
                 e1.printStackTrace();
             }
         }
+    }
+
+    public static List<Paciente> buscarTudo() throws Exception{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ArrayList<Paciente> pacientes = new ArrayList<>();
+        try {
+            con = Conexao.getConnection();
+
+            stmt = con.prepareStatement("select * from paciente");
+
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                String nome = rs.getString("nome");
+                String cpf = rs.getString("cpf");
+                String nascimento = rs.getString("nascimento");
+                String telefone = rs.getString("telefone");
+                String email = rs.getString("email");
+                String logradouro_end = rs.getString("logradouro_end");
+                int numero_end = rs.getInt("numero_end");
+                String complemento_end = rs.getString("complemento_end");
+                String bairro_end = rs.getString("bairro_end");
+                String cidade_end = rs.getString("cidade_end");
+                String estado_end = rs.getString("estado_end");
+                String sexo = rs.getString("sexo");
+                char sexo2 = sexo.charAt(0);
+                pacientes.add(new Paciente(nome, cpf, nascimento, telefone, email, logradouro_end, numero_end, complemento_end, bairro_end, cidade_end, estado_end, sexo2));
+            }
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+                if (con != null)
+                    con.close();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }
+        return pacientes;
     }
 
     public static Paciente buscarPorCpf(String cpf) throws Exception{

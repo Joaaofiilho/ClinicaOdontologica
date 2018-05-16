@@ -15,10 +15,6 @@ public class Agenda {
     private static ObservableList<String> obsConsultas = FXCollections.observableArrayList();
     private static ObservableList<String> obsProcedimentos = FXCollections.observableArrayList();
 
-    private static ConsultaDAO conDAO = new ConsultaDAO();
-    private static PacienteDAO pacDAO = new PacienteDAO();
-    private static ProcedimentoDAO proDAO = new ProcedimentoDAO();
-
     public static void acrescentarDia(){
         calendario.add(Calendar.DAY_OF_MONTH, 1);
     }
@@ -40,17 +36,17 @@ public class Agenda {
     }
 
     public static void adicionarPaciente(Paciente paciente) throws Exception{
-        pacDAO.inserir(paciente);
+        PacienteDAO.inserir(paciente);
         obsPacientes.add(paciente.toString());
     }
 
     public static void adicionarConsulta(Consulta consulta) throws Exception{
-        conDAO.inserir(consulta);
+        ConsultaDAO.inserir(consulta);
         obsConsultas.add(consulta.toString());
     }
 
     public static void adicionarProcedimento(Procedimento procedimento) throws Exception {
-        proDAO.inserir(procedimento);
+        ProcedimentoDAO.inserir(procedimento);
         obsProcedimentos.add(procedimento.toString());
     }
     //Getters e setters
@@ -63,16 +59,19 @@ public class Agenda {
     }
 
     public static void init(){
-        calendario = new GregorianCalendar();
-        for(Consulta consulta : conDAO.getConsultas())
-            obsConsultas.add(consulta.toString());
+        try {
+            calendario = new GregorianCalendar();
+            for (Consulta consulta : ConsultaDAO.buscarTudo())
+                obsConsultas.add(consulta.toString());
 
-        for(Paciente paciente : pacDAO.getPacientes())
-            obsPacientes.add(paciente.toString());
+            for (Paciente paciente : PacienteDAO.buscarTudo())
+                obsPacientes.add(paciente.toString());
 
-        for(Procedimento procedimento : proDAO.getProcedimentos())
-            obsProcedimentos.add(procedimento.toString());
-
+            for (Procedimento procedimento : ProcedimentoDAO.buscarTudo())
+                obsProcedimentos.add(procedimento.toString());
+        }catch (Exception e){
+            System.err.println("Erro: Impossível pegar os dados do banco de dados");
+        }
 
     }
 }

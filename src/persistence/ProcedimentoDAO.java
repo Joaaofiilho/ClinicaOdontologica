@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import beans.Procedimento;
 
@@ -99,6 +100,40 @@ public class ProcedimentoDAO {
         }
     }
 
+    public static List<Procedimento> buscarTudo() throws Exception{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ArrayList<Procedimento> procs = new ArrayList<>();
+        try {
+            con = Conexao.getConnection();
+
+            stmt = con.prepareStatement("select * from procedimento");
+
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                int idProc = rs.getInt("id");
+                String titulo = rs.getString("titulo");
+                String descricao = rs.getString("descricao");
+                double valor = rs.getDouble("valor");
+                int duracao = rs.getInt("duracao");
+
+                procs.add(new Procedimento(titulo, descricao, valor, duracao, idProc));
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+                if (con != null)
+                    con.close();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }
+        return procs;
+    }
+
     public static Procedimento buscarPorID(int id) throws NullPointerException{
         Connection con = null;
         PreparedStatement stmt = null;
@@ -132,20 +167,6 @@ public class ProcedimentoDAO {
             }
         }
         return proc;
-    }
-
-    public static ArrayList<Procedimento> buscarProcedimento(String procedimento){
-        return null;
-    }
-
-    public int tamanho(){
-        //return procedimentos.size();
-        //A gente precisa disso?
-        return 0;
-    }
-
-    public void exibirTodosProcedimentos(){
-        //E disso?
     }
 
 }
