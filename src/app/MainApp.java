@@ -76,7 +76,8 @@ public class MainApp extends Application {
             controller.setMainApp(this);
 
         }catch (IOException e){
-            System.err.println("Erro: Falha ao exibir tela principal (" + e.getMessage() + ")");
+            e.printStackTrace();
+//            System.err.println("Erro: Falha ao exibir tela principal (" + e.getMessage() + ")");
         }
     }
 

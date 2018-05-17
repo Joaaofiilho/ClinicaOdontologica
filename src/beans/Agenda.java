@@ -6,6 +6,8 @@ import persistence.ConsultaDAO;
 import persistence.PacienteDAO;
 import persistence.ProcedimentoDAO;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -27,8 +29,11 @@ public class Agenda {
     }
 
     public static String transformarData(Date data){
-        LocalDateTime datetime = LocalDateTime.parse(data.toString(), DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss zzz yyyy"));
-        return datetime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+//        LocalDateTime datetime = LocalDateTime.parse(data.toString(), DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss zzz yyyy"));
+
+        return DateFormat.getDateInstance().format(data);
+
+
     }
 
     public static Date getData(){

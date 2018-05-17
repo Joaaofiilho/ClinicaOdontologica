@@ -8,6 +8,6 @@ public class Conexao {
     public static Connection getConnection() throws SQLException {
         //
         //serverTimezone=UTC-3
-        return DriverManager.getConnection("jdbc:mysql://localhost/clinicaodontologica?useTimezone=true&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC","root","12345678");
+        return DriverManager.getConnection("jdbc:mysql://localhost/clinicaodontologica?useTimezone=true&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC","root","root");
     }
 }
