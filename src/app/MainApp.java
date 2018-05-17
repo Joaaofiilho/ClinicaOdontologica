@@ -3,6 +3,7 @@ package app;
 import beans.Agenda;
 import beans.Paciente;
 import beans.Consulta;
+import beans.Procedimento;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import persistence.ProcedimentoDAO;
 import view.Controllers.*;
 
 import java.io.IOException;
@@ -28,6 +30,9 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("Clínica Odontológica");
 
         Agenda.init();
+        for(Procedimento p: ProcedimentoDAO.buscarTudo()){
+            System.out.println(p.getId());
+        }
         initRoot();
     }
 
@@ -62,6 +67,7 @@ public class MainApp extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../view/TelaPrincipal.fxml"));
+
             AnchorPane telaPrincipalPane = (AnchorPane) loader.load();
 
             rootLayout.setCenter(telaPrincipalPane);
@@ -70,7 +76,7 @@ public class MainApp extends Application {
             controller.setMainApp(this);
 
         }catch (IOException e){
-            System.out.print("um");
+            System.err.println("Erro: Falha ao exibir tela principal (" + e.getMessage() + ")");
         }
     }
 
@@ -85,7 +91,7 @@ public class MainApp extends Application {
             CadastroPaciente controller = loader.getController();
             controller.setMainApp(this);
         }catch (IOException e){
-            System.out.print("2");
+            System.err.println("Erro: Falha ao exibir a tela de cadastro de paciente.");
         }
     }
 
@@ -101,7 +107,7 @@ public class MainApp extends Application {
             rootLayout.setCenter(telaCadastroPacientePane);
             controller.setMainApp(this);
         }catch (IOException e){
-            System.out.print("2");
+            System.err.println("Erro: Falha ao exibir a tela de modificação de paciente.");
         }
     }
 
@@ -116,7 +122,7 @@ public class MainApp extends Application {
             CadastroConsulta controller = loader.getController();
             controller.setMainApp(this);
         }catch (IOException e){
-            System.out.print("3");
+            System.err.println("Erro: Falha ao exibir a tela de cadastro de consulta.");
         }
     }
 
@@ -132,7 +138,7 @@ public class MainApp extends Application {
             rootLayout.setCenter(telaPrincipalPane);
             controller.setMainApp(this);
         }catch (IOException e){
-            System.out.print("3");
+            System.err.println("Erro: Falha ao exibir a tela de modificação de paciente.");
         }
     }
 
@@ -147,7 +153,7 @@ public class MainApp extends Application {
             CadastroProcedimento controller = loader.getController();
             controller.setMainApp(this);
         }catch (IOException e){
-            System.out.print("4");
+            System.err.println("Erro: Falha ao exibir a tela de cadastro de procedimento.");
         }
     }
 }
