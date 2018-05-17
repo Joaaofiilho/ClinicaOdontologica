@@ -149,20 +149,26 @@ public class TelaPrincipal {
 
     //Lista lateral
     public void btnAdicionarOnAction(ActionEvent event){
-        if(tglPaciente.isSelected())
+        if(tglPaciente.isSelected()) {
+            CadastroPaciente.setModificando(false);
             mainApp.exibirCadastroPaciente();
-        else
+        }else {
+            CadastroConsulta.setModificando(false);
             mainApp.exibirCadastroConsulta();
+        }
     }
 
     public void btnModificarOnAction(ActionEvent event){
             if (tglPaciente.isSelected()) {
                 try {
+                    CadastroPaciente.setModificando(true);
                     mainApp.exibirCadastroPaciente(lstViewPaciente.getSelectionModel().getSelectedItem());
                 } catch (Exception e) {
-                    System.err.println("Erro: Impossível exibir cadastro do paciente!");
+                    System.err.println("Erro: Impossível exibir cadastro do paciente! ");
+                    e.getStackTrace();
                 }
             } else {
+                CadastroConsulta.setModificando(true);
                 mainApp.exibirCadastroConsulta(ConsultaDAO.buscarPorId(lstViewConsulta.getSelectionModel().getSelectedItem().getId()));
             }
 

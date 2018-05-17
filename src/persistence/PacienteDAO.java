@@ -26,7 +26,7 @@ public class PacienteDAO {
             stmt.setString(1, p.getCpf());
             stmt.setString(2, p.getNome());
             stmt.setString(3, p.getTelefone());
-            stmt.setString(4, p.getNascimento());
+            stmt.setDate(4, new java.sql.Date(p.getNascimento().getTime()));
             stmt.setString(5, p.getEmail());
             stmt.setString(6, Character.toString(p.getSexo()));
             stmt.setString(7, p.getLogradouro_end());
@@ -60,11 +60,11 @@ public class PacienteDAO {
         try {
             con = Conexao.getConnection();
 
-            stmt = con.prepareStatement("update consulta set (nome, telefone, nascimento, email, sexo, logradouro_end, numero_end, complemento_end, bairro_end, cidade_end, estado_end) values (?,?,?,?,?) where cpf=?");
+            stmt = con.prepareStatement("update paciente set nome=?, telefone=?, nascimento=?, email=?, sexo=?, logradouro_end=?, numero_end=?, complemento_end=?, bairro_end=?, cidade_end=?, estado_end=? where cpf=?");
 
             stmt.setString(1, p.getNome());
             stmt.setString(2, p.getTelefone());
-            stmt.setString(3, p.getNascimento());
+            stmt.setDate(3, new java.sql.Date(p.getNascimento().getTime()));
             stmt.setString(4, p.getEmail());
             stmt.setString(5, Character.toString(p.getSexo()));
             stmt.setString(6, p.getLogradouro_end());
@@ -129,7 +129,7 @@ public class PacienteDAO {
             while(rs.next()){
                 String nome = rs.getString("nome");
                 String cpf = rs.getString("cpf");
-                String nascimento = rs.getString("nascimento");
+                Date nascimento = rs.getDate("nascimento");
                 String telefone = rs.getString("telefone");
                 String email = rs.getString("email");
                 String logradouro_end = rs.getString("logradouro_end");
@@ -173,7 +173,7 @@ public class PacienteDAO {
             while(rs.next()){
                 String nome = rs.getString("nome");
                 String cpff = rs.getString("cpf");
-                String nascimento = rs.getString("nascimento");
+                Date nascimento = rs.getDate("nascimento");
                 String telefone = rs.getString("telefone");
                 String email = rs.getString("email");
                 String logradouro_end = rs.getString("logradouro_end");

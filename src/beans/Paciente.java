@@ -1,11 +1,12 @@
 package beans;
 
 import java.text.DateFormat;
+import java.util.Date;
 
 public class Paciente {
     private String nome;
     private String cpf;
-    private String nascimento;
+    private Date nascimento;
     private String telefone;
     private String email;
     private String logradouro_end;
@@ -19,7 +20,7 @@ public class Paciente {
     //Construtores
 
 
-    public Paciente(String nome, String cpf, String nascimento, String telefone, String email, String logradouro_end, int numero_end, String complemento_end, String bairro_end, String cidade_end, String estado_end, char sexo) {
+    public Paciente(String nome, String cpf, Date nascimento, String telefone, String email, String logradouro_end, int numero_end, String complemento_end, String bairro_end, String cidade_end, String estado_end, char sexo) {
         this.nome = nome;
         this.cpf = cpf;
         this.nascimento = nascimento;
@@ -54,10 +55,10 @@ public class Paciente {
         this.cpf = cpf;
     }
 
-    public String getNascimento() {
+    public Date getNascimento() {
         return nascimento;
     }
-    public void setNascimento(String nascimento) {
+    public void setNascimento(Date nascimento) {
         this.nascimento = nascimento;
     }
 

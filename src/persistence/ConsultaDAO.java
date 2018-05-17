@@ -30,7 +30,7 @@ public class ConsultaDAO {
             stmt.setString(2, c.getHorarioCompleto());
             stmt.setString(3, c.getDescricao());
             stmt.setDouble(4, c.getValor());
-            stmt.setTimestamp(5, new java.sql.Timestamp(c.getData().getTime()));
+            stmt.setDate(5, new java.sql.Date(c.getData().getTime()));
 
             stmt.executeUpdate();
         } catch (SQLException e1) {
@@ -55,13 +55,13 @@ public class ConsultaDAO {
         try {
             con = Conexao.getConnection();
 
-            stmt = con.prepareStatement("update consulta set (cpf_paciente,horario_completo,descricao,valor,data) values (?,?,?,?,?) where id=?");
+            stmt = con.prepareStatement("update consulta set cpf_paciente=?,horario_completo=?,descricao=?,valor=?,data_consulta=? where id=?");
 
             stmt.setString(1, c.getPaciente().getCpf());
             stmt.setString(2, c.getHorarioCompleto());
             stmt.setString(3, c.getDescricao());
             stmt.setDouble(4, c.getValor());
-            stmt.setTimestamp(5, new java.sql.Timestamp(c.getData().getTime()));
+            stmt.setDate(5, new java.sql.Date(c.getData().getTime()));
             stmt.setInt(6, c.getId());
 
             stmt.executeUpdate();
@@ -69,7 +69,6 @@ public class ConsultaDAO {
             e1.printStackTrace();
         } finally {
             try {
-                //fechar statement e connection
                 if (stmt != null)
                     stmt.close();
                 if (con != null)
@@ -96,7 +95,7 @@ public class ConsultaDAO {
                 String horario_completo = rs.getString("horario_completo");
                 String descricao = rs.getString("descricao");
                 double valor = rs.getDouble("valor");
-                Date dataConsulta = new Date(rs.getTimestamp("data").getTime());
+                Date dataConsulta = new Date(rs.getDate("data_consulta").getTime());
 
                 consultas.add(new Consulta(dataConsulta, PacienteDAO.buscarPorCpf(cpf_paciente), horario_completo,
                         descricao,valor, id));
@@ -116,15 +115,15 @@ public class ConsultaDAO {
         return consultas;
     }
 
-    public static ArrayList<Consulta> buscarPorData(Date data) throws Exception{
+    public static List<Consulta> buscarPorData(Date data) throws Exception{
         Connection con = null;
         PreparedStatement stmt = null;
         ArrayList<Consulta> consultas = new ArrayList<Consulta>();
         try {
             con = Conexao.getConnection();
 
-            stmt = con.prepareStatement("select * from consulta where data=?");
-            stmt.setTimestamp(1, new java.sql.Timestamp(data.getTime()));
+            stmt = con.prepareStatement("select * from consulta where data_consulta=?");
+            stmt.setDate(1, new java.sql.Date(data.getTime()));
 
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
@@ -133,7 +132,7 @@ public class ConsultaDAO {
                 String horario_completo = rs.getString("horario_completo");
                 String descricao = rs.getString("descricao");
                 double valor = rs.getDouble("valor");
-                Date dataConsulta = new Date(rs.getTimestamp("data").getTime());
+                Date dataConsulta = new Date(rs.getDate("data_consulta").getTime());
 
                 Consulta c = new Consulta(dataConsulta, PacienteDAO.buscarPorCpf(cpf_paciente), horario_completo,
                         descricao,valor, id);
@@ -171,7 +170,7 @@ public class ConsultaDAO {
                 String horario_completo = rs.getString("horario_completo");
                 String descricao = rs.getString("descricao");
                 double valor = rs.getDouble("valor");
-                Date dataConsulta = new Date(rs.getTimestamp("data").getTime());
+                Date dataConsulta = new Date(rs.getDate("data_consulta").getTime());
 
                 consulta = new Consulta(dataConsulta, PacienteDAO.buscarPorCpf(cpf_paciente), horario_completo,
                         descricao,valor, idConsulta);
@@ -206,7 +205,6 @@ public class ConsultaDAO {
             e1.printStackTrace();
         } finally {
             try {
-                //fechar statement e connection
                 if (stmt != null)
                     stmt.close();
                 if (con != null)

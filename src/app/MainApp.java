@@ -13,9 +13,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import persistence.ConsultaDAO;
+import persistence.PacienteDAO;
 import persistence.ProcedimentoDAO;
 import view.Controllers.*;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,6 +36,7 @@ public class MainApp extends Application {
         for(Procedimento p: ProcedimentoDAO.buscarTudo()){
             System.out.println(p.getId());
         }
+
         initRoot();
     }
 

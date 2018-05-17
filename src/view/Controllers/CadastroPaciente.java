@@ -18,7 +18,9 @@ import persistence.PacienteDAO;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class CadastroPaciente {
     public TextField txtfieldNome;
@@ -39,18 +41,15 @@ public class CadastroPaciente {
     public Button btnCancelar;
     public Button btnSalvar;
 
-    private String sexo;
-
     private MainApp mainApp;
 
-    private PacienteDAO PacDAO = new PacienteDAO();
+    private static boolean modificando;
 
     public void setMainApp(MainApp mainApp){
         this.mainApp = mainApp;
     }
 
     public void rdBtnMasculinoOnAction(ActionEvent event){
-        sexo = "M";
 
         if (rdBtnFeminino.isSelected()){
             rdBtnFeminino.setSelected(false);
@@ -58,7 +57,6 @@ public class CadastroPaciente {
     }
 
     public void rdBtnFemininoOnAction(ActionEvent event){
-        sexo = "F";
 
         if(rdBtnMasculino.isSelected()){
             rdBtnMasculino.setSelected(false);
@@ -103,7 +101,16 @@ public class CadastroPaciente {
         txtfieldNome.setText(paciente.getNome());
         txtfieldTelefone.setText(paciente.getTelefone());
         txtfieldEmail.setText(paciente.getEmail());
-        txtfieldCPF.setText(paciente.getCpf());
+
+        LocalDate date = paciente.getNascimento().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        dateNascimento.setValue(date);
+
+        txtFieldLogradouro.setText(paciente.getLogradouro_end());
+        txtFieldNumero.setText(Integer.toString(paciente.getNumero_end()));
+        txtFieldComplemento.setText(paciente.getComplemento_end());
+        txtFieldBairro.setText(paciente.getBairro_end());
+        txtFieldCidade.setText(paciente.getCidade_end());
+        txtFieldEstado.setText(paciente.getEstado_end());
         if(paciente.getSexo() == 'M') rdBtnMasculino.setSelected(true);
         else rdBtnFeminino.setSelected(true);
     }
@@ -114,11 +121,9 @@ public class CadastroPaciente {
         email = txtfieldEmail.getText(), cpf = txtfieldCPF.getText(),
         dataNasc;
         //Montar data
-        String data = "";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate date = dateNascimento.getValue();
-        if (date != null)
-            data = (formatter.format(date));
+        LocalDate localDate = dateNascimento.getValue();
+        Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
         char sexo = rdBtnMasculino.isSelected() ? 'M' : 'F';
 
         //Validacao
@@ -149,10 +154,23 @@ public class CadastroPaciente {
             rdBtnMasculino.setBorder(null);
         }
         if(valido){
-            Paciente p = new Paciente(nome, cpf, data, telefone, email, txtFieldLogradouro.getText(), Integer.parseInt(txtFieldNumero.getText()), txtFieldComplemento.getText(),
+            Paciente p = new Paciente(nome, cpf, date, telefone, email, txtFieldLogradouro.getText(), Integer.parseInt(txtFieldNumero.getText()), txtFieldComplemento.getText(),
                     txtFieldBairro.getText(),txtFieldCidade.getText(),txtFieldEstado.getText(), sexo);
-            Agenda.adicionarPaciente(p);
+
+            if(isModificando())
+                PacienteDAO.alterar(p);
+            else
+                Agenda.adicionarPaciente(p);
+
             mainApp.exibirTelaPrincipal();
         }
+    }
+
+    public static boolean isModificando() {
+        return modificando;
+    }
+
+    public static void setModificando(boolean modificando) {
+        CadastroPaciente.modificando = modificando;
     }
 }

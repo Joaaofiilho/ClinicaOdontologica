@@ -29,11 +29,7 @@ public class Agenda {
     }
 
     public static String transformarData(Date data){
-//        LocalDateTime datetime = LocalDateTime.parse(data.toString(), DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss zzz yyyy"));
-
         return DateFormat.getDateInstance().format(data);
-
-
     }
 
     public static Date getData(){

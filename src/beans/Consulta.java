@@ -33,12 +33,9 @@ public class Consulta {
         this.id = id;
     }
 
-    public Consulta() {
-    }
-
     @Override
     public String toString(){
-        return  getHorarioInicial() + " - " + paciente.getNome().toUpperCase() + " - " + getId();
+        return  "[" + getHorarioInicial() + "] " + paciente.getNome().toUpperCase();
     }
 
     //Metodos especiais

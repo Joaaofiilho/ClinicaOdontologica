@@ -13,6 +13,7 @@ import persistence.PacienteDAO;
 import persistence.ProcedimentoDAO;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
@@ -36,6 +37,8 @@ public class CadastroConsulta {
     public Button btnSalvar;
 
     private MainApp mainApp;
+
+    private static boolean modificando;
 
     public void initialize(){
         cbPacientes.setItems(Agenda.getPacientes());
@@ -83,6 +86,9 @@ public class CadastroConsulta {
         txtfieldValor.setText(Double.toString(consulta.getValor()));
         txtfieldHorario.setText(consulta.getHorarioCompleto());
         txtfieldDescricao.setText(consulta.getDescricao());
+
+        LocalDate date = consulta.getData().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        dateData.setValue(date);
     }
 
     public void btnSalvarOnAction(ActionEvent e) {
@@ -109,18 +115,28 @@ public class CadastroConsulta {
 
 
             //Pegando a informação do datePicker
-            java.sql.Date date = java.sql.Date.valueOf(dateData.getValue());
-            java.util.Date novaData = new Date(date.getTime());
+            LocalDate localDate = dateData.getValue();
+            Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
             if(valido) {
-                Consulta consulta = new Consulta(novaData,cbPacientes.getSelectionModel().getSelectedItem(),
+                Consulta consulta = new Consulta(date,cbPacientes.getSelectionModel().getSelectedItem(),
                         txtfieldHorario.getText(), txtfieldDescricao.getText(), Float.parseFloat(txtfieldValor.getText()));
+                if(isModificando())
+                    ConsultaDAO.alterar(consulta);
+                else
+                    Agenda.adicionarConsulta(consulta);
 
-                Agenda.adicionarConsulta(consulta);
                 mainApp.exibirTelaPrincipal();
             }
         } catch (Exception e1) {
             e1.printStackTrace();
         }
+    }
 
+    public static boolean isModificando() {
+        return modificando;
+    }
+
+    public static void setModificando(boolean modificando) {
+        CadastroConsulta.modificando = modificando;
     }
 }
