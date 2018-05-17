@@ -102,12 +102,15 @@ public class MainApp extends Application {
 
     public void exibirCadastroPaciente(Paciente paciente) {
         try {
+            System.out.println("to aqui");
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../view/CadastroPaciente.fxml"));
             AnchorPane telaCadastroPacientePane = (AnchorPane) loader.load();
 
             CadastroPaciente controller = loader.getController();
+            System.out.println("to aqui 3");
             controller.preencher(paciente);
+            System.out.println("to aqui n");
 
             rootLayout.setCenter(telaCadastroPacientePane);
             controller.setMainApp(this);

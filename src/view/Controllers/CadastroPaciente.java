@@ -101,9 +101,10 @@ public class CadastroPaciente {
         txtfieldNome.setText(paciente.getNome());
         txtfieldTelefone.setText(paciente.getTelefone());
         txtfieldEmail.setText(paciente.getEmail());
+        txtfieldCPF.setText(paciente.getCpf());
 
-        LocalDate date = paciente.getNascimento().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        dateNascimento.setValue(date);
+        //LocalDate date = paciente.getNascimento().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        //dateNascimento.setValue(date);
 
         txtFieldLogradouro.setText(paciente.getLogradouro_end());
         txtFieldNumero.setText(Integer.toString(paciente.getNumero_end()));
