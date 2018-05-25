@@ -4,22 +4,16 @@ import app.MainApp;
 import beans.Agenda;
 import beans.Paciente;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import persistence.PacienteDAO;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class CadastroPaciente {
@@ -103,8 +97,11 @@ public class CadastroPaciente {
         txtfieldEmail.setText(paciente.getEmail());
         txtfieldCPF.setText(paciente.getCpf());
 
+        LocalDate date = new java.util.Date(paciente.getNascimento().getTime()).toInstant()
+                .atZone(ZoneId.systemDefault()).toLocalDate();
+        dateNascimento.setValue(date);
+
         //LocalDate date = paciente.getNascimento().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        //dateNascimento.setValue(date);
 
         txtFieldLogradouro.setText(paciente.getLogradouro_end());
         txtFieldNumero.setText(Integer.toString(paciente.getNumero_end()));
@@ -158,8 +155,13 @@ public class CadastroPaciente {
             Paciente p = new Paciente(nome, cpf, date, telefone, email, txtFieldLogradouro.getText(), Integer.parseInt(txtFieldNumero.getText()), txtFieldComplemento.getText(),
                     txtFieldBairro.getText(),txtFieldCidade.getText(),txtFieldEstado.getText(), sexo);
 
-            if(isModificando())
+            if(isModificando()) {
+
                 PacienteDAO.alterar(p);
+
+//                PacienteDAO.alterarPaciente(p, Agenda.getPacientes());
+//                PacienteDAO.alterarPacienteBD(p);
+            }
             else
                 Agenda.adicionarPaciente(p);
 

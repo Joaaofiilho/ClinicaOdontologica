@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import beans.Agenda;
 import beans.Consulta;
 import beans.Paciente;
+import javafx.collections.ObservableList;
 
 
 public class PacienteDAO {
@@ -53,7 +55,21 @@ public class PacienteDAO {
         }
     }
 
-    public static void alterar(Paciente p) throws Exception{
+
+
+    public static void alterar(Paciente paciente){
+        try {
+            alterarPacienteBD(paciente);
+            Agenda.atualizarPaciente();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public static void alterarPacienteBD(Paciente p) throws Exception{
         Connection con = null;
         PreparedStatement stmt = null;
 
@@ -73,6 +89,7 @@ public class PacienteDAO {
             stmt.setString(9, p.getBairro_end());
             stmt.setString(10, p.getCidade_end());
             stmt.setString(11, p.getEstado_end());
+            stmt.setString(12,p.getCpf());
 
             stmt.executeUpdate();
         } catch (SQLException e1) {

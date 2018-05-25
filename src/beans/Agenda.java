@@ -1,5 +1,6 @@
 package beans;
 
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import persistence.ConsultaDAO;
@@ -36,6 +37,8 @@ public class Agenda {
         return calendario.getTime();
     }
 
+
+
     public static void adicionarPaciente(Paciente paciente) throws Exception{
         PacienteDAO.inserir(paciente);
         obsPacientes.add(paciente);
@@ -50,6 +53,18 @@ public class Agenda {
         ProcedimentoDAO.inserir(procedimento);
         obsProcedimentos.add(procedimento);
     }
+
+
+    public static void atualizarPaciente(){
+        obsPacientes.clear();
+
+        try {
+            obsPacientes.addAll(PacienteDAO.buscarTudo());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     //Getters e setters
     public static ObservableList<Paciente> getPacientes(){
         return obsPacientes;

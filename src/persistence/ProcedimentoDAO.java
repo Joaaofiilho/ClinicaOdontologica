@@ -43,7 +43,7 @@ public class ProcedimentoDAO {
         }
     }
 
-    public static void alterar(Procedimento p) throws Exception{ //Vai alterar uma informação de um procedimento
+    public static void alterar(Procedimento p) throws Exception{ //Vai alterarPaciente uma informação de um procedimento
         Connection con = null;
         PreparedStatement stmt = null;
 

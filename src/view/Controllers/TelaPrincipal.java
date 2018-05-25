@@ -8,11 +8,15 @@ import beans.Paciente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import persistence.ConsultaDAO;
 import persistence.PacienteDAO;
@@ -107,6 +111,8 @@ public class TelaPrincipal {
 
     //Controle lista lateral
     public void tglPacienteOnAction(ActionEvent event){
+        lstViewPaciente.refresh();
+
         tglConsulta.setSelected(false);
         lstViewPaciente.setItems(Agenda.getPacientes());
 
@@ -115,12 +121,34 @@ public class TelaPrincipal {
         lstViewPaciente.setVisible(true);
         lstViewPaciente.setManaged(true);
 
+
         tglPaciente.setDisable(true);
         tglConsulta.setDisable(false);
 
         btnDireita.setDisable(true);
         btnEsquerda.setDisable(true);
         lblDia.setText("");
+
+        //Verificar se occorre um click duplo e exibi a tela do paciente
+        lstViewPaciente.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent click) {
+
+                if (click.getClickCount() == 2) {
+                    try {
+                        mainApp.exibirCadastroPaciente(lstViewPaciente.getSelectionModel().getSelectedItem());
+                    } catch (Exception e) {
+                        System.err.println("Erro: Impossível exibir cadastro do paciente! ");
+//                        e.printStackTrace();
+                    }
+
+                }
+            }
+        });
+
+
+
+
     }
 
     public void tglConsultaOnAction(ActionEvent event){
@@ -158,21 +186,27 @@ public class TelaPrincipal {
         }
     }
 
+
+
+
     public void btnModificarOnAction(ActionEvent event){
-            if (tglPaciente.isSelected()) {
-                try {
-                    CadastroPaciente.setModificando(true);
-                    mainApp.exibirCadastroPaciente(lstViewPaciente.getSelectionModel().getSelectedItem());
-                } catch (Exception e) {
-                    System.err.println("Erro: Impossível exibir cadastro do paciente! ");
-                    e.getStackTrace();
-                }
-            } else {
-                CadastroConsulta.setModificando(true);
-                mainApp.exibirCadastroConsulta(ConsultaDAO.buscarPorId(lstViewConsulta.getSelectionModel().getSelectedItem().getId()));
+        if (tglPaciente.isSelected()) {
+            try {
+                CadastroPaciente.setModificando(true);
+                mainApp.exibirCadastroPaciente(lstViewPaciente.getSelectionModel().getSelectedItem());
+            } catch (Exception e) {
+                System.err.println("Erro: Impossível exibir cadastro do paciente! ");
+                e.getStackTrace();
             }
+        } else {
+            CadastroConsulta.setModificando(true);
+            mainApp.exibirCadastroConsulta(ConsultaDAO.buscarPorId(lstViewConsulta.getSelectionModel().getSelectedItem().getId()));
+        }
 
     }
+
+
+
 
     public void btnRemoverOnAction(ActionEvent event) {
         if(tglPaciente.isSelected()){

@@ -2,6 +2,7 @@ package beans;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class Paciente {
     private String nome;
@@ -34,6 +35,16 @@ public class Paciente {
         this.estado_end = estado_end;
         this.sexo = sexo;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Paciente paciente = (Paciente) o;
+        return ((Paciente) o).getCpf().equals(this.getCpf());
+    }
+
 
     @Override
     public String toString(){
