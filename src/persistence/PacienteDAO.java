@@ -107,7 +107,18 @@ public class PacienteDAO {
         }
     }
 
-    public static void excluir(String cpf) throws Exception{
+
+    public static void excluir(String cpf){
+        try {
+            excluirBD(cpf);
+            Agenda.atualizarPaciente();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void excluirBD(String cpf) throws Exception{
         Connection con = null;
         PreparedStatement stmt = null;
 

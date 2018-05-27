@@ -9,21 +9,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import persistence.ConsultaDAO;
 import persistence.PacienteDAO;
-
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.Date;
 
 public class TelaPrincipal {
     //Controle do dia
@@ -210,18 +203,9 @@ public class TelaPrincipal {
 
     public void btnRemoverOnAction(ActionEvent event) {
         if(tglPaciente.isSelected()){
-            try {
-                PacienteDAO.excluir(lstViewPaciente.getSelectionModel().getSelectedItem().getCpf());
-                ObservableList<Paciente> pacientes = FXCollections.observableArrayList();
-                try {
-                    pacientes.addAll(Agenda.getPacientes());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                lstViewPaciente.setItems(pacientes);
-            }catch (Exception e){
 
-            }
+            PacienteDAO.excluir(lstViewPaciente.getSelectionModel().getSelectedItem().getCpf());
+
         }else{
             try {
                 ConsultaDAO.excluir(lstViewConsulta.getSelectionModel().getSelectedItem().getId());
