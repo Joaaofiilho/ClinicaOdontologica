@@ -101,6 +101,39 @@ public class MainApp extends Application {
     }
 
 
+    //Estou modificando essa daqui
+    public void exibirPacienteInfo(Paciente paciente) {
+        try {
+            Stage info = new Stage();
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/InformacoesPaciente.fxml"));
+
+
+            AnchorPane telaInfoPaci = (AnchorPane) loader.load();
+
+            InformacoesPaciente controller = loader.getController();
+            controller.exibir(paciente);
+
+
+
+            info.setScene(new Scene(telaInfoPaci));
+            info.setTitle("Informações sobre o pacientes");
+
+
+            info.initOwner(primaryStage);
+            info.initModality(Modality.APPLICATION_MODAL);
+            info.showAndWait();
+
+
+//            rootLayout.setCenter(telaCadastroPacientePane);
+//            controller.setMainApp(this);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
     public void exibirCadastroPaciente(Paciente paciente) {
         try {
 

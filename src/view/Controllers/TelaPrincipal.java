@@ -129,7 +129,12 @@ public class TelaPrincipal {
 
                 if (click.getClickCount() == 2) {
                     try {
-                        mainApp.exibirCadastroPaciente(lstViewPaciente.getSelectionModel().getSelectedItem());
+
+
+//                        mainApp.exibirCadastroPaciente(lstViewPaciente.getSelectionModel().getSelectedItem());
+
+                        //Modoficado aqui
+                        mainApp.exibirPacienteInfo(lstViewPaciente.getSelectionModel().getSelectedItem());
                     } catch (Exception e) {
                         System.err.println("Erro: Impossível exibir cadastro do paciente! ");
 //                        e.printStackTrace();
