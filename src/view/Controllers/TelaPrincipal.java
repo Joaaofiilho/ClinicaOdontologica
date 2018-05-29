@@ -9,14 +9,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import persistence.ConsultaDAO;
 import persistence.PacienteDAO;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static beans.Agenda.getPacientes;
 
 public class TelaPrincipal {
     //Controle do dia
@@ -35,6 +38,11 @@ public class TelaPrincipal {
     public Button btnAdicionar;
     public Button btnModificar;
     public Button btnRemover;
+
+    //Buscar Paciente
+    public Label lblBuscar;
+    public TextField txtFBuscar;
+
 
     private MainApp mainApp;
     private Stage dialogStage;
@@ -107,7 +115,7 @@ public class TelaPrincipal {
         lstViewPaciente.refresh();
 
         tglConsulta.setSelected(false);
-        lstViewPaciente.setItems(Agenda.getPacientes());
+        lstViewPaciente.setItems(getPacientes());
 
         lstViewConsulta.setVisible(false);
         lstViewConsulta.setManaged(false);
@@ -121,6 +129,11 @@ public class TelaPrincipal {
         btnDireita.setDisable(true);
         btnEsquerda.setDisable(true);
         lblDia.setText("");
+
+        //Exibindo o campo de busca ao paciente para o usuario;
+        lblBuscar.setVisible(true);
+        txtFBuscar.setVisible(true);
+        txtFBuscar.setDisable(false);
 
         //Verificar se occorre um click duplo e exibi a tela do paciente
         lstViewPaciente.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -171,6 +184,12 @@ public class TelaPrincipal {
 
         btnDireita.setDisable(false);
         btnEsquerda.setDisable(false);
+
+        //Exibindo o campo de busca ao paciente para o usuario;
+        lblBuscar.setVisible(false);
+        txtFBuscar.setVisible(false);
+        txtFBuscar.setDisable(true);
+
     }
 
     //Lista lateral
@@ -200,6 +219,23 @@ public class TelaPrincipal {
             CadastroConsulta.setModificando(true);
             mainApp.exibirCadastroConsulta(ConsultaDAO.buscarPorId(lstViewConsulta.getSelectionModel().getSelectedItem().getId()));
         }
+
+    }
+
+    public void buscaNomePaciente(KeyEvent keyEvent) {
+        ObservableList<Paciente> listaNome = FXCollections.observableArrayList();
+
+        //TODO -----------ADicionar para aparaecer vazio----------
+        ObservableList<Paciente> listaFiltrada = Agenda.getPacientes();
+
+            for (Paciente paciente : listaFiltrada) {
+                if (paciente.getNome().toLowerCase().contains(txtFBuscar.getText().toLowerCase())) {
+                    listaNome.add(paciente);
+                }
+            }
+
+            lstViewPaciente.setItems(listaNome);
+            lstViewPaciente.refresh();
 
     }
 
@@ -236,4 +272,6 @@ public class TelaPrincipal {
 
 
     }
+
+
 }
