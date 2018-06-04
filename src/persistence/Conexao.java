@@ -10,7 +10,7 @@ public class Conexao {
         //serverTimezone=UTC-3
 
         String usuario = "root";
-        String senha = "root";
+        String senha = "unifor";
 
         return DriverManager.getConnection("jdbc:mysql://localhost/clinicaodontologica?useTimezone=true&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC",usuario,senha);
     }
