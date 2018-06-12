@@ -101,6 +101,8 @@ public class MainApp extends Application {
     }
 
 
+
+
     //Estou modificando essa daqui
     public void exibirPacienteInfo(Paciente paciente) {
         try {
@@ -116,7 +118,6 @@ public class MainApp extends Application {
             controller.exibir(paciente);
 
 
-
             info.setScene(new Scene(telaInfoPaci));
             info.setTitle("Informações sobre o pacientes");
 
@@ -124,6 +125,7 @@ public class MainApp extends Application {
             info.initOwner(primaryStage);
             info.initModality(Modality.APPLICATION_MODAL);
             info.showAndWait();
+
 
 
 //            rootLayout.setCenter(telaCadastroPacientePane);

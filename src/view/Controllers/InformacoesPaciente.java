@@ -2,7 +2,10 @@ package view.Controllers;
 
 import app.MainApp;
 import beans.Paciente;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 public class InformacoesPaciente {
 
@@ -12,6 +15,8 @@ public class InformacoesPaciente {
     public Label lblTe;
     public Label lblSexo;
     public Label lblEnd;
+    public Label lblComplemento;
+    public Button btnFechar;
 
 
     private MainApp mainApp;
@@ -28,8 +33,13 @@ public class InformacoesPaciente {
         lblSexo.setText(p.getSexo() == 'M' ? "Masculino" : " Femino");
         lblEnd.setText(p.getLogradouro_end() + ", " + p.getNumero_end() + " - " + p.getBairro_end() + ", " + p.getCidade_end() + " - " +
         p.getEstado_end());
+        lblComplemento.setText(p.getComplemento_end());
     }
 
-    ////TODO----------Fazer o botão OK fechar a janela.
+    public void fecharOnAction(ActionEvent actionEvent) {
+        Stage stage = (Stage) btnFechar.getScene().getWindow();
+        stage.close();
+    }
+
 
 }

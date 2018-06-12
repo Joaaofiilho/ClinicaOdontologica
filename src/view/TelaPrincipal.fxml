@@ -103,17 +103,17 @@
                      <children>
                         <Label fx:id="lblBuscar" text="Buscar:" visible="false">
                            <HBox.margin>
-                              <Insets bottom="20.0" left="135.0" right="10.0" top="58.0" />
+                              <Insets left="124.0" right="10.0" top="4.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="txtFBuscar" disable="true" maxHeight="25.0" minHeight="25.0" onKeyPressed="#buscaNomePaciente" prefHeight="25.0" prefWidth="191.0" visible="false">
+                        <TextField fx:id="txtFBuscar" disable="true" maxHeight="25.0" minHeight="25.0" onKeyReleased="#buscaNomePaciente" prefHeight="25.0" prefWidth="191.0" visible="false">
                            <HBox.margin>
-                              <Insets bottom="20.0" right="10.0" top="55.0" />
+                              <Insets />
                            </HBox.margin>
                         </TextField>
                      </children>
                      <GridPane.margin>
-                        <Insets bottom="55.0" top="20.0" />
+                        <Insets bottom="55.0" left="10.0" right="8.0" top="55.0" />
                      </GridPane.margin>
                   </HBox>
                </children>
