@@ -50,6 +50,8 @@ public class ProcedimentoDAO {
         try {
             con = Conexao.getConnection();
 
+
+            //TODO-------------------------------------------------------------
             stmt = con.prepareStatement("update procedimento set (titulo, descricao, valor, duracao) values (?,?,?,?) where id=?");
 
             stmt.setString(1, p.getTitulo());

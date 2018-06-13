@@ -53,6 +53,16 @@ public class Agenda {
     }
 
 
+    public static void atualizarProcedimento(){
+        obsProcedimentos.clear();
+
+        try{
+            obsProcedimentos.addAll(ProcedimentoDAO.buscarTudo());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public static void atualizarPaciente(){
         obsPacientes.clear();
 
@@ -70,6 +80,10 @@ public class Agenda {
 
     public static ObservableList<Consulta> getConsultas(){
         return obsConsultas;
+    }
+
+    public static ObservableList<Procedimento> getProcedimentos() {
+        return obsProcedimentos;
     }
 
     public static void init(){

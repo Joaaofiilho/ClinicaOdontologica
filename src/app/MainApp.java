@@ -227,17 +227,38 @@ public class MainApp extends Application {
         }
 
 
-//        try {
-//            FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(getClass().getResource("../view/CadastroProcedimento.fxml"));
-//            AnchorPane telaPrincipalPane = (AnchorPane) loader.load();
-//
-//            rootLayout.setCenter(telaPrincipalPane);
-//
-//            CadastroProcedimento controller = loader.getController();
-//            controller.setMainApp(this);
-//        }catch (IOException e){
-//            System.err.println("Erro: Falha ao exibir a tela de cadastro de procedimento.");
-//        }
+    }
+
+    public void modificarCadastroProcedimento(Procedimento p){
+        try {
+            Stage info = new Stage();
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/CadastroProcedimento.fxml"));
+
+
+            AnchorPane cadastroPrincipal = (AnchorPane) loader.load();
+
+            CadastroProcedimento controller = loader.getController();
+
+
+            info.setScene(new Scene(cadastroPrincipal));
+
+
+            controller.preencher(p);
+
+
+            info.setTitle("Cadastrar Procedimento");
+
+            info.initOwner(primaryStage);
+            info.initModality(Modality.APPLICATION_MODAL);
+            info.showAndWait();
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
     }
 }
