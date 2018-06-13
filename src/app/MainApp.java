@@ -103,18 +103,45 @@ public class MainApp extends Application {
 
 
     public void exibirProcedimento(){
+
         try {
+            Stage info = new Stage();
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../view/TelaProcedimento.fxml"));
+
+
             AnchorPane telaProcedimento = (AnchorPane) loader.load();
 
-            rootLayout.setCenter(telaProcedimento);
-
             TelaProcedimento controller = loader.getController();
-            controller.setMainApp(this);
-        }catch (IOException e){
-            System.err.println("Erro: Falha ao exibir a tela de cadastro de paciente.");
+
+
+            info.setScene(new Scene(telaProcedimento));
+            info.setTitle("Procedimentos");
+
+
+            info.initOwner(primaryStage);
+            info.initModality(Modality.APPLICATION_MODAL);
+            info.showAndWait();
+
+
+//            rootLayout.setCenter(telaCadastroPacientePane);
+//            controller.setMainApp(this);
+        }catch (Exception e){
+            e.printStackTrace();
         }
+//        try {
+//            FXMLLoader loader = new FXMLLoader();
+//            loader.setLocation(getClass().getResource("../view/TelaProcedimento.fxml"));
+//            AnchorPane telaProcedimento = (AnchorPane) loader.load();
+//
+//            rootLayout.setCenter(telaProcedimento);
+//
+//            TelaProcedimento controller = loader.getController();
+//            controller.setMainApp(this);
+//        }catch (IOException e){
+//            System.err.println("Erro: Falha ao exibir a tela de cadastro de paciente.");
+//        }
 
     }
 

@@ -45,7 +45,7 @@ public class CadastroProcedimento {
 
 
     public void btnCancelarOnAction (ActionEvent event){
-        
+
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
         stage.close();
 
