@@ -12,21 +12,43 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Controllers.CadastroConsulta">
    <children>
       <GridPane layoutX="116.0" layoutY="79.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="436.0" minWidth="10.0" prefWidth="435.9999755859375" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="293.60003662109375" minWidth="10.0" prefWidth="164.80002441406248" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="450.199951171875" minWidth="10.0" prefWidth="435.79998779296875" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="293.60003662109375" minWidth="10.0" prefWidth="163.80001220703127" />
         </columnConstraints>
         <rowConstraints>
+            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="300.0" minHeight="300.0" prefHeight="300.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="245.39999389648435" minHeight="49.60001220703126" prefHeight="49.60001220703126" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="300.0" minHeight="87.99999389648436" prefHeight="87.99999389648436" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="300.0" minHeight="61.19999999999999" prefHeight="149.2" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="300.0" minHeight="61.19999999999999" prefHeight="61.19999999999999" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e4e4e4" height="152.0" stroke="#00000003" strokeType="INSIDE" width="581.0" GridPane.columnSpan="2" GridPane.rowSpan="4">
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="10.0" right="10.0" />
+               </GridPane.margin>
+            </Rectangle>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowSpan="2">
+               <children>
+                  <Label text="Consulta">
+                     <HBox.margin>
+                        <Insets left="300.0" top="25.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <children>
                   <Label prefHeight="18.0" prefWidth="25.0" text="Data" textAlignment="CENTER">
                      <HBox.margin>
@@ -38,30 +60,6 @@
                         <Insets bottom="12.0" left="5.0" right="12.0" top="12.0" />
                      </HBox.margin>
                   </DatePicker>
-                  <Label text="Paciente">
-                     <HBox.margin>
-                        <Insets bottom="15.0" left="154.0" right="5.0" top="15.0" />
-                     </HBox.margin>
-                  </Label>
-                  <ComboBox fx:id="cbPacientes" prefWidth="140.0">
-                     <HBox.margin>
-                        <Insets bottom="12.0" left="5.0" right="12.0" top="12.0" />
-                     </HBox.margin>
-                  </ComboBox>
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
-               <children>
-                  <Label text="Valor">
-                     <HBox.margin>
-                        <Insets bottom="15.0" left="38.0" right="5.0" top="15.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="txtfieldValor" prefWidth="140.0">
-                     <HBox.margin>
-                        <Insets bottom="12.0" left="5.0" right="12.0" top="12.0" />
-                     </HBox.margin>
-                  </TextField>
                   <Label text="Horario completo (hh:mm-hh:mm)">
                      <HBox.margin>
                         <Insets bottom="15.0" left="15.0" right="5.0" top="15.0" />
@@ -74,34 +72,83 @@
                   </TextField>
                </children>
             </HBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <children>
-                  <Label text="Descrição">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="10.0" right="10.0" />
-                     </VBox.margin>
+                  <Label text="Paciente">
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="22.0" right="5.0" top="15.0" />
+                     </HBox.margin>
                   </Label>
-                  <TextField fx:id="txtfieldDescricao" prefHeight="268.0" prefWidth="414.0">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" />
-                     </VBox.margin>
-                  </TextField>
+                  <ComboBox fx:id="cbPacientes" prefWidth="140.0">
+                     <HBox.margin>
+                        <Insets bottom="12.0" left="5.0" right="12.0" top="12.0" />
+                     </HBox.margin>
+                  </ComboBox>
                </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            </HBox>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e4e4e4" height="191.0" stroke="WHITE" strokeType="INSIDE" width="441.0" GridPane.columnSpan="2" GridPane.rowSpan="6">
+               <GridPane.margin>
+                  <Insets left="10.0" top="178.0" />
+               </GridPane.margin>
+            </Rectangle>
+            <VBox prefHeight="219.0" prefWidth="165.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.rowSpan="4">
                <children>
-                  <Button fx:id="btnCancelar" alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="70.0" minHeight="25.0" minWidth="70.0" mnemonicParsing="false" onAction="#btnCancelarOnAction" prefHeight="25.0" prefWidth="70.0" text="Cancelar" textAlignment="CENTER">
+                  <Button fx:id="btnProcedimento" mnemonicParsing="false" text="Procedimento">
                      <VBox.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="150.0" />
+                        <Insets bottom="20.0" left="50.0" right="20.0" top="34.0" />
                      </VBox.margin>
                   </Button>
                   <Button fx:id="btnSalvar" alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="70.0" minHeight="25.0" minWidth="70.0" mnemonicParsing="false" onAction="#btnSalvarOnAction" prefHeight="25.0" prefWidth="70.0" text="Salvar" textAlignment="CENTER">
                      <VBox.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        <Insets bottom="20.0" left="70.0" right="20.0" top="25.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="btnCancelar" alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="70.0" minHeight="25.0" minWidth="70.0" mnemonicParsing="false" onAction="#btnCancelarOnAction" prefHeight="25.0" prefWidth="70.0" text="Cancelar" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="70.0" right="20.0" top="25.0" />
                      </VBox.margin>
                   </Button>
                </children>
             </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3" GridPane.rowSpan="2">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Atendimento">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="200.0" top="45.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="148.0" prefWidth="435.0">
+                     <children>
+                        <TextField fx:id="txtfieldDescricao" prefHeight="106.0" prefWidth="398.0">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
+               <children>
+                  <Label text="Valor">
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="38.0" right="5.0" top="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="txtfieldValor" prefWidth="140.0">
+                     <HBox.margin>
+                        <Insets bottom="12.0" left="5.0" right="12.0" top="12.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
          </children>
       </GridPane>
    </children>

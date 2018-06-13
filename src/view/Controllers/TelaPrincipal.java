@@ -131,6 +131,7 @@ public class TelaPrincipal {
         lblDia.setText("");
 
         //Exibindo o campo de busca ao paciente para o usuario;
+        lblBuscar.setDisable(false);
         lblBuscar.setVisible(true);
         txtFBuscar.setVisible(true);
         txtFBuscar.setDisable(false);
@@ -163,6 +164,8 @@ public class TelaPrincipal {
     }
 
     public void tglConsultaOnAction(ActionEvent event){
+
+
         tglPaciente.setSelected(false);
         lblDia.setText(Agenda.transformarData(Agenda.getData()));
 

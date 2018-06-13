@@ -5,6 +5,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.time.Instant;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -119,11 +123,18 @@ public class ConsultaDAO {
         Connection con = null;
         PreparedStatement stmt = null;
         ArrayList<Consulta> consultas = new ArrayList<Consulta>();
+
+
+
         try {
             con = Conexao.getConnection();
 
             stmt = con.prepareStatement("select * from consulta where data_consulta=?");
-            stmt.setDate(1, new java.sql.Date(data.getTime()));
+
+
+            //Modoficado aqui para ele pegar a data com a conversão corretamente.
+            stmt.setDate(1, java.sql.Date.valueOf(data.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()));
+//            stmt.setDate(1, (java.sql.Date)data);
 
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
@@ -164,13 +175,18 @@ public class ConsultaDAO {
             stmt.setInt(1, id);
 
             ResultSet rs = stmt.executeQuery();
+
             while(rs.next()){
+
+                System.out.println(rs.getDate("data_consulta").toString());
+
                 int idConsulta = rs.getInt("id");
                 String cpf_paciente = rs.getString("cpf_paciente");
                 String horario_completo = rs.getString("horario_completo");
                 String descricao = rs.getString("descricao");
                 double valor = rs.getDouble("valor");
-                Date dataConsulta = new Date(rs.getDate("data_consulta").getTime());
+
+                Date dataConsulta = new java.util.Date(rs.getDate("data_consulta").getTime());
 
                 consulta = new Consulta(dataConsulta, PacienteDAO.buscarPorCpf(cpf_paciente), horario_completo,
                         descricao,valor, idConsulta);

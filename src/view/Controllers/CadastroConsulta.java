@@ -108,8 +108,9 @@ public class CadastroConsulta {
                 valido = false;
             }else cbPacientes.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,
                 BorderWidths.DEFAULT)));
-            String valor = txtfieldValor.getText();
-            if(!checarRegex(valor, "^\\d+(\\.\\d{1,})?$", true, txtfieldValor)) valido = false;
+                //Modifiquei para ele poder colocar o valor depois
+//            String valor = txtfieldValor.getText();
+//            if(!checarRegex(valor, "^\\d+(\\.\\d{1,})?$", true, txtfieldValor)) valido = false;
             String horarioCompleto = txtfieldHorario.getText();
             if(!checarRegex(horarioCompleto, "^[0-2]\\d:[0-5]\\d-[0-2]\\d:[0-5]\\d$", true, txtfieldHorario)) valido = false;
 
@@ -118,8 +119,9 @@ public class CadastroConsulta {
             LocalDate localDate = dateData.getValue();
             Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
             if(valido) {
+                //Colocando if ternario no construtor
                 Consulta consulta = new Consulta(date,cbPacientes.getSelectionModel().getSelectedItem(),
-                        txtfieldHorario.getText(), txtfieldDescricao.getText(), Float.parseFloat(txtfieldValor.getText()));
+                        txtfieldHorario.getText(), txtfieldDescricao.getText().isEmpty() ? "" : txtfieldDescricao.getText(), txtfieldValor.getText().isEmpty() ? 0 : Float.parseFloat(txtfieldValor.getText()));
                 if(isModificando())
                     ConsultaDAO.alterar(consulta);
                 else
