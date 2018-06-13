@@ -6,6 +6,7 @@ import beans.Procedimento;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import persistence.ProcedimentoDAO;
 
 public class CadastroProcedimento {
@@ -41,6 +42,9 @@ public class CadastroProcedimento {
         Procedimento p = new Procedimento(txtFieldTitulo.getText(), txtFieldDescricao.getText(), valor, duracao);
         Agenda.adicionarProcedimento(p);
 
-        mainApp.exibirTelaPrincipal();
+        Stage stage = (Stage) btnConfirmar.getScene().getWindow();
+        stage.close();
+        
+//        mainApp.exibirTelaPrincipal();
     }
 }

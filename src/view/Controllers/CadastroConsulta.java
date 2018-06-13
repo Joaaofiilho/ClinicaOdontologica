@@ -143,4 +143,9 @@ public class CadastroConsulta {
     public static void setModificando(boolean modificando) {
         CadastroConsulta.modificando = modificando;
     }
+
+
+    public void chamarProcedimento(ActionEvent actionEvent) {
+        mainApp.exibirProcedimento();
+    }
 }

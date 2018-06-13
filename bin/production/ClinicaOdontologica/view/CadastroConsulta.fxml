@@ -29,6 +29,7 @@
           <RowConstraints maxHeight="300.0" minHeight="87.99999389648436" prefHeight="87.99999389648436" valignment="CENTER" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="300.0" minHeight="61.19999999999999" prefHeight="149.2" valignment="CENTER" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="300.0" minHeight="61.19999999999999" prefHeight="61.19999999999999" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints />
         </rowConstraints>
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e4e4e4" height="152.0" stroke="#00000003" strokeType="INSIDE" width="581.0" GridPane.columnSpan="2" GridPane.rowSpan="4">
@@ -93,9 +94,9 @@
             </Rectangle>
             <VBox prefHeight="219.0" prefWidth="165.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.rowSpan="4">
                <children>
-                  <Button fx:id="btnProcedimento" mnemonicParsing="false" text="Procedimento">
+                  <Button fx:id="btnProcedimento" mnemonicParsing="false" onAction="#chamarProcedimento" text="Procedimento">
                      <VBox.margin>
-                        <Insets bottom="20.0" left="50.0" right="20.0" top="34.0" />
+                        <Insets bottom="20.0" left="50.0" right="20.0" top="42.0" />
                      </VBox.margin>
                   </Button>
                   <Button fx:id="btnSalvar" alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="70.0" minHeight="25.0" minWidth="70.0" mnemonicParsing="false" onAction="#btnSalvarOnAction" prefHeight="25.0" prefWidth="70.0" text="Salvar" textAlignment="CENTER">

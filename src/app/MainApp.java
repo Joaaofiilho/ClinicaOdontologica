@@ -102,6 +102,22 @@ public class MainApp extends Application {
 
 
 
+    public void exibirProcedimento(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/TelaProcedimento.fxml"));
+            AnchorPane telaProcedimento = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(telaProcedimento);
+
+            TelaProcedimento controller = loader.getController();
+            controller.setMainApp(this);
+        }catch (IOException e){
+            System.err.println("Erro: Falha ao exibir a tela de cadastro de paciente.");
+        }
+
+    }
+
 
     //Estou modificando essa daqui
     public void exibirPacienteInfo(Paciente paciente) {
@@ -187,16 +203,41 @@ public class MainApp extends Application {
 
     public void exibirCadastroProcedimento(){
         try {
+            Stage info = new Stage();
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../view/CadastroProcedimento.fxml"));
-            AnchorPane telaPrincipalPane = (AnchorPane) loader.load();
 
-            rootLayout.setCenter(telaPrincipalPane);
+
+            AnchorPane cadastroPrincipal = (AnchorPane) loader.load();
 
             CadastroProcedimento controller = loader.getController();
-            controller.setMainApp(this);
-        }catch (IOException e){
-            System.err.println("Erro: Falha ao exibir a tela de cadastro de procedimento.");
+
+            info.setScene(new Scene(cadastroPrincipal));
+            info.setTitle("Cadastrar Procedimento");
+
+
+            info.initOwner(primaryStage);
+            info.initModality(Modality.APPLICATION_MODAL);
+            info.showAndWait();
+
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
+
+//        try {
+//            FXMLLoader loader = new FXMLLoader();
+//            loader.setLocation(getClass().getResource("../view/CadastroProcedimento.fxml"));
+//            AnchorPane telaPrincipalPane = (AnchorPane) loader.load();
+//
+//            rootLayout.setCenter(telaPrincipalPane);
+//
+//            CadastroProcedimento controller = loader.getController();
+//            controller.setMainApp(this);
+//        }catch (IOException e){
+//            System.err.println("Erro: Falha ao exibir a tela de cadastro de procedimento.");
+//        }
     }
 }
