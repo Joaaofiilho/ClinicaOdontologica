@@ -1,10 +1,11 @@
 package beans;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.scene.control.SingleSelectionModel;
 
 import java.util.Date;
 
-public class Consulta {
+public class Consulta{
 
     //Atributos
     private Date data;

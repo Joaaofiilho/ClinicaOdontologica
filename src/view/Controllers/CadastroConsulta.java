@@ -87,6 +87,7 @@ public class CadastroConsulta {
         txtfieldHorario.setText(consulta.getHorarioCompleto());
         txtfieldDescricao.setText(consulta.getDescricao());
 
+
         LocalDate date = consulta.getData().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         dateData.setValue(date);
     }

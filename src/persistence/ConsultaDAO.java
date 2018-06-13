@@ -6,12 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import beans.Agenda;
 import beans.Consulta;
@@ -186,7 +188,12 @@ public class ConsultaDAO {
                 String descricao = rs.getString("descricao");
                 double valor = rs.getDouble("valor");
 
+
+
                 Date dataConsulta = new java.util.Date(rs.getDate("data_consulta").getTime());
+
+
+                //MODIFICAR O FUSO HORARIO
 
                 consulta = new Consulta(dataConsulta, PacienteDAO.buscarPorCpf(cpf_paciente), horario_completo,
                         descricao,valor, idConsulta);
