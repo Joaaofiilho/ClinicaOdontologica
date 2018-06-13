@@ -15,8 +15,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import persistence.ConsultaDAO;
 import persistence.PacienteDAO;
+import util.RelatorioUtil;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static beans.Agenda.getPacientes;
@@ -38,6 +40,7 @@ public class TelaPrincipal {
     public Button btnAdicionar;
     public Button btnModificar;
     public Button btnRemover;
+    public Button btnImprimir;
 
     //Buscar Paciente
     public Label lblBuscar;
@@ -136,6 +139,9 @@ public class TelaPrincipal {
         txtFBuscar.setVisible(true);
         txtFBuscar.setDisable(false);
 
+        btnImprimir.setVisible(true);
+        btnImprimir.setDisable(false);
+
         //Verificar se occorre um click duplo e exibi a tela do paciente
         lstViewPaciente.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -193,6 +199,9 @@ public class TelaPrincipal {
         txtFBuscar.setVisible(false);
         txtFBuscar.setDisable(true);
 
+
+        btnImprimir.setVisible(false);
+        btnImprimir.setDisable(true);
     }
 
     //Lista lateral
@@ -277,4 +286,18 @@ public class TelaPrincipal {
     }
 
 
+    public void imprimirPaciente(ActionEvent actionEvent) {
+        try {
+
+            HashMap<String, Object> params = new HashMap<>();
+
+            RelatorioUtil.gerarPDF(params, "RelatorioPacientes");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
 }

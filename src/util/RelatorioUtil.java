@@ -73,4 +73,22 @@ public class RelatorioUtil {
             throw ex;
         }
     }
+//    public static void gerarPDF(HashMap<String, Object> params, String nomeArquivoSemExtensão) throws Exception {
+//        try {
+//            JasperPrint print = JasperFillManager.fillReport(RelatorioUtil.class.getResourceAsStream("/relatorios/"+nomeArquivoSemExtensão+".jasper"), params, Conexao.getConnection());
+//
+//            /* Código para gerar pdf. */
+//            JRPdfExporter exporter = new JRPdfExporter();
+//            exporter.setExporterInput(new SimpleExporterInput(print));
+//            exporter.setExporterOutput(new SimpleOutputStreamExporterOutput( nomeArquivoSemExtensão + ".pdf" ));
+//            SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
+//            exporter.setConfiguration(configuration);
+//
+//            exporter.exportReport();
+//
+//        } catch (JRException ex) {
+//            Logger.getLogger(RelatorioUtil.class.getName()).log(Level.SEVERE, null, ex);
+//            throw ex;
+//        }
+//    }
 }

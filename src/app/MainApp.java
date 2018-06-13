@@ -114,7 +114,7 @@ public class MainApp extends Application {
             AnchorPane telaProcedimento = (AnchorPane) loader.load();
 
             TelaProcedimento controller = loader.getController();
-
+            controller.setMainApp(this);
 
             info.setScene(new Scene(telaProcedimento));
             info.setTitle("Procedimentos");
@@ -126,7 +126,7 @@ public class MainApp extends Application {
 
 
 //            rootLayout.setCenter(telaCadastroPacientePane);
-//            controller.setMainApp(this);
+            controller.setMainApp(this);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -170,9 +170,9 @@ public class MainApp extends Application {
             info.showAndWait();
 
 
+            controller.setMainApp(this);
 
 //            rootLayout.setCenter(telaCadastroPacientePane);
-//            controller.setMainApp(this);
         }catch (Exception e){
             e.printStackTrace();
         }
