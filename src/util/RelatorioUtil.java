@@ -36,59 +36,41 @@ import persistence.Conexao;
  * commons-collections-3.2.1.jar
  * commons-digester-2.1.jar
  * commons-logging-1.1.jar
- * 
+ *
  * @author rafael
  */
 public class RelatorioUtil {
     public static void exibirRelatorio(HashMap<String, Object> params, String nomeArquivoSemExtensão) throws Exception {
         try {
-            
+
             //Gerar Relatório
             JasperPrint print = JasperFillManager.fillReport(RelatorioUtil.class.getResourceAsStream("/relatorios/"+nomeArquivoSemExtensão+".jasper"), params, Conexao.getConnection());
-            
+
             // Código para exibir o relatório.
             JasperViewer.viewReport(print, false);
-            
+
         } catch (JRException ex) {
             Logger.getLogger(RelatorioUtil.class.getName()).log(Level.SEVERE, null, ex);
             throw ex;
         }
     }
-    
+
     public static void gerarPDF(HashMap<String, Object> params, String nomeArquivoSemExtensão) throws Exception {
         try {
             JasperPrint print = JasperFillManager.fillReport(RelatorioUtil.class.getResourceAsStream("/relatorios/"+nomeArquivoSemExtensão+".jasper"), params, Conexao.getConnection());
-            
+
             /* Código para gerar pdf. */
             JRPdfExporter exporter = new JRPdfExporter();
             exporter.setExporterInput(new SimpleExporterInput(print));
             exporter.setExporterOutput(new SimpleOutputStreamExporterOutput( nomeArquivoSemExtensão + ".pdf" ));
             SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
             exporter.setConfiguration(configuration);
-            
+
             exporter.exportReport();
-            
+
         } catch (JRException ex) {
             Logger.getLogger(RelatorioUtil.class.getName()).log(Level.SEVERE, null, ex);
             throw ex;
         }
     }
-//    public static void gerarPDF(HashMap<String, Object> params, String nomeArquivoSemExtensão) throws Exception {
-//        try {
-//            JasperPrint print = JasperFillManager.fillReport(RelatorioUtil.class.getResourceAsStream("/relatorios/"+nomeArquivoSemExtensão+".jasper"), params, Conexao.getConnection());
-//
-//            /* Código para gerar pdf. */
-//            JRPdfExporter exporter = new JRPdfExporter();
-//            exporter.setExporterInput(new SimpleExporterInput(print));
-//            exporter.setExporterOutput(new SimpleOutputStreamExporterOutput( nomeArquivoSemExtensão + ".pdf" ));
-//            SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
-//            exporter.setConfiguration(configuration);
-//
-//            exporter.exportReport();
-//
-//        } catch (JRException ex) {
-//            Logger.getLogger(RelatorioUtil.class.getName()).log(Level.SEVERE, null, ex);
-//            throw ex;
-//        }
-//    }
 }

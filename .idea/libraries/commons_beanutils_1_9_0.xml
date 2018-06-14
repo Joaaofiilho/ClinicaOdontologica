@@ -13,7 +13,7 @@
       <root url="jar://$PROJECT_DIR$/lib/jcommon-1.0.23.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jfreechart-1.0.19.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/joda-time-2.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-8.0.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.46.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

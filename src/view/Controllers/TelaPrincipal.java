@@ -17,9 +17,12 @@ import persistence.ConsultaDAO;
 import persistence.PacienteDAO;
 import util.RelatorioUtil;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static beans.Agenda.getPacientes;
 
@@ -286,15 +289,17 @@ public class TelaPrincipal {
     }
 
 
-    public void imprimirPaciente(ActionEvent actionEvent) {
+    public void imprimirPacientes(ActionEvent actionEvent) {
         try {
 
             HashMap<String, Object> params = new HashMap<>();
 
             RelatorioUtil.gerarPDF(params, "RelatorioPacientes");
+            RelatorioUtil.exibirRelatorio(params,"RelatorioPacientes");
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao gerar o relatório!");
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 

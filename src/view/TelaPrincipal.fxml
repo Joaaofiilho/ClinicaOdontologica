@@ -120,9 +120,9 @@
             </GridPane>
             <HBox prefHeight="54.0" prefWidth="216.0" GridPane.rowIndex="1">
                <children>
-                  <Button fx:id="btnImprimir" mnemonicParsing="false" onAction="#imprimirPaciente" text="Imprimir lista pacientes">
+                  <Button fx:id="btnImprimir" mnemonicParsing="false" onAction="#imprimirPacientes" text="Imprimir Pacientes">
                      <HBox.margin>
-                        <Insets left="42.0" top="36.0" />
+                        <Insets left="50.0" top="40.0" />
                      </HBox.margin>
                   </Button>
                </children>
