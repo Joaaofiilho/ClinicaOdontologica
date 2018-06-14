@@ -12,14 +12,16 @@ import persistence.ProcedimentoDAO;
 
 public class TelaProcedimento {
 
-    public  ListView<Procedimento> lstvCadastrados;
-    public  ListView<Procedimento> lstvUtilizados;
+    public ListView<Procedimento> lstvCadastrados;
+    public ListView<Procedimento> lstvUtilizados;
+    ObservableList<Procedimento> procedimentosUtilizados = FXCollections.observableArrayList();
     public Button btnCriar;
     public Button btnExcluir;
     public Button btnSelecionar;
     public Button btnRetirar;
     public Button btnSalvar;
-    public Button btnAtualizar;
+    public Button btnCancelar;
+
 
     private MainApp mainApp;
 
@@ -28,45 +30,56 @@ public class TelaProcedimento {
         this.mainApp = mainApp;
     }
 
-    public void atualizarListView(){
-        lstvUtilizados.refresh();
-        lstvCadastrados.refresh();
-    }
-
 
     public void initialize(){
 
-        ObservableList<Procedimento> procedimentosTotal = FXCollections.observableArrayList();
-
-        try {
-            procedimentosTotal.addAll(Agenda.getProcedimentos());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        lstvCadastrados.setItems(procedimentosTotal);
+        Agenda.atualizarProcedimento();
+        lstvCadastrados.setItems(Agenda.getProcedimentos());
 
 
+        lstvUtilizados.setItems(procedimentosUtilizados);
     }
-
-
 
 
     public void criarNovo(ActionEvent actionEvent) {
         CadastroProcedimento.setModificando(false);
         mainApp.exibirCadastroProcedimento();
+        atualizar();
     }
 
     public void excluir(ActionEvent actionEvent) {
+        try {
+            ProcedimentoDAO.excluir(lstvCadastrados.getSelectionModel().getSelectedItem().getId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        atualizar();
+    }
+
+    public void atualizar(){
+        Agenda.atualizarProcedimento();
+
+        lstvCadastrados.refresh();
+        lstvUtilizados.refresh();
     }
 
     public void selecionar(ActionEvent actionEvent) {
+        if(!lstvCadastrados.getSelectionModel().isEmpty())
+            procedimentosUtilizados.add(lstvCadastrados.getSelectionModel().getSelectedItem());
+
     }
 
     public void retirar(ActionEvent actionEvent) {
+        procedimentosUtilizados.remove(lstvUtilizados.getSelectionModel().getSelectedItem());
     }
 
     public void salvar(ActionEvent actionEvent) {
+
+    }
+
+    public void cancelar(ActionEvent actionEvent) {
+
     }
 
     public void atualizar(ActionEvent actionEvent){
@@ -80,5 +93,6 @@ public class TelaProcedimento {
     public void modificiar(ActionEvent actionEvent) {
         CadastroProcedimento.setModificando(true);
         mainApp.modificarCadastroProcedimento(ProcedimentoDAO.buscarPorID(lstvCadastrados.getSelectionModel().getSelectedItem().getId()));
+        atualizar();
     }
 }

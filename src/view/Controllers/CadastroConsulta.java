@@ -20,6 +20,7 @@ import java.util.Date;
 public class CadastroConsulta {
 
     private ConsultaDAO dao = new ConsultaDAO();
+    private static int id = 0;
 
     //Textfields
     public TextField txtfieldDescricao;
@@ -35,6 +36,11 @@ public class CadastroConsulta {
     //Botoes
     public Button btnCancelar;
     public Button btnSalvar;
+    public Button btnProcedimento;
+
+
+    public Label lblAtendimento;
+    public Label lblValor;
 
     private MainApp mainApp;
 
@@ -42,6 +48,16 @@ public class CadastroConsulta {
 
     public void initialize(){
         cbPacientes.setItems(Agenda.getPacientes());
+
+        if(!isModificando()) {
+            txtfieldDescricao.setDisable(true);
+            txtfieldValor.setDisable(true);
+            btnProcedimento.setDisable(true);
+            lblAtendimento.setDisable(true);
+            lblValor.setDisable(true);
+        }
+
+
     }
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
@@ -91,6 +107,8 @@ public class CadastroConsulta {
 
         LocalDate date = consulta.getData().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         dateData.setValue(date);
+
+        id = consulta.getId();
     }
 
     public void btnSalvarOnAction(ActionEvent e) {
@@ -124,8 +142,10 @@ public class CadastroConsulta {
                 //Colocando if ternario no construtor
                 Consulta consulta = new Consulta(date,cbPacientes.getSelectionModel().getSelectedItem(),
                         txtfieldHorario.getText(), txtfieldDescricao.getText().isEmpty() ? "" : txtfieldDescricao.getText(), txtfieldValor.getText().isEmpty() ? 0 : Float.parseFloat(txtfieldValor.getText()));
-                if(isModificando())
+                if(isModificando()){
+                    consulta.setId(id);
                     ConsultaDAO.alterar(consulta);
+                }
                 else
                     Agenda.adicionarConsulta(consulta);
 

@@ -180,8 +180,6 @@ public class ConsultaDAO {
 
             while(rs.next()){
 
-                System.out.println(rs.getDate("data_consulta").toString());
-
                 int idConsulta = rs.getInt("id");
                 String cpf_paciente = rs.getString("cpf_paciente");
                 String horario_completo = rs.getString("horario_completo");

@@ -43,6 +43,8 @@ public class CadastroPaciente {
         this.mainApp = mainApp;
     }
 
+
+
     public void rdBtnMasculinoOnAction(ActionEvent event){
 
         if (rdBtnFeminino.isSelected()){

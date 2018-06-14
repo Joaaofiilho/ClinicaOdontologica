@@ -33,9 +33,6 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("Clínica Odontológica");
 
         Agenda.init();
-        for(Procedimento p: ProcedimentoDAO.buscarTudo()){
-            System.out.println(p.getId());
-        }
 
         initRoot();
     }

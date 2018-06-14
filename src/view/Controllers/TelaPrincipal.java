@@ -145,6 +145,8 @@ public class TelaPrincipal {
         btnImprimir.setVisible(true);
         btnImprimir.setDisable(false);
 
+        btnModificar.setText("Modificar");
+
         //Verificar se occorre um click duplo e exibi a tela do paciente
         lstViewPaciente.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -205,6 +207,9 @@ public class TelaPrincipal {
 
         btnImprimir.setVisible(false);
         btnImprimir.setDisable(true);
+
+        btnModificar.setText("Atendimento");
+
     }
 
     //Lista lateral
