@@ -48,7 +48,8 @@ public class TelaProcedimento {
         procedimentosUtilizados.setAll(Item_da_consultaDAO.buscarProcedimentos(CadastroConsulta.getIdConsulta()));
 
         //teste
-        procedimentosUtilizadosBD.addAll(procedimentosUtilizados);
+        procedimentosUtilizadosBD.addAll(Item_da_consultaDAO.buscarProcedimentos(CadastroConsulta.getIdConsulta()));
+
 
         lstvUtilizados.setItems(procedimentosUtilizados);
     }
@@ -79,26 +80,40 @@ public class TelaProcedimento {
 
     public void selecionar(ActionEvent actionEvent) {
 
-        if(!lstvCadastrados.getSelectionModel().isEmpty()){
-            if(!procedimentosAdiconadosParaSalvar.contains(lstvCadastrados.getSelectionModel().getSelectedItem())){
-                procedimentosUtilizados.add(lstvCadastrados.getSelectionModel().getSelectedItem());
-                procedimentosAdiconadosParaSalvar.add(lstvCadastrados.getSelectionModel().getSelectedItem());
+
+        if(!(lstvCadastrados.getSelectionModel().isEmpty())){
+
+            Procedimento pAux = lstvCadastrados.getSelectionModel().getSelectedItem();
+
+            if(!(procedimentosAdiconadosParaSalvar.contains(pAux))){
+                procedimentosUtilizados.add(pAux);
+                procedimentosAdiconadosParaSalvar.add(pAux);
+
+
+//                if (procedimentosRetirarParaSalvar.contains(pAux) BUGA
+
+                for (int i = 0; i < procedimentosRetirarParaSalvar.size(); i++) {
+                    Procedimento p = procedimentosRetirarParaSalvar.get(i);
+
+                    if(pAux.getId() == p.getId()){
+                        procedimentosRetirarParaSalvar.remove(i);
+                    }
+                }
+
             }
 
-            if(procedimentosRetirarParaSalvar.contains(lstvCadastrados.getSelectionModel().getSelectedItem()))
-                procedimentosRetirarParaSalvar.remove(lstvCadastrados.getSelectionModel().getSelectedItem());
-
-
         }
+
 
     }
 
     public void retirar(ActionEvent actionEvent) {
 
+        //Funciona
         if (procedimentosAdiconadosParaSalvar.contains(lstvUtilizados.getSelectionModel().getSelectedItem()))
             procedimentosAdiconadosParaSalvar.remove(lstvUtilizados.getSelectionModel().getSelectedItem());
 
-        if(!procedimentosRetirarParaSalvar.contains(lstvUtilizados.getSelectionModel().getSelectedItem()))
+        if(!(procedimentosRetirarParaSalvar.contains(lstvUtilizados.getSelectionModel().getSelectedItem())))
             procedimentosRetirarParaSalvar.add(lstvUtilizados.getSelectionModel().getSelectedItem());
 
 //        procedimentosRetirarParaSalvar.add(lstvUtilizados.getSelectionModel().getSelectedItem());
@@ -111,15 +126,28 @@ public class TelaProcedimento {
 
     public void salvar(ActionEvent actionEvent) {
 
-        if (!procedimentosUtilizadosBD.isEmpty()){
+        if (!(procedimentosUtilizadosBD.isEmpty())){
 
-            for (Procedimento pSalvos : procedimentosUtilizadosBD) {
-                for (Procedimento pSalvar : procedimentosAdiconadosParaSalvar) {
-                    if (pSalvar.getId() == pSalvos.getId()) {
-                        procedimentosAdiconadosParaSalvar.remove(pSalvar);
+            for (int i = 0; i < procedimentosUtilizadosBD.size(); i++) {
+                Procedimento pBD = procedimentosUtilizadosBD.get(i);
+
+                for (int j = 0; j < procedimentosAdiconadosParaSalvar.size(); j++) {
+                    Procedimento pNew = procedimentosAdiconadosParaSalvar.get(j);
+
+                    if (pBD.getId() == pNew.getId()){
+                        procedimentosAdiconadosParaSalvar.remove(j);
+                        break;
                     }
                 }
             }
+
+//            for (Procedimento pSalvos : procedimentosUtilizadosBD) {
+//                for (Procedimento pSalvar : procedimentosAdiconadosParaSalvar) {
+//                    if (pSalvar.getId() == pSalvos.getId()) {
+//                        procedimentosAdiconadosParaSalvar.remove(pSalvar);
+//                    }
+//                }
+//            }
         }
 
 //        for (Procedimento p: procedimentosUtilizados) {
@@ -153,6 +181,8 @@ public class TelaProcedimento {
 
     public void cancelar(ActionEvent actionEvent) {
 
+        Stage stage = (Stage) btnCancelar.getScene().getWindow();
+        stage.close();
     }
 
     public void atualizar(ActionEvent actionEvent){

@@ -231,13 +231,18 @@ public class TelaPrincipal {
             try {
                 CadastroPaciente.setModificando(true);
                 mainApp.exibirCadastroPaciente(lstViewPaciente.getSelectionModel().getSelectedItem());
-            } catch (Exception e) {
-                System.err.println("Erro: Impossível exibir cadastro do paciente! ");
-                e.getStackTrace();
+            } catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Você deve selecionar um paciente", "Modificar Paciente",0);
+
             }
         } else {
-            CadastroConsulta.setModificando(true);
-            mainApp.exibirCadastroConsulta(ConsultaDAO.buscarPorId(lstViewConsulta.getSelectionModel().getSelectedItem().getId()));
+            try{
+                CadastroConsulta.setModificando(true);
+                mainApp.exibirCadastroConsulta(ConsultaDAO.buscarPorId(lstViewConsulta.getSelectionModel().getSelectedItem().getId()));
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Você deve selecionar uma consulta", "Atendimento",0);
+
+            }
         }
 
     }
@@ -263,9 +268,14 @@ public class TelaPrincipal {
 
 
     public void btnRemoverOnAction(ActionEvent event) {
-        if(tglPaciente.isSelected()){
 
-            PacienteDAO.excluir(lstViewPaciente.getSelectionModel().getSelectedItem().getCpf());
+        if(tglPaciente.isSelected()){
+            try{
+                PacienteDAO.excluir(lstViewPaciente.getSelectionModel().getSelectedItem().getCpf());
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Você deve selecionar um paciente", "Excluir Paciente",0);
+            }
+
 
         }else{
             try {
@@ -280,8 +290,9 @@ public class TelaPrincipal {
                     e.printStackTrace();
                 }
                 lstViewConsulta.setItems(consultas);
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Você deve selecionar uma consulta", "Excluir Consulta",0);
+
             }
         }
 

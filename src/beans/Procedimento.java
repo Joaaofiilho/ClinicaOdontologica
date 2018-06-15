@@ -108,7 +108,7 @@ public class Procedimento {
         return this.titulo.toUpperCase();
     }
 
-//    @Override
+
 //    public boolean equals(Object o) {
 //        Procedimento aux = (Procedimento) o;
 //        return this.id == aux.getId();

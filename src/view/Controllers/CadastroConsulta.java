@@ -177,7 +177,7 @@ public class CadastroConsulta {
             double valor = 1;
 
             for (Procedimento procedimento: procedimentos) {
-                valor *= procedimento.getValor();
+                valor += procedimento.getValor();
             }
             txtfieldValor.setText(String.valueOf(valor));
         }else{
