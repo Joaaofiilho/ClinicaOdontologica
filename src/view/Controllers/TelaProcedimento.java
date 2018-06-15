@@ -47,7 +47,6 @@ public class TelaProcedimento {
 
         procedimentosUtilizados.setAll(Item_da_consultaDAO.buscarProcedimentos(CadastroConsulta.getIdConsulta()));
 
-        //teste
         procedimentosUtilizadosBD.addAll(Item_da_consultaDAO.buscarProcedimentos(CadastroConsulta.getIdConsulta()));
 
 
@@ -91,7 +90,6 @@ public class TelaProcedimento {
 
 
 //                if (procedimentosRetirarParaSalvar.contains(pAux) BUGA
-
                 for (int i = 0; i < procedimentosRetirarParaSalvar.size(); i++) {
                     Procedimento p = procedimentosRetirarParaSalvar.get(i);
 
@@ -105,28 +103,32 @@ public class TelaProcedimento {
         }
 
 
+
     }
 
     public void retirar(ActionEvent actionEvent) {
 
         //Funciona
-        if (procedimentosAdiconadosParaSalvar.contains(lstvUtilizados.getSelectionModel().getSelectedItem()))
-            procedimentosAdiconadosParaSalvar.remove(lstvUtilizados.getSelectionModel().getSelectedItem());
 
-        if(!(procedimentosRetirarParaSalvar.contains(lstvUtilizados.getSelectionModel().getSelectedItem())))
-            procedimentosRetirarParaSalvar.add(lstvUtilizados.getSelectionModel().getSelectedItem());
+        if(!(lstvUtilizados.getSelectionModel().isEmpty())){
+            if (procedimentosAdiconadosParaSalvar.contains(lstvUtilizados.getSelectionModel().getSelectedItem())) {
+                procedimentosAdiconadosParaSalvar.remove(lstvUtilizados.getSelectionModel().getSelectedItem());
+            }
+
+            if(!(procedimentosRetirarParaSalvar.contains(lstvUtilizados.getSelectionModel().getSelectedItem()))) {
+                procedimentosRetirarParaSalvar.add(lstvUtilizados.getSelectionModel().getSelectedItem());
+            }
+            procedimentosUtilizados.remove(lstvUtilizados.getSelectionModel().getSelectedItem());
+        }
 
 //        procedimentosRetirarParaSalvar.add(lstvUtilizados.getSelectionModel().getSelectedItem());
-
-
 //        Item_da_consultaDAO.excluirProcedimento(CadastroConsulta.getIdConsulta(),lstvUtilizados.getSelectionModel().getSelectedItem().getId());
-        procedimentosUtilizados.remove(lstvUtilizados.getSelectionModel().getSelectedItem());
 
     }
 
     public void salvar(ActionEvent actionEvent) {
 
-        if (!(procedimentosUtilizadosBD.isEmpty())){
+        if (!(procedimentosUtilizadosBD.isEmpty())) {
 
             for (int i = 0; i < procedimentosUtilizadosBD.size(); i++) {
                 Procedimento pBD = procedimentosUtilizadosBD.get(i);
@@ -134,37 +136,14 @@ public class TelaProcedimento {
                 for (int j = 0; j < procedimentosAdiconadosParaSalvar.size(); j++) {
                     Procedimento pNew = procedimentosAdiconadosParaSalvar.get(j);
 
-                    if (pBD.getId() == pNew.getId()){
+                    if (pBD.getId() == pNew.getId()) {
                         procedimentosAdiconadosParaSalvar.remove(j);
                         break;
                     }
                 }
             }
-
-//            for (Procedimento pSalvos : procedimentosUtilizadosBD) {
-//                for (Procedimento pSalvar : procedimentosAdiconadosParaSalvar) {
-//                    if (pSalvar.getId() == pSalvos.getId()) {
-//                        procedimentosAdiconadosParaSalvar.remove(pSalvar);
-//                    }
-//                }
-//            }
         }
 
-//        for (Procedimento p: procedimentosUtilizados) {
-//            for (Procedimento pRetirar : procedimentosRetirarParaSalvar){
-//                if (p.getId() == pRetirar.getId()){
-//                    procedimentosRetirarParaSalvar.remove(pRetirar);
-//                }
-//            }
-//        }
-//
-//        for (Procedimento pSalvar: procedimentosAdiconadosParaSalvar) {
-//            for (Procedimento pRetirar: procedimentosRetirarParaSalvar) {
-//                if (pSalvar.getId() == pRetirar.getId()){
-//                    procedimentosAdiconadosParaSalvar.remove(pSalvar);
-//                }
-//            }
-//        }
 
         for (Procedimento pSalvar: procedimentosAdiconadosParaSalvar) {
             Item_da_consultaDAO.inserirProcedimentos(CadastroConsulta.getIdConsulta(),pSalvar.getId());

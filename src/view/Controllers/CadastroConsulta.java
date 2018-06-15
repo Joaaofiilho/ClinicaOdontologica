@@ -11,11 +11,16 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import persistence.ConsultaDAO;
 import persistence.Item_da_consultaDAO;
+import util.RelatorioUtil;
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CadastroConsulta {
 
@@ -37,6 +42,7 @@ public class CadastroConsulta {
     public Button btnCancelar;
     public Button btnSalvar;
     public Button btnProcedimento;
+    public Button btnImprimir;
 
 
     public Label lblAtendimento;
@@ -55,6 +61,7 @@ public class CadastroConsulta {
             btnProcedimento.setDisable(true);
             lblAtendimento.setDisable(true);
             lblValor.setDisable(true);
+            btnImprimir.setDisable(true);
         }
 
 
@@ -174,7 +181,7 @@ public class CadastroConsulta {
         ArrayList<Procedimento> procedimentos = Item_da_consultaDAO.buscarProcedimentos(idConsulta);
 
         if(!procedimentos.isEmpty()){
-            double valor = 1;
+            double valor = 0;
 
             for (Procedimento procedimento: procedimentos) {
                 valor += procedimento.getValor();
@@ -192,5 +199,25 @@ public class CadastroConsulta {
 
     public static void setIdConsulta(int idConsulta) {
         CadastroConsulta.idConsulta = idConsulta;
+    }
+
+    public void imprimir(ActionEvent actionEvent) {
+
+        HashMap<String, Object> params = new HashMap<String, Object>();
+
+        params.put("cpf_busca", cbPacientes.getValue().getCpf());
+        params.put("id_consulta", idConsulta);
+
+        try {
+
+            RelatorioUtil.gerarPDF(params, "relatorio_proce_cons_pac");
+            RelatorioUtil.exibirRelatorio(params,"relatorio_proce_cons_pac");
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao gerar o relatório!");
+            Logger.getLogger(InformacoesPaciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
     }
 }
